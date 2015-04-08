@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :certs
+
   get 'profiles/new'
 
   get 'profiles/create'
