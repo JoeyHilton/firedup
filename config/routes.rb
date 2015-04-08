@@ -1,16 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'certs/index'
-
-  get 'certs/new'
-
-  get 'certs/create'
-
-  get 'certs/edit'
-
-  get 'certs/update'
-
-  get 'certs/destroy'
+  resources :certs
 
   get 'profiles/new'
 
