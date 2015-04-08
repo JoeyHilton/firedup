@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
 
-  get 'jobs/index'
+  resources :jobs
+  # get 'jobs/index'
 
-  get 'jobs/show'
+  # get 'jobs/show'
 
-  get 'jobs/profile'
+  # get 'jobs/profile'
 
-  get 'jobs/new'
+  # get 'jobs/new'
 
-  get 'jobs/create'
+  # get 'jobs/create'
 
-  get 'jobs/edit'
+  # get 'jobs/edit'
 
-  get 'jobs/update'
+  # get 'jobs/update'
 
-  get 'jobs/destroy'
+  # get 'jobs/destroy'
 
   get 'profiles/new'
 

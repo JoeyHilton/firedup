@@ -1,14 +1,18 @@
 <%= form_for @something do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.label :job_company %>
+  <%= f.text_field :job_company %>
 
-  <%= f.label :due_at %>
-  <%= f.text_field :due_at %>
+  <%= f.label :start_date %>
+  <%= f.date_select :start_date %>
 
-  <%= f.label :amount %>
-  <%= f.text_field :amount %>
+  <%= f.label :end_date %>
+  <%= f.date_select :end_date %>
 
-  <%= f.check_box :paid %>
+  <%= f.label :job_position %>
+  <%= f.text_field :job_position %>
+
+  <%= f.label :job_description %>
+  <%= f.text_area :job_description %>
 
   <%= f.submit %>
 <% end %>
