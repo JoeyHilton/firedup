@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408153021) do
+ActiveRecord::Schema.define(version: 20150408200324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "certs", force: :cascade do |t|
+    t.string   "cert_title"
+    t.date     "cert_startdate"
+    t.date     "cert_expiredate"
+    t.text     "cert_description"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string   "up_fname"
