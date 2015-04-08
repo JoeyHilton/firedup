@@ -19,4 +19,12 @@ class EducationsController < ApplicationController
 
   def destroy
   end
+
+  private
+  
+    def project_params
+
+    def set_education
+      @education = Project.find(params[:id])
+    end
 end
