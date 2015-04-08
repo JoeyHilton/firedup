@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  get 'jobs/index'
+
+  get 'jobs/show'
+
+  get 'jobs/profile'
+
+  get 'jobs/new'
+
+  get 'jobs/create'
+
+  get 'jobs/edit'
+
+  get 'jobs/update'
+
+  get 'jobs/destroy'
+
   get 'profiles/new'
 
   get 'profiles/create'
