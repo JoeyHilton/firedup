@@ -1,12 +1,12 @@
-<%= form_for @something do |f| %>
+<%= form_for @job do |f| %>
   <%= f.label :job_company %>
   <%= f.text_field :job_company %>
 
-  <%= f.label :start_date %>
-  <%= f.date_select :start_date %>
+  <%= f.label :job_start_date %>
+  <%= f.date_select :job_start_date %>
 
-  <%= f.label :end_date %>
-  <%= f.date_select :end_date %>
+  <%= f.label :job_end_date %>
+  <%= f.date_select :job_end_date %>
 
   <%= f.label :job_position %>
   <%= f.text_field :job_position %>
