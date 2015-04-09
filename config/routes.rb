@@ -1,5 +1,25 @@
 Rails.application.routes.draw do
 
+  resources :jobs
+  # get 'jobs/index'
+
+  # get 'jobs/show'
+
+  # get 'jobs/profile'
+
+  # get 'jobs/new'
+
+  # get 'jobs/create'
+
+  # get 'jobs/edit'
+
+  # get 'jobs/update'
+
+  # get 'jobs/destroy'
+
+  resources :certs
+
+
   get 'profiles/new'
 
   get 'profiles/create'
