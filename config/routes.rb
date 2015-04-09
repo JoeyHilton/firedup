@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  # get 'users/index'
+
+  # get 'users/show'
+
+  # get 'users/profile'
+
   root 'static#home'
 
   # get 'educations/show'
@@ -15,6 +21,7 @@ Rails.application.routes.draw do
   # get 'educations/update'
 
   # get 'educations/destroy'
+  get '/profile', to: 'users#profile', as: :profile
   resources :educations
 
   get 'static/about'
@@ -28,6 +35,7 @@ Rails.application.routes.draw do
   resources :profiles
 
   devise_for :users
+  resources :users, :only => [:show, :index]
   
 
 

@@ -15,6 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Tour', static_tour_path %></li>
         <li><%=  link_to "About", static_about_path %></li>
         <li><%=  link_to "Contact", static_contact_path %></li>
         <!-- We have an if statement here to only show the Users index link if users are signed in -->
@@ -26,7 +27,7 @@
             <!-- This area is the title for the dropdown on the right hand side -->
             <!-- I set it up so if a user is logged in, it displays their name. Otherwise it just says account -->
             <% if user_signed_in? %>
-              <%= current_user.name %>
+              <%= current_user.email %>
             <% else %>
               Account
             <% end %>
