@@ -7,8 +7,6 @@ class Profile < ActiveRecord::Base
   validates :up_zip, presence: true, numericality: { only_integer: true }
   validates :up_birthdate, presence: true
   validates :up_gender, presence: true
-
-  
 end
 
     # Profile schema-------------------------
