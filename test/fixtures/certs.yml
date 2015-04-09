@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cert_title: MyString
+  cert_startdate: 2015-04-08
+  cert_expiredate: 2015-04-08
+  cert_description: MyText
+
+two:
+  cert_title: MyString
+  cert_startdate: 2015-04-08
+  cert_expiredate: 2015-04-08
+  cert_description: MyText

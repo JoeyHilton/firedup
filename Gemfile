@@ -4,6 +4,10 @@ ruby '2.2.0'
 
 # ---- new gems below this line --------------
 gem 'devise'
+gem 'bootstrap-sass', '~> 3.3.4'
+gem 'bootstrap_form'
+gem "font-awesome-rails"
+
 
 
 

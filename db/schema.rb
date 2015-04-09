@@ -16,6 +16,15 @@ ActiveRecord::Schema.define(version: 20150408202436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "certs", force: :cascade do |t|
+    t.string   "cert_title"
+    t.date     "cert_startdate"
+    t.date     "cert_expiredate"
+    t.text     "cert_description"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string   "job_company"
     t.date     "job_start_date"

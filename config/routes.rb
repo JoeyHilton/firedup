@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   # get 'jobs/destroy'
 
+  resources :certs
+
+
   get 'profiles/new'
 
   get 'profiles/create'
