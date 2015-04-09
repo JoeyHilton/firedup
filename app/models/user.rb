@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   
   has_many :certs, dependent: :destroy      
 
-  has_many :profiles, dependent: :destroy
+  has_one :profile, dependent: :destroy
 
   has_many :educations, dependent: :destroy
 

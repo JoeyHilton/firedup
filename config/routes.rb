@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   # get 'educations/update'
 
   # get 'educations/destroy'
-  get '/profile', to: 'users#profile', as: :profile
+  get '/profile/:id', to: 'profiles#show', as: :profile
   resources :educations
 
   get 'static/about'
