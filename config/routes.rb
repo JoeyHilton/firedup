@@ -1,46 +1,26 @@
 Rails.application.routes.draw do
-  
-  # get 'users/index'
-
-  # get 'users/show'
-
-  # get 'users/profile'
 
   root 'static#home'
 
-  # get 'educations/show'
-
-  # get 'educations/index'
-
-  # get 'educations/new'
-
-  # get 'educations/create'
-
-  # get 'educations/edit'
-
-  # get 'educations/update'
-
-  # get 'educations/destroy'
   get '/profile/:id', to: 'profiles#show', as: :profile
-  resources :educations
+
 
   get 'static/about'
   get 'static/tour'
   get 'static/contact'
   
-  resources :jobs
-
-  resources :certs
-
-  resources :profiles
+  shallow do
+    resources :profiles do
+      resources :jobs
+      resources :certs
+      resources :educations
+    end
+  end
 
   devise_for :users
   resources :users, :only => [:show, :index]
   
 
-
-
-  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

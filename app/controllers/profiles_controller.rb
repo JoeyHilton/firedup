@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
-   def index
-    @profiles = Profile.all
+
+  def index
+    @profile = Profile.all
   end
 
   def show
@@ -8,11 +9,11 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    @profile = Profiles.new
+    @profile = Profile.new
   end
 
   def create
-    @profile = Profiles.new(profile_params)
+    @profile = Profile.new(profile_params)
     if @profile.save
       redirect_to profiles_path
     else
@@ -21,7 +22,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @profile = Profiles.find(params[:id])
+    @profile = Profile.find(params[:id])
     if @profile.update(profile_params)
       redirect_to @profile, notice: "Profile successfully updated!"
     else
@@ -30,12 +31,12 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profiles.find(params[:id])
+    @profile = Profile.find(params[:id])
   end
 
 
   def destroy
-    @profile = Profiles.find(params[:id])
+    @profile = Profile.find(params[:id])
     @Profiles.destroy
     redirect_to profiles_url, alert: "Profile successfully deleted!"
   end
@@ -49,4 +50,6 @@ class ProfilesController < ApplicationController
                                     :up_twitter, :up_birthdate, :up_phone, :up_mobilephone, :up_gender,
                                     :up_secondemail, :up_bio)
   end
+
 end
+
