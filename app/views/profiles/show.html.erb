@@ -1,2 +1,33 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+
+<div class="container">
+<h2>Your Profile</h2>
+
+<h4 class="inline">Name: </h4><%= "#{@profile.up_fname}  #{@profile.up_lname}" %><br>
+<%= @profile.up_address %><br>
+<%= @profile.up_city %><br>
+<%= @profile.up_state %><br>
+<%= @profile.up_zip %><br>
+<%= @profile.up_twitter %><br>
+<%= @profile.up_birthdate %><br>
+<%= @profile.up_phone %><br>
+<%= @profile.up_mobilephone %><br>
+<%= @profile.up_gender %><br>
+<%= @profile.up_secondemail %><br>
+<%= @profile.up_bio %><br>
+
+</div>
+
+
+   <!--  t.string   "up_fname"
+    t.string   "up_lname"
+    t.string   "up_address"
+    t.string   "up_city"
+    t.string   "up_state"
+    t.integer  "up_zip"
+    t.string   "up_twitter"
+    t.date     "up_birthdate"
+    t.integer  "up_phone"
+    t.integer  "up_mobilephone"
+    t.string   "up_gender"
+    t.string   "up_secondemail"
+    t.text     "up_bio" -->

@@ -2,30 +2,17 @@ Rails.application.routes.draw do
   
   root 'static#home'
 
-  # get 'educations/show'
-
-  # get 'educations/index'
-
-  # get 'educations/new'
-
-  # get 'educations/create'
-
-  # get 'educations/edit'
-
-  # get 'educations/update'
-
-  # get 'educations/destroy'
-  resources :educations
-
   get 'static/about'
   get 'static/tour'
   get 'static/contact'
   
-  resources :jobs
-
-  resources :certs
-
-  resources :profiles
+  shallow do
+    resources :profiles do
+      resources :jobs
+      resources :certs
+      resources :educations
+    end
+  end
 
   devise_for :users
   

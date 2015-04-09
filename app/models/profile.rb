@@ -2,11 +2,17 @@ class Profile < ActiveRecord::Base
 
   belongs_to :user
 
+  has_many :jobs, dependent: :destroy
+  has_many :certs, dependent: :destroy      
+  has_many :educations, dependent: :destroy
+
   validates :up_city, presence: true
   validates :up_state, presence: true
   validates :up_zip, presence: true, numericality: { only_integer: true }
   validates :up_birthdate, presence: true
   validates :up_gender, presence: true
+
+  GENDER = %w(Male Female)
 end
 
     # Profile schema-------------------------
