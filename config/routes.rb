@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  root 'static#home'
+
+  # get 'educations/show'
+
+  # get 'educations/index'
+
+  # get 'educations/new'
+
+  # get 'educations/create'
+
+  # get 'educations/edit'
+
+  # get 'educations/update'
+
+  # get 'educations/destroy'
+  resources :educations
 
   resources :jobs
   # get 'jobs/index'
@@ -36,7 +52,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  root 'static#home'
 
   get 'static/about'
   get 'static/tour'
