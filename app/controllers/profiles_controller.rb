@@ -1,27 +1,33 @@
 class ProfilesController < ApplicationController
-
+  before_action :authenticate_user!
 
   def index
     @profile = Profile.all
     @educations = Education.all
     @jobs = Job.all
+    @users = User.all
   end
 
   def show
     @profile = Profile.find(params[:id])
-    @jobs = Job.profile.find_by()
+
+    @jobs = @profile.jobs
+    @educations = @profile.educations
+    @certs = @profile.certs
+    @user = User.find(params[:id])
+
   end
 
   def new
-    @profile = Profile.new
+    @profile = current_user.build_profile
   end
 
   def create
-    @profile = Profile.new(profile_params)
+    @profile = current_user.build_profile(profile_params)
     if @profile.save
       redirect_to profiles_path
     else
-      render :back
+      render :new
     end
   end
 
@@ -54,7 +60,7 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:up_fname, :up_lname, :up_address, :up_city, :up_state, :up_zip,
                                     :up_twitter, :up_birthdate, :up_phone, :up_mobilephone, :up_gender,
-                                    :up_secondemail, :up_bio)
+                                    :up_secondemail, :up_bio, :user_id)
   end
 
   def set_education

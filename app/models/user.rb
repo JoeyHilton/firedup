@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
   has_many :jobs, through: :profile
   has_many :certs, through: :profile
 
-
+  # after_save {self.profile.create}
 end
 
