@@ -1,27 +1,18 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-2">
-      <ul class="nav nav-pills nav-stacked well">
-        Jobs</br></br>
-        Education
-      </ul>
-    </div>
-    <div class="col-md-7">
-      <% if user_signed_in? %>
-        <div class="jobsIndex container well"> 
-          <%= render 'jobs/index' %>
+
+<div class = 'container'>
+  <h2> All Users</h2>
+  <% @profiles.each do |profile| %>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+        <div class="center panel-heading"
+        <h3>profile: <%= profile.up_fname%> <%= profile.up_lname %></h3>
         </div>
-        <div class="educationIndex container well">
-          <%= render 'educations/index'%>
+        <div class="panel-body">
+        <h4>Email: <%= user.email%></h4>
+        <h4><%= link_to 'View Profile', profile_path(profile.id) %></h4>
         </div>
-      <% end %>
-    </div>
-    <div class="col-md-3">
-      <ul class="nav nav-pills nav-stacked well">
-        something else</br></br>
-        and another thing
-      </ul>
     </div>
   </div>
+<% end %>
 </div>
-<!-- , locals: { education: @education }  -->
+
