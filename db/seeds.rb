@@ -1,3 +1,5 @@
+
+
 User.create(email: "test@test.com", password: "password", password_confirmation: "password")
 
 
@@ -7,7 +9,7 @@ User.create(email: "test@test.com", password: "password", password_confirmation:
               password_confirmation: "password")
 end
 
-10.times do
+User.all.each do |user|
   Profile.create(up_fname: Faker::Name.first_name,
                  up_lname: Faker::Name.last_name,
                  up_address: Faker::Address.street_address,
@@ -21,7 +23,7 @@ end
                  up_gender: "male",
                  up_secondemail: Faker::Internet.email,
                  up_bio: Faker::Lorem.sentence,
-                 user_id: User.ids.sample)
+                 user_id: user.id)
 end
 
 10.times do
