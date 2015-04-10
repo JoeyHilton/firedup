@@ -1,7 +1,10 @@
 class ProfilesController < ApplicationController
 
+
   def index
     @profile = Profile.all
+    @educations = Education.all
+    @jobs = Job.all
   end
 
   def show
@@ -39,6 +42,8 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @Profiles.destroy
     redirect_to profiles_url, alert: "Profile successfully deleted!"
+    @education.destroy
+    redirect_to profile_educations_path
   end
 
 
@@ -50,6 +55,10 @@ class ProfilesController < ApplicationController
                                     :up_twitter, :up_birthdate, :up_phone, :up_mobilephone, :up_gender,
                                     :up_secondemail, :up_bio)
   end
+
+  def set_education
+      @education = Education.find(params[:id])
+    end
 
 end
 

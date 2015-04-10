@@ -1,6 +1,16 @@
 require 'test_helper'
 
 class CertsControllerTest < ActionController::TestCase
+
+  def setup
+    @user = users(:one)
+    @other_user = users(:two)
+    @profile = profiles(:one)
+    @cert = certs(:one)
+    @new_params = { name: "Updated", description: "This is updated"}
+    sign_in @user
+  end
+
   test "should get index" do
     get :index
     assert_response :success
