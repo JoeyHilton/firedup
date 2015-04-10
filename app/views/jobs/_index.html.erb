@@ -1,0 +1,15 @@
+<h1> Jobs </h1>
+<h2><%= link_to 'New Job', new_profile_job_path(current_user) %></h2>
+
+<% @jobs.each do |job| %>
+<div class="eachJob well">
+  <h6><%= job.job_company %></h6>
+  <h6><%= job.job_start_date %></h6>
+  <h6><%= job.job_end_date %></h6>
+  <h6><%= job.job_position %></h6>
+  <p><%= job.job_description %></p>
+  <h2><%= link_to 'Show Job', job_path(job) %></h2>
+  <h2><%= link_to 'Edit Job', edit_job_path(job) %></h2>
+  <h2><%= link_to 'Destroy Job', job, method: :delete %></h2>
+</div>
+<% end %>

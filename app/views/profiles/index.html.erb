@@ -1,5 +1,21 @@
-
-<% if user_signed_in? %>
-<h2><%= link_to 'Jobs', profile_jobs_path(current_user) %></h2>
-<h2><%= link_to 'Education', profile_educations_path(current_user) %></h2>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <ul class="nav nav-pills nav-stacked well">
+       Jobs</br></br>
+       Education
+      </ul>
+    </div>
+    <div class="col-md-8">
+      <% if user_signed_in? %>
+      <div class="jobsIndex container well"> 
+        <%= render 'jobs/index' %>
+      </div>
+      <div class="educationIndex container well">
+        <%= render 'educations/index'%>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- , locals: { education: @education }  -->

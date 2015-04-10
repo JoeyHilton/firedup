@@ -1,18 +1,20 @@
-<%= form_for [@profile, @job] do |f| %>
-  <%= f.label :job_company %>
+<div class="container">
+  <%= bootstrap_form_for [@profile, @job] do |f| %>
+  <%#= f.label :job_company %>
   <%= f.text_field :job_company %>
 
-  <%= f.label :job_start_date %>
+  <%#= f.label :job_start_date %>
   <%= f.date_select :job_start_date %>
 
-  <%= f.label :job_end_date %>
+  <%#= f.label :job_end_date %>
   <%= f.date_select :job_end_date %>
 
-  <%= f.label :job_position %>
+  <%#= f.label :job_position %>
   <%= f.text_field :job_position %>
 
-  <%= f.label :job_description %>
+  <%#= f.label :job_description %>
   <%= f.text_area :job_description %>
 
   <%= f.submit %>
-<% end %>
+  <% end %>
+</div>
