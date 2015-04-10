@@ -6,7 +6,11 @@ class User < ActiveRecord::Base
 
   # --------  above this line for devise only ----------------      
 
-  has_many :profiles, dependent: :destroy
+  has_one :profile, dependent: :destroy
+
+  has_many :educations, through: :profile
+  has_many :jobs, through: :profile
+  has_many :certs, through: :profile
 
 end
 
