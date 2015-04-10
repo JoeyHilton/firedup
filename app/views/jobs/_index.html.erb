@@ -8,8 +8,8 @@
   <h6><%= job.job_end_date %></h6>
   <h6><%= job.job_position %></h6>
   <p><%= job.job_description %></p>
-  <h2><%= link_to 'Show Job', job_path(job) %></h2>
-  <h2><%= link_to 'Edit Job', edit_job_path(job) %></h2>
-  <h2><%= link_to 'Destroy Job', job, method: :delete %></h2>
+  <h2 class="jobButton"><%= link_to 'Show Job', job_path(job), class: "btn btn-info" %></h2>
+  <h2 class="jobButton"><%= link_to 'Edit Job', edit_job_path(job), class: "btn btn-success" %></h2>
+  <h2 class="jobButton"><%= link_to 'Destroy Job', job, method: :delete, class: "btn btn-danger" %></h2>
 </div>
 <% end %>
