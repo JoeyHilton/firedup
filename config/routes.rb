@@ -2,12 +2,11 @@ Rails.application.routes.draw do
 
   root 'static#home'
 
-  get '/profile', to: 'users#profile', as: :profile
+  devise_for :users
+  resources :users, :only => [:show, :index]
 
-  get 'static/about'
-  get 'static/tour'
-  get 'static/contact'
-  
+  get '/profile/:id', to: 'profiles#show', as: :profile
+
   shallow do
     resources :profiles do
       resources :jobs
@@ -16,8 +15,10 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
-  resources :users, :only => [:show, :index]
+  get 'static/about'
+  get 'static/tour'
+  get 'static/contact'
+  
   
 
 

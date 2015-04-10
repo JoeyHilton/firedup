@@ -15,12 +15,14 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Profiles', profiles_path %></li>
         <li><%= link_to 'Tour', static_tour_path %></li>
         <li><%=  link_to "About", static_about_path %></li>
         <li><%=  link_to "Contact", static_contact_path %></li>
         <!-- We have an if statement here to only show the Users index link if users are signed in -->
         <% if user_signed_in? %>
           <li><%= link_to 'Users', users_path %></li>
+          <li><%= link_to 'Users', profiles_path %></li>
         <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -35,8 +37,12 @@
           <ul class="dropdown-menu" role="menu">
             <!-- We have an if/else block here to show different links depending on if a user is signed in or not -->
             <% if user_signed_in? %>
-              <li><%= link_to 'My Profile', profile_path %></li>
-              <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+              <li><%= link_to 'My Profile', profile_path(id: 1) %></li>
+              <li><%= link_to 'Edit Profile', '#' %></li>
+              <li><%= link_to 'My Profile', profile_path(current_user.id) %></li>
+              <li><%= link_to 'Edit Profile', edit_profile_path(current_user.id) %></li>
+              <li><%= link_to 'Edit Sign-in', edit_user_registration_path %></li>
+              <li><%= link_to 'Account Settings', edit_user_registration_path %></li>
               <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete%></li>
             <% else %>
               <li><%= link_to 'Sign Up', new_user_registration_path %></li>
