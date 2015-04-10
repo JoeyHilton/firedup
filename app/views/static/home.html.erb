@@ -3,6 +3,6 @@
 <%= render template: 'devise/registrations/new' %>
 
 
-<h2><%= link_to 'Jobs', jobs_path %></h2>
-<h2><%= link_to 'Education', educations_path %></h2>
-<h2><%= link_to 'Profile', profiles_path %></h2>
+<h2><%= link_to 'Jobs', profile_jobs_path(profile_id: 1) %></h2>
+<h2><%= link_to 'Education', profile_educations_path(profile_id: 1) %></h2>
+<h2><%= link_to 'Profile', profiles_path(profile_id: 1) %></h2>
