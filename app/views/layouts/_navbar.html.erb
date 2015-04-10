@@ -37,6 +37,7 @@
             <!-- We have an if/else block here to show different links depending on if a user is signed in or not -->
             <% if user_signed_in? %>
               <li><%= link_to 'My Profile', profile_path(id: 1) %></li>
+              <li><%= link_to 'Edit Profile', '#' %></li>
               <li><%= link_to 'Edit Sign-in', edit_user_registration_path %></li>
               <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete%></li>
             <% else %>
