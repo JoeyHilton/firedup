@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+    @jobs = Job.profile.find_by()
   end
 
   def new
