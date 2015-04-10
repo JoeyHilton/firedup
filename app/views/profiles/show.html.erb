@@ -3,16 +3,22 @@
 <h2>Your Profile</h2>
 
 <h4 class="inline">Name: </h4><%= "#{@profile.up_fname}  #{@profile.up_lname}" %><br>
-<%= @profile.up_address %><br>
+<h4>Address: </h4><%= @profile.up_address %><br>
 <%= @profile.up_city %><br>
 <%= @profile.up_state %><br>
 <%= @profile.up_zip %><br>
+<h4>Twitter Handle:</h4>
 <%= @profile.up_twitter %><br>
-<%= @profile.up_birthdate %><br>
-<%= @profile.up_phone %><br>
-<%= @profile.up_mobilephone %><br>
+<h4>Birthdate:</h4>
+Birthdate: <%= @profile.up_birthdate %><br>
+<h4>Phone Numbers:</h4>
+Phone: <%= @profile.up_phone %><br>
+Cell Phone: <%= @profile.up_mobilephone %><br>
+<h4>Gender:</h4>
 <%= @profile.up_gender %><br>
+<h4>Secondary Email:</h4>
 <%= @profile.up_secondemail %><br>
+<h4>Bio:</h4>
 <%= @profile.up_bio %><br>
 
 </div>
