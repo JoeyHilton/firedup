@@ -2,10 +2,10 @@ Rails.application.routes.draw do
 
   root 'static#home'
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => 'registrations'}
   resources :users, :only => [:show, :index]
 
-  get '/profile/:id', to: 'profiles#show', as: :profile
+  # get '/profile/:id', to: 'profiles#show', as: :profile
 
   shallow do
     resources :profiles do
