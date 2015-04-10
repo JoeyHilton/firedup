@@ -1,4 +1,4 @@
-<%= form_for @job do |f| %>
+<%= form_for [@profile, @job] do |f| %>
   <%= f.label :job_company %>
   <%= f.text_field :job_company %>
 

@@ -1,5 +1,5 @@
 <h1> Jobs </h1>
-<h2><%= link_to 'New Job', new_job_path %></h2>
+<h2><%= link_to 'New Job', new_profile_job_path %></h2>
 <% @jobs.each do |job| %>
   <h2><%= job.job_company %></h3>
   <h3><%= job.job_start_date %></h3>
