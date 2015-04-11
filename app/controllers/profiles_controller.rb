@@ -65,7 +65,7 @@ class ProfilesController < ApplicationController
 
   def set_education
       @education = Education.find(params[:id])
-    end
+  end
 
 end
 

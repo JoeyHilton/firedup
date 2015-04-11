@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410032823) do
+ActiveRecord::Schema.define(version: 20150411164116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 20150410032823) do
     t.integer  "up_zip"
     t.string   "up_twitter"
     t.date     "up_birthdate"
-    t.integer  "up_phone"
-    t.integer  "up_mobilephone"
+    t.string   "up_phone"
+    t.string   "up_mobilephone"
     t.string   "up_gender"
     t.string   "up_secondemail"
     t.text     "up_bio"
