@@ -95,7 +95,10 @@ ActiveRecord::Schema.define(version: 20150411164116) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "certs", "profiles"
+  add_foreign_key "certs", "profiles"
+  add_foreign_key "educations", "profiles"
   add_foreign_key "educations", "profiles"
   add_foreign_key "jobs", "profiles"
+  add_foreign_key "profiles", "users"
   add_foreign_key "profiles", "users"
 end
