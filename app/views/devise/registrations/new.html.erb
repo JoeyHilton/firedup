@@ -2,7 +2,6 @@
 <div class="container">
 
   <div class="row">
-    divise/registrations/new
     <h1 class="text-center"><strong>Join FiredUp Today</strong></h1>
     <br>
   </div>
@@ -15,33 +14,30 @@
 
     <div class="col-md-5"> <!-- RIGHT COLUMN -->
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <h2><strong> Get started today!</strong></h2>
+      <h4> Its free...</h4>
+      <br>
+
+      <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
-
-        <div class="field">
-          <%= f.label :email %><br />
+          
           <%= f.email_field :email, autofocus: true %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password %>
-          <% if @validatable %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
+      
           <%= f.password_field :password, autocomplete: "off", placeholder: "Eight Characters Minimum" %>
-        </div>
 
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off" %>
-        </div>
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Eight Characters Minimum" %>
 
-        <div class="actions">
-          <%= f.submit "Sign up" %>
-        </div>
+          <%= f.submit "Sign up", class: "btn btn-primary" %>
+
       <% end %>
       <br>
 
       <%= render "devise/shared/links" %>
     </div><!-- END RIGHT COLUMN -->
 </div>
+
+
+
+          <% if @validatable %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
