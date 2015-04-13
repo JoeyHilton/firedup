@@ -37,7 +37,7 @@ class CertsController < ApplicationController
   private
     
     def cert_params
-      params.require(:cert).permit(:cert_title, :cert_startdate, :cert_expiredate, :cert_description)
+      params.require(:cert).permit(:title, :start_date, :expire_date, :description, :user_id)
     end
 
 end

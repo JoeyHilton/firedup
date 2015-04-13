@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => 'registrations'}
   resources :users, :only => [:show, :index]
 
-  # get '/profile/:id', to: 'profiles#show', as: :profile
+  get '/profile', to: 'users#profile', as: :profile
 
   shallow do
-    resources :profiles do
+    resources :users do
       resources :jobs
       resources :certs
       resources :educations

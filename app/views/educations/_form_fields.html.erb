@@ -1,21 +1,23 @@
-<%= form_for [@profile, @education] do |f| %>
-  <%= f.label :edu_school %>: 
-  <%= f.text_field :edu_school, class: 'form-control' %>
+<div class="container">
+  <%= bootstrap_form_for [@user, @education] do |f| %>
 
-  <%= f.label :edu_subject %> 
-  <%= f.text_field :edu_subject, class: 'form-control' %>
+    <%= f.text_field :school, class: 'form-control' %>
 
-  <%= f.label :edu_degree %>
-  <%= f.text_field :edu_degree, class: 'form-control' %>
+    
+    <%= f.text_field :subject, class: 'form-control' %>
 
-  <%= f.label :edu_description %>
-  <%= f.text_area :edu_description, class: 'form-control' %>
+    
+    <%= f.text_field :degree, class: 'form-control' %>
 
-  <%= f.label :edu_startdate %> 
-  <%= f.date_select :edu_startdate, class: 'form-control'  %>
+   
+    <%= f.text_area :description, class: 'form-control' %>
 
-  <%= f.label :edu_enddate %> 
-  <%= f.date_select :edu_enddate, class: 'form-control'  %>
+    
+    <%= f.date_select :start_date, class: 'form-control'  %>
 
-  <%= f.submit %>
-<% end %>
+   
+    <%= f.date_select :end_date, class: 'form-control'  %>
+
+    <%= f.submit %>
+  <% end %>
+</div>

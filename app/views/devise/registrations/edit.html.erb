@@ -1,20 +1,22 @@
 <div class="container">
 
   <div class="row col-md-12">
-    <h1 class="text-center"><strong>Edit Your Log In Info</strong></h1>
+    <h1 class="text-center"><strong>Edit Your Profile</strong></h1>
     <br>
   </div>
 
   <div class="row">
 
-    <div class="col-md-5"><!-- LEFT COLUMN --> 
+    <div class="col-md-6"><!-- LEFT COLUMN --> 
 
         divise/registrations/edit
         <!-- <%= resource_name.to_s.humanize %> -->
 
         <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= devise_error_messages! %>
+            <%= f.text_field :first_name, label: "First Name" %>
 
+            <%= f.text_field :last_name, label: "Last Name" %>
             <%= f.email_field :email, autofocus: true %>
 
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -27,6 +29,30 @@
      
             <%= f.password_field :current_password, autocomplete: "off", label: "Current Password - Needed to make changes" %>
 
+
+
+            <%= f.text_field :address, label: "Address" %>
+
+            <%= f.text_field :city, label: "City" %>
+
+            <%= f.select :state, User::STATE, prompt: "Pick one",label: "State" %>
+
+            <%= f.number_field :zip, label: "ZIP" %>
+
+            <%= f.text_field :twitter, label: "Twitter", placeholder: "@twittername"  %>
+
+            <%= f.date_field :birthdate, label: "Birthdate" %>
+
+            <%= f.text_field :phone, label: "Phone", placeholder: "123-456-7890" %>
+
+            <%= f.text_field :mobile_phone, label: "Mobile Phone", placeholder: "123-456-7890" %>
+
+            <%= f.select :gender, User::GENDER, prompt: "Pick one", label: "Gender" %>
+
+            <%= f.text_field :secondary_email, label: "Secondary Email" %>
+
+            <%= f.text_area :bio, label: "Bio", cols: 10, rows: 7 %>
+
             <%= f.submit "Update", class: "btn btn-primary" %>
         <% end %>
         <br>
@@ -35,7 +61,7 @@
       
   </div><!-- END LEFT COLUMN -->
 
-  <div class="col-md-7"> <!-- RIGHT COLUMN -->
+  <div class="col-md-6"> <!-- RIGHT COLUMN -->
 
 
     <h3>Cancel my account</h3>
