@@ -1,2 +1,82 @@
-<h1>Users#profile</h1>
-<p>Find me in app/views/users/profile.html.erb</p>
+<div class="container">
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Your Profile</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-2"><!-- BEGIN LEFT COLUMN -->
+      <ul class="nav nav-pills nav-stacked well">
+        Jobs</br></br>
+        Education
+      </ul>
+    </div><!-- END LEFT COLUMN -->
+
+    <div class="col-md-6"><!-- BEGIN CENTER COLUMN -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Basic Information</h3>
+        </div>
+        <div class="panel-body">
+          <strong> Name: </strong><br>
+            <%= "#{@user.first_name}  #{@user.last_name}" %><br>
+          <strong> Address: </strong><br>
+            <%= @user.address %><br>
+            <%= "#{@user.city}, #{@user.state}, #{@user.zip}" %><br>
+          <strong> Twitter:</strong><br>
+            <%= @user.twitter %><br>
+          <strong> Birthdate:</strong><br>
+            <%= @user.birthdate %><br>
+          <strong> Phone Numbers:</strong><br>
+            Phone: <%= @user.phone %><br>
+            Cell Phone: <%= @user.mobile_phone %><br>
+          <strong> Gender:</strong><br>
+            <%= @user.gender %><br>
+          <strong> Secondary Email:</strong><br>
+            <%= @user.secondary_email %><br>
+          <strong> Bio:</strong><br>
+            <%= @user.bio %><br>
+        </div>
+      </div>
+
+      <% if user_signed_in? %>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Job Experience</h3>
+            <p><%= link_to 'Add a Job', new_user_job_path(current_user) %></p>
+          </div>
+          <div class="jobsIndex panel-body"> 
+            <%= render 'jobs/index', jobs: @jobs %>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Education</h3>
+            <p><%= link_to 'Add Education', new_user_education_path(current_user) %></p>
+          </div>
+          <div class="educationIndex cpanel-body">
+            <%= render 'educations/index'%>
+          </div>
+        <div>
+
+      <% end %>
+    </div>
+
+    </div> <!-- END RIGHT COLUMN -->
+
+  </div><!-- closes row -->
+    <div class="col-md-4"><!-- BEGIN RIGHT COLUMN -->
+      <ul class="nav nav-pills nav-stacked well">
+        something else</br></br>
+        and another thing
+      </ul>
+
+</div><!-- closes container -->

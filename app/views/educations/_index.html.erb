@@ -1,13 +1,13 @@
 <div class="container">
-  <h1> Education </h1>
-  <p><%= link_to 'Add Education', new_profile_education_path(current_user) %></p>
-  <% @educations.each do |education| %>
-    <h2><%= education.edu_school%></h2>
-    <h3><%= education.edu_degree %></h3>
-    <p><%= education.edu_subject %></p>
-    <p><%= education.edu_description %></p>
-    <p><%= education.edu_startdate %></p>
-    <p><%= education.edu_enddate %></p>
+
+  
+  <% @user.educations.each do |education| %>
+    <h2><%= education.school%></h2>
+    <h3><%= education.degree %></h3>
+    <p><%= education.subject %></p>
+    <p><%= education.description %></p>
+    <p><%= education.start_date %></p>
+    <p><%= education.end_date %></p>
     <%= link_to 'Show education', education_path(education) %>
     <%= link_to 'Edit Education', edit_education_path(education) %>
     <%= link_to 'Delete Education', education, method: :delete %>

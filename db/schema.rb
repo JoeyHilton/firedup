@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413185920) do
+ActiveRecord::Schema.define(version: 20150413191646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 20150413185920) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "profile_id"
+    t.integer  "user_id"
   end
 
-  add_index "certs", ["profile_id"], name: "index_certs_on_profile_id", using: :btree
+  add_index "certs", ["user_id"], name: "index_certs_on_user_id", using: :btree
 
   create_table "educations", force: :cascade do |t|
     t.string   "school"
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 20150413185920) do
     t.string   "degree"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "profile_id"
+    t.integer  "user_id"
   end
 
-  add_index "educations", ["profile_id"], name: "index_educations_on_profile_id", using: :btree
+  add_index "educations", ["user_id"], name: "index_educations_on_user_id", using: :btree
 
   create_table "jobs", force: :cascade do |t|
     t.string   "company"
@@ -50,31 +50,10 @@ ActiveRecord::Schema.define(version: 20150413185920) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "profile_id"
-  end
-
-  add_index "jobs", ["profile_id"], name: "index_jobs_on_profile_id", using: :btree
-
-  create_table "profiles", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip"
-    t.string   "twitter"
-    t.date     "birthdate"
-    t.string   "phone"
-    t.string   "mobile_phone"
-    t.string   "gender"
-    t.string   "secondary_email"
-    t.text     "bio"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
     t.integer  "user_id"
   end
 
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -107,11 +86,7 @@ ActiveRecord::Schema.define(version: 20150413185920) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "certs", "profiles"
-  add_foreign_key "certs", "profiles"
-  add_foreign_key "educations", "profiles"
-  add_foreign_key "educations", "profiles"
-  add_foreign_key "jobs", "profiles"
-  add_foreign_key "profiles", "users"
-  add_foreign_key "profiles", "users"
+  add_foreign_key "certs", "users"
+  add_foreign_key "educations", "users"
+  add_foreign_key "jobs", "users"
 end

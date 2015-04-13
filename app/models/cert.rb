@@ -1,6 +1,6 @@
 class Cert < ActiveRecord::Base
 
-  belongs_to :profile
+  belongs_to :user
 
   validates :cert_title, presence: true
   validates :cert_startdate, presence: true

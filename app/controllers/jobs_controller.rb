@@ -12,14 +12,16 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
-    @profile = Profile.find_by(user_id: current_user)
+    @user = current_user
+    # @user = User.find_by(user_id: current_user)
   end
 
   def create
     @job = Job.new(job_params)
+    @job.user_id = current_user.id
 
     if @job.save
-      redirect_to profiles_path
+      redirect_to profile_path
     else
       render :new
     end
@@ -33,7 +35,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
 
     if @job.update(job_params)
-      redirect_to profiles_path
+      redirect_to profile_path
     else
       render :edit
     end
@@ -42,13 +44,13 @@ class JobsController < ApplicationController
   def destroy
     @job = Job.find(params[:id])
     @job.destroy
-    redirect_to profiles_path
+    redirect_to profile_path
   end
 
   private
 
   def job_params
-    params.require(:job).permit(:job_company, :job_start_date, :job_end_date, :job_position, :job_description)
+    params.require(:job).permit(:company, :start_date, :end_date, :position, :description, :user_id)
   end
 
 end
