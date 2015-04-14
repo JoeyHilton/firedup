@@ -12,7 +12,7 @@
        
         <!-- <%= resource_name.to_s.humanize %> -->
 
-        <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
           <%= devise_error_messages! %>
             <%= f.text_field :first_name, label: "First Name" %>
 
@@ -54,6 +54,7 @@
             <%= f.text_area :bio, label: "Bio", cols: 10, rows: 7 %>
 
             <%= f.submit "Update", class: "btn btn-primary" %>
+            <%= f.file_field :image %>
         <% end %>
         <br>
 

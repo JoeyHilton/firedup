@@ -8,7 +8,7 @@ gem 'bootstrap-sass', '~> 3.3.4'
 gem 'bootstrap_form'
 gem "font-awesome-rails"
 gem 'faker' # for seeding the database
-
+gem 'paperclip' # for image file uploads
 
 
 
