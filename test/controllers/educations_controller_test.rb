@@ -1,39 +1,45 @@
 require 'test_helper'
 
 class EducationsControllerTest < ActionController::TestCase
+  
+  def setup
+    @user = users(:one)
+    @other_user = users(:two)
+    @education = educations(:one)
+    @new_params = { school: "Updated", subject: "This is updated"}
+    sign_in @user
+  end
+
   test "should get show" do
-    get :show
+    get :show, id: @education.id
     assert_response :success
   end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
-
+  
   test "should get new" do
-    get :new
+    get :new, user_id: @user.id
     assert_response :success
   end
 
   test "should get create" do
-    get :create
-    assert_response :success
+    assert_difference('Education.count', 1) do
+      post :create, user_id: @user.id, education: { school: 'Updated', subject: 'This is a test', :user_id => 1}
+    end
+      assert_response :redirect
   end
 
   test "should get edit" do
-    get :edit
+    get :edit, id: @education.id, education: @new_params
     assert_response :success
   end
 
   test "should get update" do
-    get :update
-    assert_response :success
+    put :update, id: @education.id, education: @new_params
+    assert_response :redirect
   end
 
   test "should get destroy" do
-    get :destroy
-    assert_response :success
+    delete :destroy, id: @education.id
+    assert_response :redirect
   end
 
 end
