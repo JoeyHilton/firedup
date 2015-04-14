@@ -1,16 +1,13 @@
 
-  <%= bootstrap_form_for [@user, @job] do |f| %>
-  <%#= f.label :job_position %>
-  <%= f.text_field :position %>
+  <%= bootstrap_form_for [@user, @cert] do |f| %>
   <%#= f.label :job_company %>
-  <%= f.text_field :company %>
+  <%= f.text_field :title %>
 
   <%#= f.label :job_start_date %>
   <%= f.date_select :start_date %>
 
   <%#= f.label :job_end_date %>
-  <%= f.date_select :end_date %>
-
+  <%= f.date_select :expire_date %>
 
   <%#= f.label :job_description %>
   <%= f.text_area :description %>

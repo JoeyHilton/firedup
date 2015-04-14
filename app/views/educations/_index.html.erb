@@ -1,15 +1,20 @@
-<div class="container">
 
-  
-  <% @user.educations.each do |education| %>
-    <h2><%= education.school%></h2>
-    <h3><%= education.degree %></h3>
-    <p><%= education.subject %></p>
-    <p><%= education.description %></p>
-    <p><%= education.start_date %></p>
-    <p><%= education.end_date %></p>
-    <%= link_to 'Show education', education_path(education) %>
-    <%= link_to 'Edit Education', edit_education_path(education) %>
-    <%= link_to 'Delete Education', education, method: :delete %>
+<% @user.educations.each do |education| %>
+<div>
+    <strong> School: </strong><br>
+        <%= education.school%><br>
+    <strong> Degree: </strong><br>
+        <%= education.degree %><br>
+    <strong> Subject: </strong><br>
+        <%= education.subject %><br>
+    <strong> Time at School: </strong><br>
+    <%= "From: #{education.start_date} until: #{education.end_date}" %><br>
+    <strong> Description: </strong><br>
+        <%= education.description %><br><br>
+    <%= link_to 'Show', education_path(education) %> | 
+    <%= link_to 'Edit', edit_education_path(education) %> | 
+    <%= link_to 'Delete', education, method: :delete %>
+    <hr>
   <% end %>
 </div>
+
