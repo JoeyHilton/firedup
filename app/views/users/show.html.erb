@@ -1,2 +1,30 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<div class="col-md-6 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="center panel-heading">      
+        <h1> <%= "#{@user.first_name}'s Profile" %> </h1>
+      </div>
+      <div class="panel-body">
+          <strong> Name: </strong><br>
+            <%= "#{@user.first_name}  #{@user.last_name}" %><br>
+          <strong> Address: </strong><br>
+            <%= @user.address %><br>
+            <%= "#{@user.city}, #{@user.state}, #{@user.zip}" %><br>
+          <strong> Twitter:</strong><br>
+            <%= @user.twitter %><br>
+          <strong> Birthdate:</strong><br>
+            <%= @user.birthdate %><br>
+          <strong> Phone Numbers:</strong><br>
+            Phone: <%= @user.phone %><br>
+            Cell Phone: <%= @user.mobile_phone %><br>
+          <strong> Gender:</strong><br>
+            <%= @user.gender %><br>
+          <strong> Secondary Email:</strong><br>
+            <%= @user.secondary_email %><br>
+          <strong> Bio:</strong><br>
+            <%= @user.bio %><br><br>
+          <%= link_to 'Back', users_path %>
+        
+      </div>
+  </div>
+</div>
