@@ -1,5 +1,7 @@
-<div class="container">
+
   <%= bootstrap_form_for [@user, @job] do |f| %>
+  <%#= f.label :job_position %>
+  <%= f.text_field :position %>
   <%#= f.label :job_company %>
   <%= f.text_field :company %>
 
@@ -9,12 +11,10 @@
   <%#= f.label :job_end_date %>
   <%= f.date_select :end_date %>
 
-  <%#= f.label :job_position %>
-  <%= f.text_field :position %>
 
   <%#= f.label :job_description %>
   <%= f.text_area :description %>
 
   <%= f.submit %>
   <% end %>
-</div>
+
