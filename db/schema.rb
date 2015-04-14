@@ -11,70 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410032823) do
+ActiveRecord::Schema.define(version: 20150413191646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "certs", force: :cascade do |t|
-    t.string   "cert_title"
-    t.date     "cert_startdate"
-    t.date     "cert_expiredate"
-    t.text     "cert_description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "profile_id"
-  end
-
-  add_index "certs", ["profile_id"], name: "index_certs_on_profile_id", using: :btree
-
-  create_table "educations", force: :cascade do |t|
-    t.string   "edu_school"
-    t.date     "edu_startdate"
-    t.date     "edu_enddate"
-    t.string   "edu_subject"
-    t.text     "edu_description"
-    t.string   "edu_degree"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "profile_id"
-  end
-
-  add_index "educations", ["profile_id"], name: "index_educations_on_profile_id", using: :btree
-
-  create_table "jobs", force: :cascade do |t|
-    t.string   "job_company"
-    t.date     "job_start_date"
-    t.date     "job_end_date"
-    t.string   "job_position"
-    t.text     "job_description"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "profile_id"
-  end
-
-  add_index "jobs", ["profile_id"], name: "index_jobs_on_profile_id", using: :btree
-
-  create_table "profiles", force: :cascade do |t|
-    t.string   "up_fname"
-    t.string   "up_lname"
-    t.string   "up_address"
-    t.string   "up_city"
-    t.string   "up_state"
-    t.integer  "up_zip"
-    t.string   "up_twitter"
-    t.date     "up_birthdate"
-    t.integer  "up_phone"
-    t.integer  "up_mobilephone"
-    t.string   "up_gender"
-    t.string   "up_secondemail"
-    t.text     "up_bio"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "title"
+    t.date     "start_date"
+    t.date     "expire_date"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
   end
 
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  add_index "certs", ["user_id"], name: "index_certs_on_user_id", using: :btree
+
+  create_table "educations", force: :cascade do |t|
+    t.string   "school"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "subject"
+    t.text     "description"
+    t.string   "degree"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+  end
+
+  add_index "educations", ["user_id"], name: "index_educations_on_user_id", using: :btree
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "company"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "position"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+  end
+
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -89,13 +68,25 @@ ActiveRecord::Schema.define(version: 20150410032823) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "twitter"
+    t.date     "birthdate"
+    t.string   "phone"
+    t.string   "mobile_phone"
+    t.string   "gender"
+    t.string   "secondary_email"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "certs", "profiles"
-  add_foreign_key "educations", "profiles"
-  add_foreign_key "jobs", "profiles"
-  add_foreign_key "profiles", "users"
+  add_foreign_key "certs", "users"
+  add_foreign_key "educations", "users"
+  add_foreign_key "jobs", "users"
 end

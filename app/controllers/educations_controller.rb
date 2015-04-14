@@ -11,14 +11,15 @@ before_action :set_education, only: [:show, :edit, :update, :destroy]
 
   def new
     @education = Education.new
-    @profile = Profile.find_by(user_id: current_user)
+    @user = current_user
   end
 
   def create
     @education = Education.new(education_params)
+    @education.user_id = current_user.id
   
     if @education.save
-      redirect_to profile_educations_path
+      redirect_to profile_path
     else
       render :new
     end
@@ -29,7 +30,7 @@ before_action :set_education, only: [:show, :edit, :update, :destroy]
 
   def update
     if @education.update(education_params)
-    redirect_to profiles_path
+    redirect_to profile_path
     else
       render :edit
     end
@@ -37,13 +38,13 @@ before_action :set_education, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @education.destroy
-    redirect_to profiles_path
+    redirect_to profile_path
   end
 
   private
   
     def education_params
-        params.require(:education).permit(:edu_school, :edu_subject, :edu_degree, :edu_description, :edu_startdate, :edu_enddate)
+        params.require(:education).permit(:school, :subject, :degree, :description, :start_date, :end_date, :user_id)
     end
 
     def set_education

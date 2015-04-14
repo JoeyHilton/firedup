@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   end
 
   def profile
+
     @user = current_user
+    @jobs = current_user.jobs
+    @certs = current_user.certs
+    @educations = current_user.educations
   end
 end

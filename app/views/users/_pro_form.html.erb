@@ -1,0 +1,35 @@
+
+          <%= bootstrap_form_for @profile do |f| %>
+
+            <%= f.text_field :first_name, label: "First Name" %>
+
+            <%= f.text_field :last_name, label: "Last Name" %>
+
+            <%= f.text_field :address, label: "Address" %>
+
+            <%= f.text_field :uity, label: "City" %>
+
+            <%= f.select :state, User::STATE, prompt: "Pick one",label: "State" %>
+
+            <%= f.number_field :uip, label: "ZIP" %>
+
+            <%= f.text_field :twitter, label: "Twitter", placeholder: "@twittername"  %>
+
+            <%= f.date_field :birthdate, label: "Birthdate" %>
+
+            <%= f.text_field :phone, label: "Phone", placeholder: "123-456-7890" %>
+
+            <%= f.text_field :mobile_phone, label: "Mobile Phone", placeholder: "123-456-7890" %>
+
+            <%= f.select :gender, User::GENDER, prompt: "Pick one", label: "Gender" %>
+
+            <%= f.text_field :secondary_email, label: "Secondary Email" %>
+
+            <%= f.text_area :bio, label: "Bio", cols: 10, rows: 7 %>
+
+            <%= f.submit class: "btn btn-primary"%>
+            <br>
+            <br>
+            <br>
+          <% end %>
+

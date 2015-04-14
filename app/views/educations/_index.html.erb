@@ -1,25 +1,20 @@
-<h1> Education </h1>
-<p><%= link_to 'Add Education', new_profile_education_path(current_user) %></p>
-<% @educations.each do |education| %>
-  <h2><%= education.edu_school%></h2>
-  <h3><%= education.edu_degree %></h3>
-  <p><%= education.edu_subject %></p>
-  <p><%= education.edu_description %></p>
-  <p><%= education.edu_startdate %></p>
-  <p><%= education.edu_enddate %></p>
-  <%= link_to 'Show education', education_path(education) %>
-  <%= link_to 'Edit Education', edit_education_path(education) %>
-  <%= link_to 'Delete Education', education, method: :delete %>
-<% end %>
 
-<!-- 
- create_table "educations", force: :cascade do |t|
-    t.string   "edu_school"
-    t.date     "edu_startdate"
-    t.date     "edu_enddate"
-    t.string   "edu_subject"
-    t.text     "edu_description"
-    t.string   "edu_degree"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end -->
+<% @user.educations.each do |education| %>
+<div>
+    <strong> School: </strong><br>
+        <%= education.school%><br>
+    <strong> Degree: </strong><br>
+        <%= education.degree %><br>
+    <strong> Subject: </strong><br>
+        <%= education.subject %><br>
+    <strong> Time at School: </strong><br>
+    <%= "From: #{education.start_date} until: #{education.end_date}" %><br>
+    <strong> Description: </strong><br>
+        <%= education.description %><br><br>
+    <%= link_to 'Show', education_path(education) %> | 
+    <%= link_to 'Edit', edit_education_path(education) %> | 
+    <%= link_to 'Delete', education, method: :delete %>
+    <hr>
+  <% end %>
+</div>
+

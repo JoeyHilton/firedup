@@ -1,18 +1,10 @@
-<h1>Certs#new</h1>
-<p>Find me in app/views/certs/new.html.erb</p>
-
-<div class="container">
-<h1> Add a certificate </h1>
-
-<%= bootstrap_form_for @cert do |f| %>
-  
-  <%= f.text_field :cert_title, label: "Certificate Name" %>
-
-  <%= f.date_field :cert_startdate, label: "Certificate Start Date" %>
-
-  <%= f.date_field :cert_expiredate, label: "Certificate Expire Date" %>
-
-
-  <%= f.submit "Add", class: "btn btn-primary" %>
-<% end %>
+<div class="col-md-6 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="center panel-heading">      
+        <h1> New Cerification</h1>
+      </div>
+      <div class="panel-body">
+        <%= render 'certs/form_fields' %>
+      </div>
+  </div>
 </div>

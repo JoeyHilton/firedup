@@ -1,8 +1,23 @@
-<h1> Education </h1>
-<h2><%= @education.edu_school%></h2>
-  <h3><%= @education.edu_degree %></h3>
-  <p><%= @education.edu_subject %></p>
-  <p><%= @education.edu_description %></p>
-  <p><%= @education.edu_startdate %></p>
-  <p><%= @education.edu_enddate %></p>
-<%= link_to 'Back', profiles_path %>
+<div class="col-md-6 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="center panel-heading">      
+        <h1> Education </h1>
+      </div>
+      <div class="panel-body">
+          <strong> School: </strong><br>
+              <%= @education.school%><br>
+          <strong> Degree: </strong><br>
+              <%= @education.degree %><br>
+          <strong> Subject: </strong><br>
+              <%= @education.subject %><br>
+          <strong> Time at School: </strong><br>
+          <%= "From: #{@education.start_date} until: #{@education.end_date}" %><br>
+          <strong> Description: </strong><br>
+              <%= @education.description %><br><br>
+          <%= link_to 'Back', profile_path %> | 
+          <%= link_to 'Edit', edit_education_path(@education) %> | 
+          <%= link_to 'Delete', @education, method: :delete %>
+        
+      </div>
+  </div>
+</div>

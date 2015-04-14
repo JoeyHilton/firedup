@@ -1,29 +1,43 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="container">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="row">
+    <h1 class="text-center"><strong>Join FiredUp Today</strong></h1>
+    <br>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+  <div class="row">
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    <div class="col-md-7"><!-- LEFT COLUMN --> 
+      <img src="/assets/home-page-image.jpg" alt="its an image" class="img-thumbnail">
+    </div><!-- END LEFT COLUMN -->
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="col-md-5"> <!-- RIGHT COLUMN -->
 
-<%= render "devise/shared/links" %>
+      <h2><strong> Get started today!</strong></h2>
+      <h4> Its free...</h4>
+      <br>
+
+      <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+          
+          <%= f.email_field :email, autofocus: true %>
+      
+          <%= f.password_field :password, autocomplete: "off", placeholder: "Eight Characters Minimum" %>
+
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Eight Characters Minimum" %>
+
+          <%= f.submit "Sign up", class: "btn btn-primary" %>
+
+      <% end %>
+      <br>
+
+      <%= render "devise/shared/links" %>
+    </div><!-- END RIGHT COLUMN -->
+</div>
+
+
+
+          <% if @validatable %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>

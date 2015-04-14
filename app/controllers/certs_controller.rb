@@ -1,43 +1,57 @@
 class CertsController < ApplicationController
 
+  before_action :set_cert, only: [:show, :edit, :update, :destroy]
+
   def index
-    @cert = Cert.all
+    @certs = Cert.all
   end
 
   def new
     @cert = Cert.new
+    @user = current_user
   end
 
   def show
-    @image = Image.find(cert_params)
+    # @cert = Cert.find(params[:id])
+    # @image = Image.find(cert_params)
   end
 
   def create
     @cert = Cert.new(cert_params)
+    @cert.user_id = current_user.id
     if @cert.save
-      redirect_to @cert
+      redirect_to profile_path
     else
-      render :back
+      render :new
     end
   end
 
   def edit
-    @cert = cert.find(cert_params)
+    # @cert = Cert.find(params[:id])
     
   end
 
   def update
+    if @cert.update(cert_params)
+    redirect_to profile_path
+    else
+      render :edit
+    end
   end
 
   def destroy
     @cert.destroy
-    redirect_to :back, notice: "Certificate deleted"
+    redirect_to profile_path, notice: "Certificate deleted"
   end
 
   private
     
     def cert_params
-      params.require(:cert).permit(:cert_title, :cert_startdate, :cert_expiredate, :cert_description)
+      params.require(:cert).permit(:title, :start_date, :expire_date, :description, :user_id)
+    end
+
+    def set_cert
+      @cert = Cert.find(params[:id])
     end
 
 end

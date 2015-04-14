@@ -1,15 +1,17 @@
-<h1> Jobs </h1>
-<h2><%= link_to 'New Job', new_profile_job_path(current_user) %></h2>
 
-<% @jobs.each do |job| %>
-<div class="eachJob well">
-  <h6><%= job.job_company %></h6>
-  <h6><%= job.job_start_date %></h6>
-  <h6><%= job.job_end_date %></h6>
-  <h6><%= job.job_position %></h6>
-  <p><%= job.job_description %></p>
-  <h2 class="jobButton"><%= link_to 'Show Job', job_path(job), class: "btn btn-info" %></h2>
-  <h2 class="jobButton"><%= link_to 'Edit Job', edit_job_path(job), class: "btn btn-success" %></h2>
-  <h2 class="jobButton"><%= link_to 'Destroy Job', job, method: :delete, class: "btn btn-danger" %></h2>
+<% jobs.each do |job| %>
+<div >
+  <strong> Position: </strong><br>
+    <%= job.position %><br>
+  <strong> Company: </strong><br>
+    <%= job.company %><br>
+  <strong> Time at job: </strong><br>
+    <%= "From: #{job.start_date} until: #{job.end_date}" %><br>
+    <strong> Job Description: </strong><br>
+    <%= job.description %><br><br>
+  <%= link_to 'Show', job_path(job) %> | 
+  <%= link_to 'Edit', edit_job_path(job) %> | 
+  <%= link_to 'Delete', job, method: :delete %>
+  <hr>
 </div>
 <% end %>

@@ -1,39 +1,81 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="row col-md-12">
+    <h1 class="text-center"><strong>Edit Your Profile</strong></h1>
+    <br>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <div class="row">
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <div class="col-md-6"><!-- LEFT COLUMN --> 
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+       
+        <!-- <%= resource_name.to_s.humanize %> -->
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+        <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+            <%= f.text_field :first_name, label: "First Name" %>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+            <%= f.text_field :last_name, label: "Last Name" %>
+            <%= f.email_field :email, autofocus: true %>
 
-<h3>Cancel my account</h3>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+            <%= f.password_field :password, autocomplete: "off", label: "New Password"%>
 
-<%= link_to "Back", :back %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", label: "New Password Confirmation" %>
+     
+            <%= f.password_field :current_password, autocomplete: "off", label: "Current Password - Needed to make changes" %>
+
+
+
+            <%= f.text_field :address, label: "Address" %>
+
+            <%= f.text_field :city, label: "City" %>
+
+            <%= f.select :state, User::STATE, prompt: "Pick one",label: "State" %>
+
+            <%= f.number_field :zip, label: "ZIP" %>
+
+            <%= f.text_field :twitter, label: "Twitter", placeholder: "@twittername"  %>
+
+            <%= f.date_field :birthdate, label: "Birthdate" %>
+
+            <%= f.text_field :phone, label: "Phone", placeholder: "123-456-7890" %>
+
+            <%= f.text_field :mobile_phone, label: "Mobile Phone", placeholder: "123-456-7890" %>
+
+            <%= f.select :gender, User::GENDER, prompt: "Pick one", label: "Gender" %>
+
+            <%= f.text_field :secondary_email, label: "Secondary Email" %>
+
+            <%= f.text_area :bio, label: "Bio", cols: 10, rows: 7 %>
+
+            <%= f.submit "Update", class: "btn btn-primary" %>
+        <% end %>
+        <br>
+
+        <%= link_to "Go Back", :back, class: "btn btn-primary" %>
+      
+  </div><!-- END LEFT COLUMN -->
+
+  <div class="col-md-6"> <!-- RIGHT COLUMN -->
+
+
+    <h3>Cancel my account</h3>
+
+        <h4>Unhappy?</h4>  
+        <p>We are sorry to see you go, but all you have to do to cancel your account is click the 
+            button below.</p> 
+        <%= button_to "Cancel My Account", registration_path(resource_name),
+                      data: { confirm: "Are you sure?" }, method: :delete,
+                      class: "btn btn-danger" %>
+    <br>
+
+  </div><!-- END RIGHT COLUMN -->
+
+</div>
+
+
