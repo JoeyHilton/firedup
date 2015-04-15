@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :jobs
       resources :certs
       resources :educations
+      resources :posts
     end
   end
 

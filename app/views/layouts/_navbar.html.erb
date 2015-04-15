@@ -22,6 +22,7 @@
         <li><%= link_to 'Tour', static_tour_path %></li>
         <li><%=  link_to "About", static_about_path %></li>
         <li><%=  link_to "Contact", static_contact_path %></li>
+        <li><%=  link_to "Create A Post", new_user_post_path(current_user) %></li>
 
         <!-- We have an if statement here to only show the Users index link if users are signed in -->
         <% if user_signed_in? %>

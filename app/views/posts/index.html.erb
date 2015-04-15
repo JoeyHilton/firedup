@@ -1,0 +1,23 @@
+<br>
+<br>
+
+<div class="col-md-6 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="center panel-heading">      
+        <h1> Posts </h1>
+      </div>
+      <div class="panel-body">
+          
+        <% @posts.each do |post| %>
+            <strong> Content: </strong><br>
+            <%= post.content %><br>
+            <%= link_to 'Show', post_path(post) %> | 
+            <%= link_to 'Edit', edit_post_path(post) %> | 
+            <%= link_to 'Delete', post_path(post), method: :delete %>
+            <br>
+            <br>
+        <% end %>
+        
+      </div>
+    </div>
+</div>

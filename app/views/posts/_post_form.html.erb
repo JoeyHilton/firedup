@@ -1,0 +1,16 @@
+
+  <%= bootstrap_form_for [@user, @post] do |f| %>
+
+    <%= f.text_area :content, class: 'form-control' %>
+
+    <%= f.select :share_with, Post::SHARES, prompt: "Pick one",label: "Share with:" %>
+
+    <%= f.submit %>
+  <% end %>
+
+  <!-- t.integer  "user_id"
+    t.text     "content"
+    t.string   "share_with"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end -->
