@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   else
     redirect_to root_path
   end
+  end
 
   def connect
     @user = User.find(params[:user])
