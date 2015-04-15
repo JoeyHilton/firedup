@@ -1,6 +1,5 @@
 
 <% jobs.each do |job| %>
-<div >
   <strong> Position: </strong><br>
     <%= job.position %><br>
   <strong> Company: </strong><br>
@@ -13,5 +12,4 @@
   <%= link_to 'Edit', edit_job_path(job) %> | 
   <%= link_to 'Delete', job, method: :delete %>
   <hr>
-</div>
 <% end %>

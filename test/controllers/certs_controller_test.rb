@@ -5,40 +5,41 @@ class CertsControllerTest < ActionController::TestCase
   def setup
     @user = users(:one)
     @other_user = users(:two)
-    @profile = profiles(:one)
     @cert = certs(:one)
-    @new_params = { name: "Updated", description: "This is updated"}
+    @new_params = { title: "Updated", description: "This is updated"}
     sign_in @user
   end
 
   test "should get index" do
-    get :index
+    get :index, user_id: @user.id
     assert_response :success
   end
 
   test "should get new" do
-    get :new
+    get :new, user_id: @user.id
     assert_response :success
   end
 
-  test "should get create" do
-    get :create
-    assert_response :success
+  test "should create cert" do
+    assert_difference('Cert.count', 1) do    
+      post :create, user_id: @user.id, cert: { :title => 'Test', :description => 'This is a test', :user_id => 1}
+    end
+    assert_response :redirect
   end
 
   test "should get edit" do
-    get :edit
+    get :edit, id: @cert.id, cert: @new_params
     assert_response :success
   end
 
   test "should get update" do
-    get :update
-    assert_response :success
+    put :update, id: @cert.id, cert: @new_params
+    assert_response :redirect
   end
 
   test "should get destroy" do
-    get :destroy
-    assert_response :success
+    delete :destroy, id: @cert.id
+    assert_response :redirect
   end
 
 end

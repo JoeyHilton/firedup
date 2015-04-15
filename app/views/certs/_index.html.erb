@@ -1,6 +1,5 @@
 
 <% @certs.each do |cert| %>
-<div>
     <strong> Title: </strong><br>
         <%= cert.title%><br>
     <strong> Issue Date: </strong><br>
@@ -14,4 +13,3 @@
     <%= link_to 'Delete', cert, method: :delete %>
     <hr>
   <% end %>
-</div>

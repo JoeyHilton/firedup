@@ -1,10 +1,8 @@
 <div class="container">
   
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Your Profile</h2>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Your Profile</h2>
     </div>
   </div>
 
@@ -26,6 +24,7 @@
           <p><%= link_to 'Edit Profile', edit_user_registration_path %></p>
         </div>
         <div class="panel-body">
+          <%= link_to image_tag(@user.image.url(:med)), @user.image.url, class: "pull-right" %>
           <strong> Name: </strong><br>
             <%= "#{@user.first_name}  #{@user.last_name}" %><br>
           <strong> Address: </strong><br>
@@ -81,12 +80,12 @@
 
       <% end %>
     </div><!-- END CENTER COLUMN -->
-   <div class="col-md-4 col-md-offset-8"> <!--BEGIN RIGHT COLUMN -->
-    <ul class="nav nav-pills nav-stacked well">
-      something else</br></br>
-      and another thing
-    </ul>
-  </div>  <!--END RIGHT COLUMN -->
+    <div class="col-md-4"> <!--BEGIN RIGHT COLUMN -->
+      <ul class="nav nav-pills nav-stacked well">
+        something else</br></br>
+        and another thing
+      </ul>
+    </div>  <!--END RIGHT COLUMN -->
   </div><!-- closes row -->
 
 
