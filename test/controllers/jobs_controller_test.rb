@@ -1,44 +1,45 @@
 require 'test_helper'
 
 class JobsControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
+
+  def setup
+    @user = users(:one)
+    @other_user = users(:two)
+    @job = jobs(:one)
+    @new_params = { company: "Updated", position: "This is updated"}
+    sign_in @user
   end
 
   test "should get show" do
-    get :show
-    assert_response :success
-  end
-
-  test "should get profile" do
-    get :profile
+    get :show, id: @job.id
     assert_response :success
   end
 
   test "should get new" do
-    get :new
+    get :new, user_id: @user.id
     assert_response :success
   end
 
   test "should get create" do
-    get :create
-    assert_response :success
+    assert_difference('Job.count', 1) do
+      post :create, user_id: @user.id, job: { company: 'Updated', position: 'This is a test', :user_id => 1}
+    end
+      assert_response :redirect
   end
 
   test "should get edit" do
-    get :edit
+    get :edit, id: @job.id, job: @new_params
     assert_response :success
   end
 
   test "should get update" do
-    get :update
-    assert_response :success
+    put :update, id: @job.id, job: @new_params
+    assert_response :redirect
   end
 
   test "should get destroy" do
-    get :destroy
-    assert_response :success
+    delete :destroy, id: @job.id
+    assert_response :redirect
   end
 
 end

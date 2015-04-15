@@ -1,6 +1,5 @@
 
 <% @user.educations.each do |education| %>
-<div>
     <strong> School: </strong><br>
         <%= education.school%><br>
     <strong> Degree: </strong><br>
@@ -16,5 +15,5 @@
     <%= link_to 'Delete', education, method: :delete %>
     <hr>
   <% end %>
-</div>
+
 

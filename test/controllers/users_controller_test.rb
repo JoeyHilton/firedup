@@ -1,17 +1,28 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
+
+  def setup
+    @user = users(:one)
+    @other_user = users(:two)
   end
 
+  # test "should get index" do
+  #   get :index
+  #   assert_response :success
+  # end
+
   test "should get show" do
-    get :show
+    sign_in @user
+    user = @other_user
+    get :show, id: user.id
     assert_response :success
   end
 
   test "should get profile" do
+    get :profile
+    assert_redirected_to root_path
+    sign_in :user, @user
     get :profile
     assert_response :success
   end

@@ -4,12 +4,34 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {
+one: 
   email: test@test.com
-}
-# column: value
-#
-two: {
+  first_name: Ryan
+  last_name: Carter
+  address: 123 Main
+  city: Anywhere
+  state: Utah
+  zip: 11111
+  twitter: carter
+  birthdate: <%= Date.today %>
+  phone: 5555556666
+  mobile_phone: 7778889999
+  gender: male
+  secondary_email: example2@example.com
+  bio: MyText
+
+two: 
   email: example@example.com
-}
-#  column: value
+  first_name: Ryan
+  last_name: Carter
+  address: 123 Main
+  city: Anywhere
+  state: Utah
+  zip: 11111
+  twitter: carter
+  birthdate: <%= Date.today %>
+  phone: 5555556666
+  mobile_phone: 7778889999
+  gender: male
+  secondary_email: example2@example.com
+  bio: MyText

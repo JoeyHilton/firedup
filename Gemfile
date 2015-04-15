@@ -9,6 +9,7 @@ gem 'bootstrap_form'
 gem "font-awesome-rails"
 gem 'faker' # for seeding the database
 gem "socialization" # for connections and possibly messaging
+gem 'paperclip' # for image file uploads
 
 
 
