@@ -66,10 +66,14 @@
           <div class="panel-heading">
             <h3 class="panel-title">Education</h3>
 
-            <p><%= link_to 'Add Education', new_user_education_path(current_user) %></p>
+            <p><%= link_to 'Add Education', new_user_education_path(current_user), remote: true %></p>
           </div>
-          <div class="educationIndex panel-body">
-            <%= render 'educations/index'%>
+          <div class="educationIndex panel-body" id="eduList">
+            <% @educations.each do |education| %>
+              <div id="education-<%= education.id %>">
+                <%= render partial: 'educations/index', locals: { education: education }%>
+            </div>
+            <% end %>
           </div>
         </div>
 

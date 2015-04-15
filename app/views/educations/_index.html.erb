@@ -1,5 +1,4 @@
 
-<% @user.educations.each do |education| %>
     <strong> School: </strong><br>
         <%= education.school%><br>
     <strong> Degree: </strong><br>
@@ -11,9 +10,9 @@
     <strong> Description: </strong><br>
         <%= education.description %><br><br>
     <%= link_to 'Show', education_path(education) %> | 
-    <%= link_to 'Edit', edit_education_path(education) %> | 
+    <%= link_to 'Edit', edit_education_path(education), remote: true %> | 
     <%= link_to 'Delete', education, method: :delete %>
     <hr>
-  <% end %>
+
 
 

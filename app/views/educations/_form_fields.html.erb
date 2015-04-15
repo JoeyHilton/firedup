@@ -1,22 +1,24 @@
 
-  <%= bootstrap_form_for [@user, @education] do |f| %>
-
-    <%= f.text_field :school, class: 'form-control' %>
-
-    
-    <%= f.text_field :subject, class: 'form-control' %>
+  <%= bootstrap_form_for [@user, @education], remote: using_modal do |f| %>
+    <%= render 'devise/shared/error_messages', object: f.object %>
+    <%= f.text_field :school %>
 
     
-    <%= f.text_field :degree, class: 'form-control' %>
+    <%= f.text_field :subject %>
+
+    
+    <%= f.text_field :degree %>
 
    
-    <%= f.text_area :description, class: 'form-control' %>
+    <%= f.text_area :description %>
 
     
-    <%= f.date_select :start_date, class: 'form-control'  %>
+    <%= f.date_select :start_date  %>
 
    
-    <%= f.date_select :end_date, class: 'form-control'  %>
+    <%= f.date_select :end_date  %>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
 
     <%= f.submit %>
   <% end %>
