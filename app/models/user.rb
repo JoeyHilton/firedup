@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  acts_as_follower
+  acts_as_followable
   # validates :city, presence: true
   # validates :state, presence: true
   # validates :zip, presence: true, numericality: { only_integer: true }
