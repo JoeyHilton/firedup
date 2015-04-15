@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'static/tour'
   get 'static/contact'
   
+   get '/connect', to: 'users#connect', as: :connect
   
 
 

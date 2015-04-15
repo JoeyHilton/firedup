@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :jobs
   has_many :certs
 
+  acts_as_follower
+  acts_as_followable
   # validates :city, presence: true
   # validates :state, presence: true
   # validates :zip, presence: true, numericality: { only_integer: true }
