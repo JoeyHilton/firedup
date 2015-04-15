@@ -1,0 +1,2 @@
+$('#newModal').modal('hide');
+$('#cert-<%= @cert.id %>').html('<%= j render partial: 'certs/index', locals: { cert: @cert } %>');

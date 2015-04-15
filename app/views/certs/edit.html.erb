@@ -4,7 +4,7 @@
         <h1> Edit Cerification</h1>
       </div>
       <div class="panel-body">
-        <%= render 'certs/form_fields' %>
+        <%= render 'certs/form_fields', locals: {cert: @cert, using_modal: false}  %>
       </div>
   </div>
 </div>

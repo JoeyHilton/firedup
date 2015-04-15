@@ -80,10 +80,14 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Certifications</h3>
-            <p><%= link_to 'Add Certification', new_user_cert_path(current_user) %></p>
+            <p><%= link_to 'Add Certification', new_user_cert_path(current_user), remote: true %></p>
           </div>
-          <div class="certIndex panel-body">
-            <%= render 'certs/index'%>
+          <div class="certIndex panel-body" id="certList">
+            <% @certs.each do |cert| %>
+              <div id="cert-<%= cert.id %>">
+                <%= render partial: 'certs/index', locals: { cert: cert } %>
+              </div>
+            <% end %>
           </div>
         </div>
 

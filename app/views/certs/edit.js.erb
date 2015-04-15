@@ -1,0 +1,3 @@
+$('#myModalLabel').html("Edit Certification");
+$('#NewModalBody').html('<%= j render partial: 'form_fields', locals: {cert: @cert, using_modal: true} %>');
+$('#newModal').modal('show');
