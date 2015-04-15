@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, :only => [:show, :index]
 
   get '/profile', to: 'users#profile', as: :profile
+  get '/posts/feed', to: 'posts#feed', as: :feed
 
   shallow do
     resources :users do

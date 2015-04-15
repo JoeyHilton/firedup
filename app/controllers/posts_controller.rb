@@ -41,6 +41,10 @@ class PostsController < ApplicationController
     redirect_to user_posts_path(current_user)
   end
 
+  def feed
+    @posts = Post.all
+  end
+
   private
   
     def post_params
@@ -50,6 +54,7 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
+
 
 
 end
