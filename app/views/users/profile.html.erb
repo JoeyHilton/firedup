@@ -51,16 +51,21 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Job Experience</h3>
-            <p><%= link_to 'Add a Job', new_user_job_path(current_user) %></p>
+            <p><%= link_to 'Add a Job', new_user_job_path(current_user), remote: true %></p>
           </div>
-          <div class="jobsIndex panel-body"> 
-            <%= render 'jobs/index', jobs: @jobs %>
+          <div class="jobsIndex panel-body" id="jobsList"> 
+            <% @jobs.each do |job| %>
+              <div id="job-<%= job.id %>">
+                <%= render partial: 'jobs/index', locals: { job: job } %>
+              </div>  
+            <% end %>
           </div>
         </div>
 
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Education</h3>
+
             <p><%= link_to 'Add Education', new_user_education_path(current_user) %></p>
           </div>
           <div class="educationIndex panel-body">
@@ -90,3 +95,18 @@
 
 
 </div><!-- closes container -->
+
+<!-- New Modal -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal Title</h4>
+      </div>
+      <div class="modal-body" id= "NewModalBody">
+        
+      </div>
+    </div>
+  </div>
+</div>
