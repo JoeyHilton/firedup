@@ -12,19 +12,19 @@ class CertsController < ApplicationController
   end
 
   def show
-    # @cert = Cert.find(params[:id])
+    @cert = Cert.find(params[:id])
     # @image = Image.find(cert_params)
   end
 
   def create
     @cert = Cert.new(cert_params)
     @cert.user_id = current_user.id
-
+  
     if @cert.save
-        respond_to do |format|
-          format.html { redirect_to profile_path }
-          format.js 
-        end
+      respond_to do |format|
+        format.html { redirect_to profile_path }
+        format.js 
+      end
       # redirect_to profile_path
     else
       render :new
