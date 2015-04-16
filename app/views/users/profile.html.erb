@@ -16,6 +16,8 @@
         Jobs</br></br>
         Education</br></br>
         Certifications
+        
+        
       </ul>
     </div><!-- END LEFT COLUMN -->
 
@@ -50,6 +52,14 @@
       </div>
 
       <% if user_signed_in? %>
+
+      <div class="panel panel-default">
+          <div class="panel-heading">
+          </div>
+          <div class="jobsIndex panel-body"> 
+            <%= render 'messages/index', messages: @messages %>
+          </div>
+        </div>
 
         <div class="panel panel-default">
           <div class="panel-heading">

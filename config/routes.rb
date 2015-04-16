@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :messages
+
   get 'static/about'
   get 'static/tour'
   get 'static/contact'
