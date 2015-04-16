@@ -20,7 +20,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.user_id = current_user.id
-
+  
     if @job.save
       respond_to do |format|
         format.html { redirect_to profile_path }

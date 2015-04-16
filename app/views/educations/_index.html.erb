@@ -1,18 +1,17 @@
-
-    <strong> School: </strong><br>
-        <%= education.school%><br>
-    <strong> Degree: </strong><br>
-        <%= education.degree %><br>
-    <strong> Subject: </strong><br>
-        <%= education.subject %><br>
-    <strong> Time at School: </strong><br>
-    <%= "From: #{education.start_date} until: #{education.end_date}" %><br>
-    <strong> Description: </strong><br>
-        <%= education.description %><br><br>
-    <%= link_to 'Show', education_path(education) %> | 
-    <%= link_to 'Edit', edit_education_path(education), remote: true %> | 
-    <%= link_to 'Delete', education, method: :delete %>
-    <hr>
+<strong> School: </strong><br>
+    <%= education.school%><br>
+<strong> Degree: </strong><br>
+    <%= education.degree %><br>
+<strong> Subject: </strong><br>
+    <%= education.subject %><br>
+<strong> Time at School: </strong><br>
+<%= "From: #{education.start_date} until: #{education.end_date}" %><br>
+<strong> Description: </strong><br>
+    <%= education.description %><br><br>
+<%= link_to 'Show', education_path(education) %> | 
+<%= link_to 'Edit', edit_education_path(education), remote: true %> | 
+<%= link_to 'Delete', education, method: :delete %>
+<hr>
 
 
 

@@ -6,9 +6,6 @@
     </div>
   </div>
 
- 
- 
-
   <div class="row">
 
     <div class="col-md-2"><!-- BEGIN LEFT COLUMN -->
@@ -50,52 +47,61 @@
       </div>
 
       <% if user_signed_in? %>
+        <div role="tabpanel">
 
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Job Experience</h3>
-            <p><%= link_to 'Add a Job', new_user_job_path(current_user), remote: true %></p>
-          </div>
-          <div class="jobsIndex panel-body" id="jobsList"> 
-            <% @jobs.each do |job| %>
-              <div id="job-<%= job.id %>">
-                <%= render partial: 'jobs/index', locals: { job: job } %>
-              </div>  
-            <% end %>
-          </div>
-        </div>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Work Experience</a></li>
+            <li role="presentation"><a href="#education" aria-controls="profile" role="tab" data-toggle="tab">Education</a></li>
+             <li role="presentation"><a href="#certs" aria-controls="profile" role="tab" data-toggle="tab">Certifications</a></li>
+          </ul>
 
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Education</h3>
-
-            <p><%= link_to 'Add Education', new_user_education_path(current_user), remote: true %></p>
-          </div>
-          <div class="educationIndex panel-body" id="eduList">
-            <% @educations.each do |education| %>
-              <div id="education-<%= education.id %>">
-                <%= render partial: 'educations/index', locals: { education: education }%>
-            </div>
-            <% end %>
-          </div>
-        </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Certifications</h3>
-            <p><%= link_to 'Add Certification', new_user_cert_path(current_user), remote: true %></p>
-          </div>
-          <div class="certIndex panel-body" id="certList">
-            <% @certs.each do |cert| %>
-              <div id="cert-<%= cert.id %>">
-                <%= render partial: 'certs/index', locals: { cert: cert } %>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+              <div class="well well-lg" style="margin-top: 25px;">
+                <p><%= link_to 'Add a Job', new_user_job_path(current_user), remote: true %></p>
+                <div class="jobsIndex panel-body" id="jobsList"> 
+                  <% @jobs.each do |job| %>
+                    <div id="job-<%= job.id %>">
+                      <%= render partial: 'jobs/index', locals: { job: job } %>
+                    </div>  
+                  <% end %>
+                </div>
               </div>
-            <% end %>
-          </div>
-        </div>
+            </div>
 
+            <div role="tabpanel" class="tab-pane" id="education">
+              <div class="well well-lg" style="margin-top: 25px;">
+                <p><%= link_to 'Add Education', new_user_education_path(current_user), remote: true %></p>
+                <div class="educationIndex panel-body" id="eduList">
+                  <% @educations.each do |education| %>
+                    <div id="education-<%= education.id %>">
+                      <%= render partial: 'educations/index', locals: { education: education }%>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="certs">
+              <div class="well well-lg" style="margin-top: 25px;">
+               <p><%= link_to 'Add Certification', new_user_cert_path(current_user), remote: true %></p>
+                <div class="certIndex panel-body" id="certList">
+                  <% @certs.each do |cert| %>
+                    <div id="cert-<%= cert.id %>">
+                      <%= render partial: 'certs/index', locals: { cert: cert } %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       <% end %>
     </div><!-- END CENTER COLUMN -->
+
     <div class="col-md-4"> <!--BEGIN RIGHT COLUMN -->
       <ul class="nav nav-pills nav-stacked well">
         something else</br></br>
@@ -103,7 +109,6 @@
       </ul>
     </div>  <!--END RIGHT COLUMN -->
   </div><!-- closes row -->
-
 
 </div><!-- closes container -->
 
@@ -121,3 +126,19 @@
     </div>
   </div>
 </div>
+
+<script>
+$('#home a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
+$('#education a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+$('#certs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+</script>
