@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.all
   end
@@ -17,4 +18,16 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def connect
+    @user = User.find(params[:user])
+    unless current_user.follows?(@user)
+      @user.follow!(current_user)
+      current_user.follow!(@user)
+    end
+
+    redirect_to @user
+  end
+
+
 end

@@ -1,0 +1,6 @@
+
+<% @posts.each do |post| %>
+  <% if post.user.followed_by?(current_user) || post.share_with == "public"  %>
+    <%= post.content %>
+  <% end %>
+<% end %>

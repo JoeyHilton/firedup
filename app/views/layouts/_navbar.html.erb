@@ -26,6 +26,7 @@
         <!-- We have an if statement here to only show the Users index link if users are signed in -->
         <% if user_signed_in? %>
           <li><%= link_to 'Members', users_path %></li>
+          <li><%= link_to "Create A Post", new_user_post_path(current_user) %></li>
         <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">

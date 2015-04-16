@@ -10,16 +10,21 @@ class User < ActiveRecord::Base
   has_many :educations
   has_many :jobs
   has_many :certs
-  has_attached_file :image, styles: { icon: "32x32", small: "64x64", med: "100x100", large: "200x200" }, :default_url => "/images/:style/missing.png"
+  has_many :posts
+
+  has_attached_file :image, styles: { icon: "32x32", small: "64x64", med: "100x100", large: "200x200" },
+                    :default_url => "/images/:style/missing.png"
+
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  acts_as_follower
+  acts_as_followable
   # validates :city, presence: true
   # validates :state, presence: true
   # validates :zip, presence: true, numericality: { only_integer: true }
   # validates :birthdate, presence: true
   # validates :gender, presence: true
-
 
   GENDER = %w(Male Female)
 

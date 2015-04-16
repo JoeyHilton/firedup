@@ -6,12 +6,14 @@ Rails.application.routes.draw do
   resources :users, :only => [:show, :index]
 
   get '/profile', to: 'users#profile', as: :profile
+  get '/posts/feed', to: 'posts#feed', as: :feed
 
   shallow do
     resources :users do
       resources :jobs
       resources :certs
       resources :educations
+      resources :posts
     end
   end
 
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   get 'static/tour'
   get 'static/contact'
   
+   get '/connect', to: 'users#connect', as: :connect
   
 
 
