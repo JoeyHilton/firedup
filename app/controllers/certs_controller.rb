@@ -12,7 +12,7 @@ class CertsController < ApplicationController
   end
 
   def show
-    # @cert = Cert.find(params[:id])
+    @cert = Cert.find(params[:id])
     # @image = Image.find(cert_params)
   end
 
