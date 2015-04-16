@@ -1,5 +1,6 @@
 
-  <%= bootstrap_form_for [@user, @cert] do |f| %>
+  <%= bootstrap_form_for [@user, @cert], remote: using_modal do |f| %>
+  <%= render 'devise/shared/error_messages', object: f.object %>
   <%#= f.label :job_company %>
   <%= f.text_field :title %>
 
@@ -11,6 +12,8 @@
 
   <%#= f.label :job_description %>
   <%= f.text_area :description %>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
 
   <%= f.submit %>
   <% end %>

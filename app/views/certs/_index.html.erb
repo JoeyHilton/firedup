@@ -1,5 +1,5 @@
 
-<% @certs.each do |cert| %>
+
     <strong> Title: </strong><br>
         <%= cert.title%><br>
     <strong> Issue Date: </strong><br>
@@ -9,7 +9,6 @@
     <strong> Description: </strong><br>
         <%= cert.description %><br><br>
     <%= link_to 'Show', cert_path(cert) %> | 
-    <%= link_to 'Edit', edit_cert_path(cert) %> | 
+    <%= link_to 'Edit', edit_cert_path(cert), remote: true %> | 
     <%= link_to 'Delete', cert, method: :delete %>
     <hr>
-  <% end %>

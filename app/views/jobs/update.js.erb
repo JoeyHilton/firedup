@@ -1,0 +1,2 @@
+$('#newModal').modal('hide');
+$('#job-<%= @job.id %>').html('<%= j render partial: 'jobs/index', locals: { job: @job } %>');

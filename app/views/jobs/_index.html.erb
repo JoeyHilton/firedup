@@ -1,15 +1,12 @@
-
-<% jobs.each do |job| %>
-  <strong> Position: </strong><br>
-    <%= job.position %><br>
-  <strong> Company: </strong><br>
-    <%= job.company %><br>
-  <strong> Time at job: </strong><br>
-    <%= "From: #{job.start_date} until: #{job.end_date}" %><br>
-    <strong> Job Description: </strong><br>
-    <%= job.description %><br><br>
-  <%= link_to 'Show', job_path(job) %> | 
-  <%= link_to 'Edit', edit_job_path(job) %> | 
-  <%= link_to 'Delete', job, method: :delete %>
-  <hr>
-<% end %>
+<strong> Position: </strong><br>
+  <%= job.position %><br>
+<strong> Company: </strong><br>
+  <%= job.company %><br>
+<strong> Time at job: </strong><br>
+  <%= "From: #{job.start_date} until: #{job.end_date}" %><br>
+  <strong> Job Description: </strong><br>
+  <%= job.description %><br><br>
+<%= link_to 'Show', job_path(job) %> | 
+<%= link_to 'Edit', edit_job_path(job), remote: true %> | 
+<%= link_to 'Delete', job, method: :delete %>
+<hr>

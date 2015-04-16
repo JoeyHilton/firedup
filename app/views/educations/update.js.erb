@@ -1,0 +1,2 @@
+$('#newModal').modal('hide');
+$('#education-<%= @education.id %>').html('<%= j render partial: 'educations/index', locals: { education: @education } %>');
