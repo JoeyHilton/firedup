@@ -3,8 +3,12 @@
 <strong> Company: </strong><br>
   <%= job.company %><br>
 <strong> Time at job: </strong><br>
-  <%= "From: #{job.start_date} until: #{job.end_date}" %><br>
-  <strong> Job Description: </strong><br>
+  <% if :current_employer == false %>
+    <%= "From: #{job.start_date} until: #{job.end_date}" %><br>
+  <% else %>
+    <%= "From: #{job.start_date} until: Present" %><br>
+  <% end %>
+<strong> Job Description: </strong><br>
   <%= job.description %><br><br>
 <%= link_to 'Edit', edit_job_path(job), remote: true %> | 
 <%= link_to 'Delete', job, method: :delete %>
