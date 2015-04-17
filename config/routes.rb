@@ -15,9 +15,12 @@ Rails.application.routes.draw do
       resources :jobs
       resources :certs
       resources :educations
+      resources :messages
       resources :posts
     end
   end
+
+  
 
   get 'static/about'
   get 'static/tour'

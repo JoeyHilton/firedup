@@ -37,10 +37,17 @@ class User < ActiveRecord::Base
                     :default_url => "/images/:style/missing.png"
 
 
+  # for paperclip
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  # for socialization
   acts_as_follower
   acts_as_followable
+
+  # for message model
+  has_many :messages
+
+  
   # validates :city, presence: true
   # validates :state, presence: true
   # validates :zip, presence: true, numericality: { only_integer: true }

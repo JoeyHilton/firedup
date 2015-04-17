@@ -10,6 +10,9 @@
   <%= link_to "Connect", connect_path(user: @user),  class: "btn btn-primary" %>
 <% end %>
       </div>
+      <div> <%= link_to "New Message", new_user_message_path(@user) %>
+      
+      </div>
       <div class="panel-body">
           <%= link_to image_tag(@user.image.url(:med)), @user.image.url, class: "pull-right" %>
           <strong> Name: </strong><br>

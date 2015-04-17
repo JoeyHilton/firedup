@@ -1,0 +1,11 @@
+<h3>Received Messages</h3>
+<% @received_messages.each do |message| %>
+  <h4><%= message.subject %></h4>
+  <p><%= message.content %></p>
+<% end %>
+<h3>Sent Messages</h3>
+<% @sent_messages.each do |message| %>
+  <h4><%= message.subject %></h4>
+  <p><%= message.content %></p>
+<% end %>
+
