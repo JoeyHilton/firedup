@@ -17,7 +17,7 @@
         Education</br></br>
         Certifications
         
-        
+        <%= link_to "Show Messages", user_messages_path(current_user) %>
       </ul>
     </div><!-- END LEFT COLUMN -->
 
@@ -57,7 +57,7 @@
           <div class="panel-heading">
           </div>
           <div class="jobsIndex panel-body"> 
-            <%= render 'messages/index', messages: @messages %>
+            <%#= render 'messages/index', messages: @messages %>
           </div>
         </div>
 

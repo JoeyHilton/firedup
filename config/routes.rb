@@ -12,10 +12,11 @@ Rails.application.routes.draw do
       resources :jobs
       resources :certs
       resources :educations
+      resources :messages
     end
   end
 
-  resources :messages
+  
 
   get 'static/about'
   get 'static/tour'

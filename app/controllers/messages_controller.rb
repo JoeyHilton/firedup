@@ -1,16 +1,22 @@
 class MessagesController < ApplicationController
 
   def index
-    @messages = Message.all
+    @user = User.find(params[:user_id])
+    @received_messages = Message.where(:receiver_id => @user.id)
+    @sent_messages = Message.where(:sender_id => @user.id)
   end
 
   def show
-    @messages = current_user.messages
+    @user = User.find(params[:id])
+     @messages = Message.find_by(receiver_id: current_user)
+       if @messages == nil
+        @messages = []
+      end
   end
 
   def new
     @message = Message.new
-    @user = current_user
+    @user = User.find(params[:user_id])
   end
 
   def create
@@ -27,7 +33,7 @@ class MessagesController < ApplicationController
   private
 
     def message_params
-      params.require(:message).permit(:subject, :content, :user_id)
+      params.require(:message).permit(:subject, :content, :user_id, :sender_id, :receiver_id)
     end
 
 end

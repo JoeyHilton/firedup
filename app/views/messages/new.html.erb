@@ -1,9 +1,12 @@
 
-  <%= bootstrap_form_for @message do |f| %>
+  <%= bootstrap_form_for [current_user, @message] do |f| %>
  
   <%= f.text_field :subject %>
 
   <%= f.text_area :content %>
+
+  <%= f.hidden_field :sender_id, value: current_user.id %>
+  <%= f.hidden_field :receiver_id, value: @user.id %>
 
   <%= f.submit %>
   <% end %>

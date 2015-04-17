@@ -14,7 +14,6 @@ class UsersController < ApplicationController
       @jobs = current_user.jobs
       @certs = current_user.certs
       @educations = current_user.educations
-      @messages = current_user.messages
     else
       redirect_to root_path
     end
