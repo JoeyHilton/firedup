@@ -4,13 +4,38 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  devise :omniauthable, :omniauth_providers => [:facebook]
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name   # assuming the user model has a name
+      user.image = auth.info.image # assuming the user model has an image
+    end
+  end
+
+  class User < ActiveRecord::Base
+  def self.new_with_session(params, session)
+      super.tap do |user|
+        if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+          user.email = data["email"] if user.email.blank?
+        end
+      end
+    end
+  end
+
   # --------  above this line for devise only ----------------      
 
   # has_one :profile, dependent: :destroy
   has_many :educations
   has_many :jobs
   has_many :certs
-  has_attached_file :image, styles: { icon: "32x32", small: "64x64", med: "100x100", large: "200x200" }, :default_url => "/images/:style/missing.png"
+  has_many :posts
+
+  has_attached_file :image, styles: { icon: "32x32", small: "64x64", med: "100x100", large: "200x200" },
+                    :default_url => "/images/:style/missing.png"
+
 
   # for paperclip
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
@@ -28,7 +53,6 @@ class User < ActiveRecord::Base
   # validates :zip, presence: true, numericality: { only_integer: true }
   # validates :birthdate, presence: true
   # validates :gender, presence: true
-
 
   GENDER = %w(Male Female)
 

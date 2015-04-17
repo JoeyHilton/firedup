@@ -19,18 +19,30 @@ before_action :set_education, only: [:show, :edit, :update, :destroy]
     @education.user_id = current_user.id
   
     if @education.save
-      redirect_to profile_path
+      respond_to do |format|
+        format.html { redirect_to profile_path }
+        format.js 
+      end
+      # redirect_to profile_path
     else
       render :new
     end
   end
 
   def edit
+    respond_to do |format|
+        format.html { redirect_to profile_path }
+        format.js 
+      end
   end
 
   def update
     if @education.update(education_params)
-    redirect_to profile_path
+      respond_to do |format|
+        format.html { redirect_to profile_path }
+        format.js 
+      end
+    # redirect_to profile_path
     else
       render :edit
     end

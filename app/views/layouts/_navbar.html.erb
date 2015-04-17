@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container-fluid">
 
 
@@ -25,7 +25,9 @@
 
         <!-- We have an if statement here to only show the Users index link if users are signed in -->
         <% if user_signed_in? %>
-          <li><%= link_to 'Users', users_path %></li>
+          <li><%= link_to 'Members', users_path %></li>
+          <li><%= link_to "Create A Post", new_user_post_path(current_user) %></li>
+          <li><%= link_to image_tag(current_user.image.url(:icon)), current_user.image.url, class: "img-rounded pull-right" %></li>
         <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -33,6 +35,7 @@
             <!-- This area is the title for the dropdown on the right hand side -->
             <!-- I set it up so if a user is logged in, it displays their name. Otherwise it just says account -->
             <% if user_signed_in? %>
+              <!-- <%= link_to image_tag(current_user.image.url(:icon)), current_user.image.url, class: "pull-left" %> -->
               <%= current_user.email %>
             <% else %>
               Account

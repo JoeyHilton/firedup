@@ -1,25 +1,33 @@
 <div class = 'container'>
 
-  <h2>FiredUP Users</h2>
+  <div class="row">
+  <div class="col-md-12 text-center">
+  <h2>FiredUP Members</h2>
+  </div>
+  </div>
 
+  <div class="row">
   <% @users.each do |user| %>
   <div class="col-md-4">
     <div class="panel panel-default">
         <div class="center panel-heading">
-          <h4><%= user.first_name%> <%= user.last_name%></h4>
+          <h5><%= user.first_name%> <%= user.last_name%></h5>
          
         </div>
         <div class="panel-body">
           <%= link_to image_tag(user.image.url(:small)), user.image.url, class: "pull-right" %>
-        <h4>Email: <%= user.email unless user.nil? %></h4>
+        <p>Email: <%= user.email unless user.nil? %></p>
+        <%= "#{user.city}, #{user.state}" %>
 
-        <h5><%= link_to 'View Profile', user_path(user.id) %></h5>
+        <p><%= link_to 'View Profile', user_path(user.id) %></p>
         <% if user == current_user && user_signed_in? %>
-        <h5><%= link_to 'Edit Profile', edit_user_registration_path %></h5>
+        <p><%= link_to 'Edit Profile', edit_user_registration_path %></p>
         <% end %>
         </div>
     </div>
   </div>
-<% end %>
+  <% end %>
+  </div>
+  
 </div>
 

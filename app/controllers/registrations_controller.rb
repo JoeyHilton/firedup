@@ -1,8 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
 
 
-  def after_sign_in_path_for(resource)
-    profile_path
+  def after_sign_up_path_for(resource)
+    flash[:notice] = "You have successfully signed up! Please fill-in your profile information."
+    edit_user_registration_path
   end
 
   def after_update_path_for(resource)

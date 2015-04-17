@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  
   def index
     @jobs = Job.all
   end
@@ -19,9 +20,13 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.user_id = current_user.id
-
+  
     if @job.save
-      redirect_to profile_path
+      respond_to do |format|
+        format.html { redirect_to profile_path }
+        format.js 
+      end
+      # redirect_to profile_path
     else
       render :new
     end
@@ -29,13 +34,21 @@ class JobsController < ApplicationController
 
   def edit
     @job = Job.find(params[:id])
+    respond_to do |format|
+      format.html { redirect_to profile_path }
+      format.js
+    end
   end
 
   def update
     @job = Job.find(params[:id])
 
     if @job.update(job_params)
-      redirect_to profile_path
+      respond_to do |format|
+        format.html { redirect_to profile_path }
+        format.js 
+      end
+      # redirect_to profile_path
     else
       render :edit
     end

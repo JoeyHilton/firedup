@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 
 # ---- new gems below this line --------------
+gem 'dotenv-rails', :groups => [:development, :test]
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'bootstrap_form'
@@ -10,6 +11,8 @@ gem "font-awesome-rails"
 gem 'faker' # for seeding the database
 gem "socialization" # for connections and possibly messaging
 gem 'paperclip' # for image file uploads
+gem 'aws-sdk', '< 2.0'
+gem 'omniauth-facebook'
 
 
 

@@ -2,10 +2,13 @@ Rails.application.routes.draw do
 
   root 'static#home'
 
-  devise_for :users, :controllers => {:registrations => 'registrations'}
+  devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions',
+  :omniauth_callbacks => "users/omniauth_callbacks" }
+
   resources :users, :only => [:show, :index]
 
   get '/profile', to: 'users#profile', as: :profile
+  get '/posts/feed', to: 'posts#feed', as: :feed
 
   shallow do
     resources :users do
@@ -13,6 +16,7 @@ Rails.application.routes.draw do
       resources :certs
       resources :educations
       resources :messages
+      resources :posts
     end
   end
 

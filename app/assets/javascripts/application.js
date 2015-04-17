@@ -15,3 +15,19 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+<script>
+$('#home a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
+$('#education a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+$('#certs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+</script>

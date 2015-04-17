@@ -1,0 +1,120 @@
+
+<div class="container">
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Your Profile</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-2"><!-- BEGIN LEFT COLUMN -->
+      <ul class="nav nav-pills nav-stacked well">
+        Jobs</br></br>
+        Education
+      </ul>
+    </div><!-- END LEFT COLUMN -->
+
+    <div class="col-md-6"><!-- BEGIN CENTER COLUMN -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Basic Information</h3>
+        </div>
+        <div class="panel-body">
+          <strong> Name: </strong><br>
+            <%= "#{@user.first_name}  #{@user.last_name}" %><br><br>
+          <strong> Address: </strong><br>
+            <%= @user.address %><br>
+            <%= "#{@user.city}, #{@user.state}, #{@user.zip}" %><br><br>
+          <strong> Twitter:</strong><br>
+            <%= @user.twitter %><br><br>
+          <strong> Birthdate:</strong><br>
+            Birthdate: <%= @user.birthdate %><br><br>
+          <strong> Phone Numbers:</strong><br>
+            Phone: <%= @user.phone %><br>
+            Cell Phone: <%= @user.mobilephone %><br><br>
+          <strong> Gender:</strong><br>
+            <%= @user.gender %><br><br>
+          <strong> Email:</strong><br>
+            <%= @user.email %><br><br>
+            <%= @user.secondary_email %><br><br>
+          <strong> Bio:</strong><br>
+            <%= @user.bio %><br><br>
+        </div>
+      </div>
+
+      <% if user_signed_in? %>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Job Experience</h3>
+          </div>
+          <div class="jobsIndex panel-body"> 
+            <%= render 'jobs/index' %>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Education</h3>
+          </div>
+          <div class="educationIndex cpanel-body">
+            <%= render 'educations/index'%>
+          </div>
+        <div>
+
+      <% end %>
+    </div>
+
+    <div class="col-md-4"><!-- BEGIN RIGHT COLUMN -->
+      <ul class="well">
+        something else</br></br>
+        and another thing
+      </ul>
+    </div> <!-- END RIGHT COLUMN -->
+
+  </div><!-- closes row -->
+
+</div><!-- closes container -->
+
+
+    <!-- t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "twitter"
+    t.date     "birthdate"
+    t.string   "phone"
+    t.string   "mobile_phone"
+    t.string   "gender"
+    t.string   "secondary_email"
+    t.text     "bio"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at" -->
+
+
+
+
+
+
+
