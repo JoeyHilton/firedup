@@ -36,6 +36,13 @@ body { padding-top: 70px; }
   z-index: 1;
 }
 
+.headline3{
+  font-family: 'Russo One', sans-serif;
+  font-size: 30px;
+  color: black;
+  z-index: 1;
+}
+
 img.bg {
   /* Set rules to fill background */
   min-height: 100%;
@@ -84,7 +91,20 @@ img.bg {
 }
 
 .iconImage {
-  padding: 0px 10px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.iconImagePanel {
+  padding: 3px 5px 3px 10px;
+}
+
+.panelOverride {
+  padding: 4px;
+}
+
+.panelBodyFeed {
+  padding-left: 0px 0px 5px 100px;
+  text-indent: left;
 }
 
 
