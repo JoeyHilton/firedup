@@ -16,7 +16,6 @@
 //= require turbolinks
 //= require_tree .
 
-<script>
 $('#home a').click(function (e) {
   e.preventDefault()
   $(this).tab('show')
@@ -30,4 +29,10 @@ $('#certs a').click(function (e) {
   e.preventDefault()
   $(this).tab('show')
 })
-</script>
+
+function toggleCurrentJob() {
+    $("#end-date").toggleClass( "hidden" );
+    $("#current-working").toggleClass("hidden");
+}
+
+
