@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root 'static#home'
 
-  devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
+  devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions',
+  :omniauth_callbacks => "users/omniauth_callbacks" }
+
   resources :users, :only => [:show, :index]
 
   get '/profile', to: 'users#profile', as: :profile
