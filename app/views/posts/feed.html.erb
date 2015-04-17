@@ -19,7 +19,7 @@
     <% if post.user.followed_by?(current_user) || post.share_with == "public" || post.user == current_user %>
       <div class="panel panel-default">
         <div class="center panel-heading">
-        <%= link_to image_tag(post.user.image.url(:icon)), post.user.image.url, class: "pull-left" %>      
+        <%= link_to image_tag(post.user.image.url(:icon)), post.user.image.url, class: "pull-left iconImage" %>      
           <strong> <%= "#{post.user.first_name} #{post.user.last_name}" %> </strong><br>
           <small class="text-muted"><%= time_ago_in_words(post.created_at) %> ago </small>
         </div>
