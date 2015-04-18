@@ -1,2 +1,35 @@
-<h1>Jboards#show</h1>
-<p>Find me in app/views/jboards/show.html.erb</p>
+<div class="col-md-6 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="center panel-heading">      
+        <h1> Job Information </h1>
+      </div>
+      <div class="panel-body">
+          <strong> Job: </strong><br>
+              <%= @jboard.title%><br>
+          <strong> Open Position: </strong><br>
+              <%= @jboard.position %><br>
+          <strong> Job Id: </strong><br>
+              <%= @jboard.identifier%><br>
+          <strong> Job Availability: </strong><br>
+          <%= "Open: #{@jboard.open_date} until: #{@jboard.close_date}" %><br>
+          <strong> Agency: </strong><br>
+              <%= @jboard.agency %><br>
+          <strong> Address: </strong><br>
+            <%= "#{@jboard.city}, #{@jboard.state}, #{@jboard.zip}" %><br>
+          <strong> Company Website: </strong><br>
+            <%= @jboard.website%><br>
+          <strong> Posted By: </strong><br>
+            <%= "#{@jboard.first_name} #{@jboard.last_name}"%><br>
+          <strong> Phone: </strong><br>
+            <%= @jboard.phone%><br>
+          <strong> Email: </strong><br>
+            <%= @jboard.email%><br>
+          <strong> More Info: </strong><br>
+            <%= @jboard.job_link%><br>
+          <%= link_to 'Back', user_jboards_path(@jboard.user) %> | 
+          <%= link_to 'Edit', edit_jboard_path(@jboard) %> | 
+          <%= link_to 'Delete', @jboard, method: :delete %>
+        
+      </div>
+  </div>
+</div>

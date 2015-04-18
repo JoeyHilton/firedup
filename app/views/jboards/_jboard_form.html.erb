@@ -1,0 +1,36 @@
+<%= bootstrap_form_for [@user, @jboard] do |f| %>
+    <%= render 'devise/shared/error_messages', object: f.object %>
+    <%= f.text_field :title %>
+    <%= f.select :category, User::CATEGORY, prompt: "Pick one", label: "Category" %>
+
+    <%= f.text_field :position %>
+
+    <%= f.text_field :identifier %>
+
+    <%= f.text_area :description %>
+
+    <%= f.text_area :requirements %>
+
+    <%= f.text_area :how_to_apply %>
+
+    <%= f.text_field :salary %>
+
+    <%= f.date_select :open_date  %>
+
+    <%= f.date_select :close_date  %>
+    <%= f.text_field :agency %>
+    <%= f.text_field :city %>
+    <%= f.select :state, User::STATE, prompt: "Pick one",label: "State" %>
+    <%= f.text_field :zip %>
+    <%= f.text_field :website, placeholder: "http://www.example.com"%>
+    <%= f.text_field :first_name %>
+    <%= f.text_field :last_name %>
+    <%= f.text_field :phone %>
+    <%= f.text_field :email %>
+    <%= f.text_field :job_link, placeholder: "http://www.example.com" %>
+    <%= f.text_field :poster %>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <%= f.submit "Create Job" %>
+  <% end %>
