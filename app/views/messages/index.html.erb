@@ -1,4 +1,5 @@
 
+
 <div role="tabpanel">
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Received Messages</a></li>
@@ -10,23 +11,48 @@
   <div role="tabpanel" class="tab-pane active" id="home">
     <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
     <div class="jobsIndex panel-body" id="jobsList"> 
+      <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Content</th>
+      </tr>
+    </thead>
+    <tbody>
       <% @received_messages.each do |message| %>
-      <h4><%= message.subject %></h4>
-      <p><%= message.content %></p>
+      
+      <tr class="message-row" data-link="<%= message_path(message) %>">
+      <td><%= message.subject %></td>
+      <td><%= message.content %></td>
+      </tr>
+      
       <% end %>
+    </tbody>
+  </table>
     </div>
   </div>
 
-  <div role="tabpanel" class="tab-pane" id="sent">
+
+<div role="tabpanel" class="tab-pane" id="sent">
     <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
     <div class="jobsIndex panel-body" id="somethingelse"> 
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Content</th>
+      </tr>
+    </thead>
+    <tbody>
       <% @sent_messages.each do |message| %>
-      <h4><%= message.subject %></h4>
-      <p><%= message.content %></p>
+      <tr>
+      <th><%= message.subject %></th>
+      <th><%= message.content %></th>
       <% end %>
-    </div>
+    </tr>
+    </tbody>
+  </table>
+</div>
   </div>
 </div>
 </div>
-
-<!--  -->

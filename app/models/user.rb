@@ -46,7 +46,8 @@ class User < ActiveRecord::Base
 
   # for message model
   has_many :messages
-
+  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id" 
+  has_many :received_messages, class_name: "Message", foreign_key: "receiver_id"
   
   # validates :city, presence: true
   # validates :state, presence: true
@@ -64,5 +65,13 @@ class User < ActiveRecord::Base
              Texas Utah Vermont Virginia Washington West\ Virginia Wisconsin Wyoming)
 
   # after_save {self.profile.create}
+
+  def has_new_messages?
+    received_messages = self.received_messages
+    received_messages.each do |message|
+      return true if message.viewed == false
+    end
+    false
+  end
 end
 

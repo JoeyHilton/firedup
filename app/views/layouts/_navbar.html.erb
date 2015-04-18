@@ -18,6 +18,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <li class="#{notification_color(current_user.has_new_messages?)}"><%= link_to "", user_messages_path(current_user), class: "#{notification_color(current_user.has_new_messages?)} fa fa-envelope-o" if user_signed_in? %><li>
         <li><%= link_to 'Home', root_path %></li>
         <li><%= link_to 'Tour', static_tour_path %></li>
         <li><%=  link_to "About", static_about_path %></li>
