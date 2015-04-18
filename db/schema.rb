@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417194624) do
+
+ActiveRecord::Schema.define(version: 20150418162846) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +58,32 @@ ActiveRecord::Schema.define(version: 20150417194624) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+
+  create_table "jboards", force: :cascade do |t|
+    t.string   "title"
+    t.string   "position"
+    t.string   "identifier"
+    t.text     "description"
+    t.text     "requirements"
+    t.text     "how_to_apply"
+    t.string   "salary"
+    t.date     "open_date"
+    t.date     "close_date"
+    t.string   "agency"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "website"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "job_link"
+    t.string   "poster"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "category"
+  end
 
   create_table "jobs", force: :cascade do |t|
     t.string   "company"

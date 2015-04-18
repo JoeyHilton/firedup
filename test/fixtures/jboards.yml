@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  position: MyString
+  identifier: MyString
+  description: MyText
+  requirements: MyText
+  how_to_apply: MyText
+  salary: MyString
+  open_date: 2015-04-18
+  close_date: 2015-04-18
+  agency: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  website: MyString
+  first_name: MyString
+  last_name: MyString
+  phone: MyString
+  email: MyString
+  job_link: MyString
+  poster: MyString
+
+two:
+  title: MyString
+  position: MyString
+  identifier: MyString
+  description: MyText
+  requirements: MyText
+  how_to_apply: MyText
+  salary: MyString
+  open_date: 2015-04-18
+  close_date: 2015-04-18
+  agency: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  website: MyString
+  first_name: MyString
+  last_name: MyString
+  phone: MyString
+  email: MyString
+  job_link: MyString
+  poster: MyString

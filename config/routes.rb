@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  # get 'jboards/index'
+
+  # get 'jboards/show'
+
+  # get 'jboards/new'
+
+  # get 'jboards/create'
+
+  # get 'jboards/update'
+
+  # get 'jboards/destroy'
+
+  # get 'jboards/edit'
+
   root 'static#home'
 
   devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions',
@@ -17,6 +31,7 @@ Rails.application.routes.draw do
       resources :educations
       resources :messages
       resources :posts
+      resources :jboards
     end
   end
 
