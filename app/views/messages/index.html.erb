@@ -1,11 +1,32 @@
-<h3>Received Messages</h3>
-<% @received_messages.each do |message| %>
-  <h4><%= message.subject %></h4>
-  <p><%= message.content %></p>
-<% end %>
-<h3>Sent Messages</h3>
-<% @sent_messages.each do |message| %>
-  <h4><%= message.subject %></h4>
-  <p><%= message.content %></p>
-<% end %>
 
+<div role="tabpanel">
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Received Messages</a></li>
+  <li role="presentation"><a href="#sent" aria-controls="sent-messages" role="tab" data-toggle="tab">Sent Messages</a></li>
+</ul>
+
+
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="home">
+    <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
+    <div class="jobsIndex panel-body" id="jobsList"> 
+      <% @received_messages.each do |message| %>
+      <h4><%= message.subject %></h4>
+      <p><%= message.content %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="sent">
+    <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
+    <div class="jobsIndex panel-body" id="somethingelse"> 
+      <% @sent_messages.each do |message| %>
+      <h4><%= message.subject %></h4>
+      <p><%= message.content %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--  -->
