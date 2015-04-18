@@ -1,0 +1,32 @@
+<h1>Advanced Search</h1>
+ 
+<%= bootstrap_form_for @jsearch do |s| %>
+
+  <div class="field">
+    <%= s.label :keywords %><br />
+    <%= s.text_field :keywords %>
+  </div>
+
+  <div class="field">
+    <%= s.label :category_id %><br />
+    <%= s.select :category, options_for_select(@categories), :include_blank => true %>
+  </div>
+
+  <div class="field">
+    <%= s.label :state %><br />
+    <%= s.select :state, options_for_select(@states), :include_blank => true %>
+  </div>
+
+  <div class="field">
+    <%= s.label :city %><br />
+    <%= s.select :city, options_for_select(@cities), :include_blank => true %>
+  </div>
+
+  <div class="field">
+    <%= s.label :agency %><br />
+    <%= s.select :agency, options_for_select(@agencies), :include_blank => true %>
+  </div>
+
+  <div class="actions"><%= s.submit "Search" %></div>
+  
+<% end %>

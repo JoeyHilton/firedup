@@ -3,6 +3,8 @@ class JboardsController < ApplicationController
 
   def index
     @jboards = Jboard.all
+
+    @joboards = Jboard.where([ 'name LIKE ?', "%#{params[:search]}%" ])
   end
 
   def show
