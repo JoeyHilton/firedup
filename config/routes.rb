@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'jsearches/new'
+
+  get 'jsearches/create'
+
+  get 'jsearches/show'
+
+  get 'searches/new'
+
+  get 'searches/create'
+
+  get 'searches/show'
+
   # get 'jboards/index'
 
   # get 'jboards/show'
@@ -20,6 +32,8 @@ Rails.application.routes.draw do
   :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :users, :only => [:show, :index]
+
+  resources :jsearches, :only => [:new, :create, :show]
 
   get '/profile', to: 'users#profile', as: :profile
   get '/posts/feed', to: 'posts#feed', as: :feed
