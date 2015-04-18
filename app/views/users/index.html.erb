@@ -1,33 +1,47 @@
 <div class = 'container'>
 
-  <div class="row">
-  <div class="col-md-12 text-center">
-  <h2>FiredUP Members</h2>
-  </div>
-  </div>
+  <div class="row"> <!-- Start First Row -->
 
-  <div class="row">
-  <% @users.each do |user| %>
-  <div class="col-md-4">
-    <div class="panel panel-default">
-        <div class="center panel-heading">
-          <h5><%= user.first_name%> <%= user.last_name%></h5>
-         
-        </div>
-        <div class="panel-body">
-          <%= link_to image_tag(user.image.url(:small)), user.image.url, class: "pull-right" %>
-        <p>Email: <%= user.email unless user.nil? %></p>
-        <%= "#{user.city}, #{user.state}" %>
-
-        <p><%= link_to 'View Profile', user_path(user.id) %></p>
-        <% if user == current_user && user_signed_in? %>
-        <p><%= link_to 'Edit Profile', edit_user_registration_path %></p>
-        <% end %>
-        </div>
+    <div class="col-md-12 text-center">
+    <h2 class="headline3">FiredUP Members</h2>
     </div>
-  </div>
-  <% end %>
-  </div>
-  
-</div>
 
+  </div> <!-- End First Row -->
+
+    <div class="row">
+      <% @users.each do |user| %> <!-- First Loop -->
+        <div class="col-md-8">
+          <div class="panel panel-default">
+            <div class="panel-body memberPanelOverride">
+              <h3 class="memberTitleOverride"><%= user.first_name%> <%= user.last_name%></h3>
+
+              <%= link_to image_tag(user.image.url(:small)), user.image.url, class: "pull-left smallImage" %>
+
+                <% user.jobs.each do |job| %> <!-- Second Loop -->
+                  <% if job.current_employer == true %>
+                    <% current_job = job.company %>
+                    <% current_position = job.position %>
+                    <strong><%= current_position %></strong> -
+                    <%= current_job %><br>
+                  <% end %>
+                <% end %> <!-- End Second Loop -->
+
+              <%= "#{user.city}, #{user.state}" %><br>
+              Member since: <%= user.created_at.strftime("%B %Y") %><br><br>
+
+
+              <p><%= link_to 'View Profile', user_path(user.id) %></p>
+                <% if user == current_user && user_signed_in? %>
+                <p><%= link_to 'Edit Profile', edit_user_registration_path %></p>
+              <% end %>
+              
+            </div> <!-- End Panel body-->
+          </div> <!-- END Panel default -->
+        </div> <!-- End col -->
+      <% end %> <!-- End First Loop -->
+    </div>
+
+    <div class="col-md-4">
+    </div>
+  
+</div> <!-- end container -->
