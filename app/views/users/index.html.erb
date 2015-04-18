@@ -2,36 +2,37 @@
 
   <div class="row"> <!-- Start First Row -->
 
-    <div class="col-md-12 text-center">
-    <h2 class="headline3">FiredUP Members</h2>
+    <div class="col-md-12 text-center headline3">
+      <h2>FiredUp Members</h2>
     </div>
 
   </div> <!-- End First Row -->
-  <div class="col-md-2"><!-- BEGIN LEFT COLUMN -->
+  <div class="row">
+    <div class="col-md-2"><!-- BEGIN LEFT COLUMN -->
       <ul class="nav nav-pills nav-stacked well">
         Jobs</br></br>
         Education</br></br>
-        Certifications
-        
+        Certifications</br></br>
+      
         <%= link_to "Show Messages", user_messages_path(current_user) %>
       </ul>
     </div><!-- END LEFT COLUMN -->
 
-    <div class="row">
+    <div class="col-md-6">
       <% @users.each do |user| %> <!-- First Loop -->
-        <div class="col-md-6">
           <div class="panel panel-default">
-            <div class="panel-body memberPanelOverride">
-              <h3 class="memberTitleOverride"><%= user.first_name%> <%= user.last_name%></h3>
+            <div class="center panel-heading">
+              <h3 class="memberTitleOverride">
+                <%= user.first_name%> <%= user.last_name%>
+              </h3>
 
+            </div>  
+            <div class="panel-body memberPanelOverride">
               <%= link_to image_tag(user.image.url(:small)), user.image.url, class: "pull-left smallImage" %>
 
                 <% user.jobs.each do |job| %> <!-- Second Loop -->
                   <% if job.current_employer == true %>
-                    <% current_job = job.company %>
-                    <% current_position = job.position %>
-                    <strong><%= current_position %></strong> -
-                    <%= current_job %><br>
+                    <strong><%= job.position %></strong> - <%= job.company %><br>
                   <% end %>
                 <% end %> <!-- End Second Loop -->
 
@@ -39,18 +40,22 @@
               Member since: <%= user.created_at.strftime("%B %Y") %><br><br>
 
 
-              <p><%= link_to 'View Profile', user_path(user.id) %>
+              <p>
+                <%= link_to 'View Profile', user_path(user.id) %>
                 <% if user == current_user && user_signed_in? %>
-                 | <%= link_to 'Edit Profile', edit_user_registration_path %></p>
-              <% end %>
+                 | <%= link_to 'Edit Profile', edit_user_registration_path %>
+                <% end %>
+              </p>
               
             </div> <!-- End Panel body-->
           </div> <!-- END Panel default -->
-        </div> <!-- End col -->
       <% end %> <!-- End First Loop -->
-    </div>
+    </div> <!-- End col -->
 
-    <div class="col-md-4">
-    </div>
-  
+    <div class="col-md-4"> <!--BEGIN RIGHT COLUMN -->
+      <ul class="nav nav-pills nav-stacked well">
+        
+      </ul>
+    </div>  <!--END RIGHT COLUMN -->
+  </div>
 </div> <!-- end container -->
