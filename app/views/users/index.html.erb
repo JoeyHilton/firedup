@@ -19,6 +19,7 @@
     </div><!-- END LEFT COLUMN -->
 
     <div class="col-md-6">
+      <%= paginate @users %>
       <% @users.each do |user| %> <!-- First Loop -->
           <div class="panel panel-default">
             <div class="center panel-heading">
@@ -46,10 +47,10 @@
                  | <%= link_to 'Edit Profile', edit_user_registration_path %>
                 <% end %>
               </p>
-              
             </div> <!-- End Panel body-->
           </div> <!-- END Panel default -->
       <% end %> <!-- End First Loop -->
+           <%= paginate @users %>   
     </div> <!-- End col -->
 
     <div class="col-md-4"> <!--BEGIN RIGHT COLUMN -->
