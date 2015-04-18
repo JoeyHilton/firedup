@@ -64,6 +64,9 @@ class User < ActiveRecord::Base
             Ohio Oklahoma Oregon Pennsylvania Rhode\ Island South\ Carolina South\ Dakota Tennessee 
              Texas Utah Vermont Virginia Washington West\ Virginia Wisconsin Wyoming)
 
+CATEGORY = %w(Chief Investigation Dispatch EMT Paramedic Firefighter Firefighter/EMT Firefighter/Paramedic
+              Training Wildland Administration Other)
+
   # after_save {self.profile.create}
 end
 
