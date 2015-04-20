@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  # get 'comments/new'
+
+  # get 'comments/edit'
+
   # get 'jboards/index'
 
   # get 'jboards/show'
@@ -33,8 +37,10 @@ Rails.application.routes.draw do
       resources :certs
       resources :educations
       resources :messages
-      resources :posts
       resources :jboards, :except => [:index]
+      resources :posts do
+        resources :comments, except: [:index, :show]
+      end
     end
   end
 
