@@ -15,7 +15,8 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-
+$(function() {
+  
 $('#home a').click(function (e) {
   e.preventDefault()
   $(this).tab('show')
@@ -34,5 +35,7 @@ function toggleCurrentJob() {
     $("#end-date").toggleClass( "hidden" );
     $("#current-working").toggleClass("hidden");
 }
+});
+
 
 
