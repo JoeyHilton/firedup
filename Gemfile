@@ -14,7 +14,7 @@ gem 'paperclip' # for image file uploads
 gem 'aws-sdk', '< 2.0'
 gem 'omniauth-facebook'
 gem 'kaminari'
-gem 'kaminari-bootstrap'
+# gem 'kaminari-bootstrap'
 
 
 

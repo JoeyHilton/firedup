@@ -32,7 +32,7 @@ class JboardsController < ApplicationController
     @jboard.user_id = current_user.id
   
     if @jboard.save
-      redirect_to jboard_path(@jboard)
+      redirect_to jboards_path
     else
       render :new
     end
@@ -51,7 +51,7 @@ class JboardsController < ApplicationController
 
   def destroy
     @jboard.destroy
-    redirect_to user_jboards_path(current_user)
+    redirect_to jboards_path
   end
 
   private
