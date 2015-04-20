@@ -1,2 +1,75 @@
-<h1>Jsearches#show</h1>
-<p>Find me in app/views/jsearches/show.html.erb</p>
+<div class="container">
+
+  <div class="container"><!-- START HEADER CONTAINER -->
+    <div class="row">
+          <div class="col-md-12 text-center headline3">
+            <h2>FiredUp Job Board</h2>
+          </div>
+    </div>
+  </div><!-- END HEADER CONTAINER -->
+
+  <div class="container"><!-- START Body CONTAINER -->
+  <div class="row"><!-- Start Second Row -->
+
+    <div class="col-md-2"><!-- Start Left Column -->
+
+
+      <h3>Search Jobs</h3>
+ 
+      <%= bootstrap_form_for @jsearch do |s| %>
+
+          <%= s.select :category, options_for_select(@categories), :include_blank => true %>
+
+          <%= s.select :state, options_for_select(@states), :include_blank => true %>
+
+          <%= s.select :city, options_for_select(@cities), :include_blank => true %>
+
+          <%= s.select :agency, options_for_select(@agencies), :include_blank => true %>
+
+        <div class="actions"><%= s.submit "Search" %></div>
+        
+      <% end %>
+
+    </div><!-- End Left Column -->
+
+    <div class="col-md-6"><!-- Start Center Column -->
+
+        <div class="panel panel-default">
+          <div class="center panel-heading">      
+            <h1> Search Results(show page) </h1>
+            <%= link_to 'Add a Job', new_user_jboard_path(current_user)%>
+          </div>
+          
+          <div class="panel-body">
+            <% if @jsearch.search_jboards.empty? %>
+              <p>No Records Found</p>
+            <% else %>
+              <% @jsearch.search_jboards.each do |c| %>
+                <br>
+                <div> 
+                  Category: <%= link_to c.category %><br>
+                  <%= c.city %>,
+                  <%= c.state %><br>
+                  Agency: <%= c.agency %><br>
+                  <%= link_to jboard_path(c.id) %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      
+    </div> <!-- End Center Column -->
+
+    <div class="col-md-4"><!-- Start Right Column -->
+    
+
+      <h1>Place Holder</h1>
+
+
+    </div><!-- End Right Column -->
+
+  </div> <!-- End Second Row -->
+  </div> <!-- End body container Row -->
+
+
+</div><!-- End Container -->

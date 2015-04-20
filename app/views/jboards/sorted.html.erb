@@ -1,0 +1,16 @@
+<h1> Sorted </h1>
+
+<% @searched.each do |jboard| %>
+  <strong> Title: </strong><br>
+    <%= jboard.title %><br>
+  <strong> Position: </strong><br>
+    <%= jboard.position %><br>
+  <strong> Agency: </strong><br>
+    <%= jboard.agency %><br>
+  <strong> Location: </strong><br>
+    <%= "#{jboard.city}, #{jboard.state}" %><br><br>
+  <%= link_to 'Show', jboard_path(jboard) %> | 
+  <%= link_to 'Edit', edit_jboard_path(jboard) %> | 
+  <%= link_to 'Delete', jboard_path(jboard), method: :delete %>
+  <hr>
+<% end %>

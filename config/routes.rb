@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'jsearches/new'
-
-  get 'jsearches/create'
-
-  get 'jsearches/show'
-
-  get 'searches/new'
-
-  get 'searches/create'
-
-  get 'searches/show'
-
   # get 'jboards/index'
 
   # get 'jboards/show'
@@ -37,6 +25,7 @@ Rails.application.routes.draw do
 
   get '/profile', to: 'users#profile', as: :profile
   get '/posts/feed', to: 'posts#feed', as: :feed
+  resources :jboards, :only => [:index]
 
   shallow do
     resources :users do
@@ -45,7 +34,7 @@ Rails.application.routes.draw do
       resources :educations
       resources :messages
       resources :posts
-      resources :jboards
+      resources :jboards, :except => [:index]
     end
   end
 

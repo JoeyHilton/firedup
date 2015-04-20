@@ -10,17 +10,23 @@ class JsearchesController < ApplicationController
 
   def create
     @jsearch = Jsearch.create(search_params)
-    redirect_to @search
+    redirect_to @jsearch
   end
 
   def show
     @jsearch = Jsearch.find(params[:id])
+    @categories = Jboard.uniq.pluck(:category)
+    @states = Jboard.uniq.pluck(:state)
+    @cities = Jboard.uniq.pluck(:city)
+    @agencies = Jboard.uniq.pluck(:agency)
+
+
   end
    
 private 
 
   def search_params
-     params.require(:search).permit(:keywords, :category, :state, :city, :agency)
+     params.require(:jsearch).permit(:keywords, :category, :state, :city, :agency)
   end
 
 end
