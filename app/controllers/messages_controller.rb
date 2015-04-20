@@ -4,14 +4,16 @@ class MessagesController < ApplicationController
     @user = User.find(params[:user_id])
     @received_messages = @user.received_messages
     @sent_messages = @user.sent_messages
-    @received_messages.each do |message|
-      message.update_attributes(viewed: true)
-    end
+    # @received_messages.each do |message|
+    #   message.update_attributes(viewed: true)
+    # end
   end
 
   def show
      @user = current_user
      @message = Message.find(params[:id])
+     # @received_messages.each do |message|
+      @message.update_attributes(viewed: true)
   end
 
   def new

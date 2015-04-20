@@ -23,8 +23,11 @@ class UsersController < ApplicationController
   def connect
     @user = User.find(params[:user])
     unless current_user.follows?(@user)
+      
+      # if @user.followed_by?(current_user)
       @user.follow!(current_user)
-      current_user.follow!(@user)
+        # @user.follow!(current_user)
+     current_user.follow!(@user)
     end
 
     redirect_to @user
