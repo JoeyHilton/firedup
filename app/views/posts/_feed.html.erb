@@ -12,9 +12,13 @@
     <div class="row"> 
 
       <div class="col-md-2"><!-- START LEFT COLUMN -->
+        <%= link_to 'Add a Job', new_user_jboard_path(current_user)%><br>
+        <%= link_to "Create A Post", new_user_post_path(current_user) %><br>
+        <%= link_to "Show Messages", user_messages_path(current_user) %><br>
       </div> <!-- END LEFT COLUMN -->
 
         <div class="col-md-6"><!-- START CENTER COLUMN -->
+          <%= paginate (@posts) %>
           <% posts.order("created_at DESC").each do |post| %>
             <% if post.user.followed_by?(current_user) || post.share_with == "public" || post.user == current_user %>
               <div class="panel panel-default">
@@ -25,10 +29,23 @@
                 </div>
                 <div class="panel-body panelBodyFeed">
                   <%= post.content %>
+                    <p><%= link_to "Add Comment", new_post_comment_path(post) %></p>
+                  <% post.comments.each do |comment| %>
+                    <blockquote>
+                      <p><%= comment.body %></p>
+                      <footer><%= comment.user.first_name %>
+                      <% if comment.user == current_user && user_signed_in? %>
+                         | <%= link_to "Edit", edit_comment_path(comment) %> |
+                        <%= link_to "Delete", comment_path(comment), method: :delete%>
+                      </footer>
+                      <% end %>
+                    </blockquote>
+                  <% end %>
                 </div>
               </div>
             <% end %>
           <% end %>
+          <%= paginate (@posts) %>
         </div> <!-- END CENTER COLUMN -->
 
         <div class="col-md-4"> <!-- Begin right column -->
