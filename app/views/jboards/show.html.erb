@@ -26,9 +26,9 @@
             <%= @jboard.email%><br>
           <strong> More Info: </strong><br>
             <%= @jboard.job_link%><br>
-          <%= link_to 'Back', user_jboards_path(@jboard.user) %> | 
+          <%= link_to 'Back', :back %> | 
           <%= link_to 'Edit', edit_jboard_path(@jboard) %> | 
-          <%= link_to 'Delete', @jboard, method: :delete %>
+          <%= link_to 'Delete', jboard_path(@jboard), method: :delete %>
         
       </div>
   </div>

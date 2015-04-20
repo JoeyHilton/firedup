@@ -19,8 +19,10 @@ class JsearchesController < ApplicationController
     @states = Jboard.uniq.pluck(:state)
     @cities = Jboard.uniq.pluck(:city)
     @agencies = Jboard.uniq.pluck(:agency)
+  end
 
-
+  def update
+    @jsearch = Jsearch.new
   end
    
 private 

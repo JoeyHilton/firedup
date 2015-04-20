@@ -3,20 +3,13 @@ class JboardsController < ApplicationController
 
   def index
     @jboards = Jboard.all
-    @searched = Jboard.search(params[:search])
     @jsearch = Jsearch.new
 
     @categories = Jboard.uniq.pluck(:category)
     @states = Jboard.uniq.pluck(:state)
     @cities = Jboard.uniq.pluck(:city)
     @agencies = Jboard.uniq.pluck(:agency)
-
   end
-
-  def sorted
-    @searched = Jboard.search(params[:search])
-
-  end 
 
 
   def show
@@ -32,7 +25,7 @@ class JboardsController < ApplicationController
     @jboard.user_id = current_user.id
   
     if @jboard.save
-      redirect_to jboard_path(@jboard)
+      redirect_to jboards_path
     else
       render :new
     end
@@ -51,7 +44,7 @@ class JboardsController < ApplicationController
 
   def destroy
     @jboard.destroy
-    redirect_to user_jboards_path(current_user)
+    redirect_to jboards_path
   end
 
   private

@@ -11,36 +11,24 @@
   <div class="container"><!-- START Body CONTAINER -->
   <div class="row"><!-- Start Second Row -->
 
-    <div class="col-md-2"><!-- Start Left Column -->
+    <div class="col-md-2 text-center"><!-- Start Left Column -->
 
       <h3>Search Jobs</h3>
  
-<%= bootstrap_form_for @jsearch do |s| %>
-
-    <%= s.select :category, options_for_select(@categories), :include_blank => true %>
-
-    <%= s.select :state, options_for_select(@states), :include_blank => true %>
-
-    <%= s.select :city, options_for_select(@cities), :include_blank => true %>
-
-    <%= s.select :agency, options_for_select(@agencies), :include_blank => true %>
-
-  <div class="actions"><%= s.submit "Search" %></div>
-  
-<% end %>
+        <%= render 'layouts/jobsearchform'  %>
 
     </div><!-- End Left Column -->
 
     <div class="col-md-6"><!-- Start Center Column -->
         <div class="panel panel-default">
-          <div class="center panel-heading">      
-            <h1> Jobs (index page) </h1>
+          <div class="center panel-heading text-center">      
+            <h1> Job Listings </h1>
             <%= link_to 'Add a Job', new_user_jboard_path(current_user)%>
           </div>
           <div class="panel-body">
               
             <% @jboards.order("created_at DESC").each do |jboard| %>
-                <h4 class="jboardTitleOverride"><%= jboard.title %></h4>
+                <strong><h4 class="jboardTitleOverride"><%= jboard.title %></h4></strong>
                   <%= jboard.agency %><br>
                   <%= "#{jboard.city}, #{jboard.state}" %><br>
 
@@ -56,7 +44,7 @@
         </div>
     </div> <!-- End Center Column -->
 
-    <div class="col-md-4"><!-- Start Right Column -->
+    <div class="col-md-4 text-center"><!-- Start Right Column -->
     
 
       <h1>Place Holder</h1>
