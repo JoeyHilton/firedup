@@ -1,71 +1,60 @@
 <div class="container">
 
-  <div class="container"><!-- START HEADER CONTAINER -->
-    <div class="row">
-          <div class="col-md-12 text-center headline3">
-            <h2>FiredUp Job Board</h2>
-          </div>
+  <div class="row">
+    <div class="col-md-12 text-center headline3">
+      <h2>FiredUp Job Board</h2>
     </div>
-  </div><!-- END HEADER CONTAINER -->
+  </div>
 
-  <div class="container"><!-- START Body CONTAINER -->
+
+
   <div class="row"><!-- Start Second Row -->
 
     <div class="col-md-2"><!-- Start Left Column -->
 
       <h3>Search Jobs</h3>
  
-<%= bootstrap_form_for @jsearch do |s| %>
+      <%= bootstrap_form_for @jsearch do |s| %>
 
-    <%= s.select :category, options_for_select(@categories), :include_blank => true %>
+        <%= s.select :category, options_for_select(@categories), :include_blank => true %>
 
-    <%= s.select :state, options_for_select(@states), :include_blank => true %>
+        <%= s.select :state, options_for_select(@states), :include_blank => true %>
 
-    <%= s.select :city, options_for_select(@cities), :include_blank => true %>
+        <%= s.select :city, options_for_select(@cities), :include_blank => true %>
 
-    <%= s.select :agency, options_for_select(@agencies), :include_blank => true %>
+        <%= s.select :agency, options_for_select(@agencies), :include_blank => true %>
 
-  <div class="actions"><%= s.submit "Search" %></div>
-  
-<% end %>
+        <div class="actions"><%= s.submit "Search" %></div>
+      
+      <% end %>
 
     </div><!-- End Left Column -->
 
     <div class="col-md-6"><!-- Start Center Column -->
-        <div class="panel panel-default">
-          <div class="center panel-heading">      
-            <h1> Jobs (index page) </h1>
-            <%= link_to 'Add a Job', new_user_jboard_path(current_user)%>
-          </div>
-          <div class="panel-body">
-              
-            <% @jboards.order("created_at DESC").each do |jboard| %>
-                <h4 class="jboardTitleOverride"><%= jboard.title %></h4>
-                  <%= jboard.agency %><br>
-                  <%= "#{jboard.city}, #{jboard.state}" %><br>
-
-                  <small class="text-muted">Posted <%= time_ago_in_words(jboard.created_at) %> ago </small>
-                <small class="text-muted">in category: <%= jboard.category %></small><br>
-                <small><%= link_to 'See Details', jboard_path(jboard) %></small> | 
-                <%= link_to 'Edit', edit_jboard_path(jboard) %> | 
-                <%= link_to 'Delete', jboard_path(jboard), method: :delete %>
-                <hr>
-            <% end %>
-            
-          </div>
+      <%= link_to 'Add a Job', new_user_jboard_path(current_user)%>
+      <% @jboards.order("created_at DESC").each do |jboard| %>
+      <div class="panel panel-default">
+        <div class="center panel-heading">      
+          <h4 class="jboardTitleOverride"><%= jboard.title %></h4>
         </div>
+        <div class="panel-body memberPanelOverride">
+            
+          <%= jboard.agency %><br>
+          <%= "#{jboard.city}, #{jboard.state}" %><br>
+
+          <small class="text-muted">Posted <%= time_ago_in_words(jboard.created_at) %> ago </small>
+          <small class="text-muted">in category: <%= jboard.category %></small><br>
+          <small><%= link_to 'See Details', jboard_path(jboard) %></small>
+         | <%= link_to 'Edit', edit_jboard_path(jboard) %> | 
+        <%= link_to 'Delete', jboard_path(jboard), method: :delete %>
+          
+        </div> <!-- End panel body -->
+      </div>
+            <% end %>
     </div> <!-- End Center Column -->
 
     <div class="col-md-4"><!-- Start Right Column -->
-    
-
       <h1>Place Holder</h1>
-
-
     </div><!-- End Right Column -->
-
   </div> <!-- End Second Row -->
-  </div> <!-- End body container Row -->
-
-
 </div><!-- End Container -->
