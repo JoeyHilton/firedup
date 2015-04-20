@@ -9,4 +9,9 @@ class Jboard < ActiveRecord::Base
       all
     end
   end
+
+  CATEGORY = %w(Chief Investigation Dispatch EMT Paramedic Firefighter Firefighter/EMT Firefighter/Paramedic
+              Training Wildland Administration Other)
+
+
 end

@@ -1,11 +1,23 @@
 class JboardsController < ApplicationController
-  before_action :set_jboard, only: [:show, :edit, :update, :destroy]
+  before_action :set_jboard, only: [ :show, :edit, :update, :destroy]
 
   def index
     @jboards = Jboard.all
+    @searched = Jboard.search(params[:search])
+    @jsearch = Jsearch.new
 
-    @joboards = Jboard.where([ 'name LIKE ?', "%#{params[:search]}%" ])
+    @categories = Jboard.uniq.pluck(:category)
+    @states = Jboard.uniq.pluck(:state)
+    @cities = Jboard.uniq.pluck(:city)
+    @agencies = Jboard.uniq.pluck(:agency)
+
   end
+
+  def sorted
+    @searched = Jboard.search(params[:search])
+
+  end 
+
 
   def show
   end
@@ -50,7 +62,7 @@ class JboardsController < ApplicationController
                        :salary, :open_date, :close_date, :agency,
                        :city, :state, :zip, :website, :first_name,
                        :last_name, :phone, :email, :job_link, :poster,
-                       :user_id)
+                       :user_id, :category)
     end
 
     def set_jboard
