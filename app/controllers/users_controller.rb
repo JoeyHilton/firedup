@@ -33,6 +33,7 @@ class UsersController < ApplicationController
   end
 
   def approve
+    @follow = Follow.find(params[:user_id])
     follow_records = Follow.all
     @user = User.find(params[:user_id])
     @pending_connections = []
