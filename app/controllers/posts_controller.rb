@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to user_posts_path(current_user)
+    redirect_to feed_path
   end
 
   def feed

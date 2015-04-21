@@ -26,6 +26,10 @@
                 <%= link_to image_tag(post.user.image.url(:icon)), post.user.image.url, class: "pull-left iconImagePanel" %>      
                   <strong> <%= "#{post.user.first_name} #{post.user.last_name}" %> </strong>
                   <small class="text-muted"><%= time_ago_in_words(post.created_at) %> ago </small>
+                  <% if post.user == current_user && user_signed_in? %>
+                         | <%= link_to "Edit", edit_post_path(post) %> |
+                        <%= link_to "Delete", post_path(post), method: :delete%>
+                  <% end %>
                 </div>
                 <div class="panel-body panelBodyFeed">
                   <%= post.content %>
