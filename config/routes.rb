@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  # get 'jboards/index'
+
+  # get 'jboards/show'
+
+  # get 'jboards/new'
+
+  # get 'jboards/create'
+
+  # get 'jboards/update'
+
+  # get 'jboards/destroy'
+
+  # get 'jboards/edit'
+
   root 'static#home'
 
   devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions',
@@ -7,8 +21,11 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:show, :index]
 
+  resources :jsearches, :only => [:new, :create, :show]
+
   get '/profile', to: 'users#profile', as: :profile
   get '/posts/feed', to: 'posts#feed', as: :feed
+  resources :jboards, :only => [:index]
 
   shallow do
     resources :users do
@@ -17,6 +34,7 @@ Rails.application.routes.draw do
       resources :educations
       resources :messages
       resources :posts
+      resources :jboards, :except => [:index]
     end
   end
 

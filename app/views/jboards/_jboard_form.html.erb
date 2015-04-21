@@ -1,0 +1,38 @@
+<%= bootstrap_form_for [@user, @jboard] do |f| %>
+    <%= render 'devise/shared/error_messages', object: f.object %>
+
+    <%= f.text_field :title, :required => true %>
+
+    <%= f.select :category, Jboard::CATEGORY, prompt: "Pick one", label: "Category", :required => true %>
+
+    <%= f.text_area :description %>
+
+    <%= f.text_area :requirements %>
+
+    <%= f.text_area :how_to_apply %>
+
+    <%= f.text_field :salary %>
+
+    <%= f.date_select :open_date, :required => true  %>
+
+    <%= f.date_select :close_date, :required => true  %>
+
+    <%= f.text_field :agency, :required => true %>
+
+    <%= f.text_field :city, :required => true %>
+
+    <%= f.select :state, User::STATE, prompt: "Pick one",label: "State",:required => true %>
+    <%= f.text_field :zip, :required => true %>
+
+    <%= f.text_field :first_name, label: "Contact First Name" %>
+    <%= f.text_field :last_name, label: "Contact Last Name" %>
+    <%= f.text_field :phone, label: "Contact Phone" %>
+    <%= f.text_field :email, label: "Contact Email" %>
+    <%= f.text_field :website, placeholder: "http://www.example.com"%>
+    <%= f.text_field :job_link, placeholder: "http://www.example.com" %>
+    <%= f.text_field :identifier, label: "Job Reference Code"%>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <%= f.submit "Create", class: "btn btn-primary" %>
+  <% end %>

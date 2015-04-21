@@ -15,12 +15,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  class User < ActiveRecord::Base
   def self.new_with_session(params, session)
-      super.tap do |user|
-        if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-          user.email = data["email"] if user.email.blank?
-        end
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
       end
     end
   end
@@ -32,6 +30,7 @@ class User < ActiveRecord::Base
   has_many :jobs
   has_many :certs
   has_many :posts
+  has_many :jboards
 
   has_attached_file :image, styles: { icon: "32x32", small: "64x64", med: "100x100", large: "200x200" },
                     :default_url => "/images/:style/missing.png"
@@ -63,6 +62,7 @@ class User < ActiveRecord::Base
             New\ Hampshire New\ Jersey New\ Mexico New\ York North\ Carolina North\ Dakota 
             Ohio Oklahoma Oregon Pennsylvania Rhode\ Island South\ Carolina South\ Dakota Tennessee 
              Texas Utah Vermont Virginia Washington West\ Virginia Wisconsin Wyoming)
+
 
   # after_save {self.profile.create}
 

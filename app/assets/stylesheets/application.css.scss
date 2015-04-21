@@ -27,7 +27,14 @@
 // .bold {
 //   text-decoration: underline;
 // }
-body { padding-top: 70px; }
+body { 
+  padding-top: 70px; 
+  font-family: 'Oxygen', sans-serif;
+}
+
+h1 {
+  font-family: 'Russo One', sans-serif;
+}
 
 .headline{
   font-family: 'Russo One', sans-serif;
@@ -40,7 +47,6 @@ body { padding-top: 70px; }
   font-family: 'Russo One', sans-serif;
   font-size: 30px;
   color: black;
-  z-index: 1;
 }
 
 img.bg {
@@ -72,6 +78,37 @@ img.bg {
   border-radius: 0px;
   z-index: 1;
 }
+
+// --- Less Bootstrappy ---------------------//
+.panel {
+  border-radius: 0px;
+}
+
+.well {
+  border-radius: 0px;
+}
+
+.modal-content {
+  border-radius: 0px;
+}
+
+.btn {
+  border-radius: 0px;
+}
+
+.form-control {
+  border-radius: 0px;
+}
+
+.nav-tabs > li > a {
+    border-radius: 0px 0px 0 0;
+}
+
+.dropdown-menu {
+  border-radius: 0px;
+}
+
+// --- Less Bootstrappy ---------------------//
 
 .eachJob {
   background-color: #cccfff;
@@ -107,6 +144,7 @@ img.bg {
   text-indent: left;
 }
 
+
 .nav.navbar-nav.navbar-right li:first-child  {
   color: red;
 }
@@ -121,4 +159,31 @@ img.bg {
 .not_viewed {
   background-color: red;
 }
+
+.smallImage {
+  padding: 0px 10px 0px 0px;
+}
+
+// ---Members index ---------------------//
+
+.memberPanelOverride {
+  padding: 5px 5px 5px 15px;
+}
+
+.memberTitleOverride {
+  padding: 0px 0px 5px 0px;
+  margin: 0;
+}
+
+
+
+// --- Job Board ---------------------//
+
+.jboardTitleOverride {
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+
+
 
