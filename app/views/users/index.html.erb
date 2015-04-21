@@ -20,16 +20,14 @@
 
     <div class="col-md-6">
       <%= paginate @users %>
+      
       <% @users.each do |user| %> <!-- First Loop -->
           <div class="panel panel-default">
-            <div class="center panel-heading">
-              <h3 class="memberTitleOverride">
-                <%= user.first_name%> <%= user.last_name%>
-              </h3>
-
-            </div>  
             <div class="panel-body memberPanelOverride">
-              <%= link_to image_tag(user.image.url(:small)), user.image.url, class: "pull-left smallImage" %>
+              <h4 class="memberTitleOverride"><strong>
+                <%= link_to image_tag(user.image.url(:med)), user.image.url, class: "pull-left smallImage" %>
+                <%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%>
+              </strong></h4>
 
                 <% user.jobs.each do |job| %> <!-- Second Loop -->
                   <% if job.current_employer == true %>
@@ -38,15 +36,8 @@
                 <% end %> <!-- End Second Loop -->
 
               <%= "#{user.city}, #{user.state}" %><br>
-              Member since: <%= user.created_at.strftime("%B %Y") %><br><br>
+              <small class="text-muted">Member since: <%= user.created_at.strftime("%B %Y") %></small><br><br>
 
-
-              <p>
-                <%= link_to 'View Profile', user_path(user.id) %>
-                <% if user == current_user && user_signed_in? %>
-                 | <%= link_to 'Edit Profile', edit_user_registration_path %>
-                <% end %>
-              </p>
             </div> <!-- End Panel body-->
           </div> <!-- END Panel default -->
       <% end %> <!-- End First Loop -->
