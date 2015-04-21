@@ -37,12 +37,37 @@
             </td>
           <% end -%>
             <td>
-              <%= render "devise/shared/nav_links" %>
+              <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to "Forgot your password?", new_password_path(resource_name), class: 'forgot' %><br />
+              <% end -%>
             </td>
         </tr>
       <% end %>
     </tbody>
-    <% end %>
+    <% else %>
+      <ul class="nav navbar-nav navbar-right">
+        <li class=" nav-img"><%= link_to image_tag(current_user.image.url(:icon)), current_user.image.url, class: "img-rounded pull-right" %></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- This area is the title for the dropdown on the right hand side -->
+              <!-- I set it up so if a user is logged in, it displays their name. Otherwise it just says account -->
+             
+                <!-- <%= link_to image_tag(current_user.image.url(:icon)), current_user.image.url, class: "pull-left" %> -->
+                <%= current_user.first_name %>
+           
+               <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <!-- We have an if/else block here to show different links depending on if a user is signed in or not -->
+              
+                <li><%= link_to 'My Profile', profile_path %></li>
+                <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+                <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete%></li>
+             
+            </ul>
+          </li>
+
+      <% end %>
+    </ul>
   </div>
 </div>
 
@@ -60,7 +85,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right bottom-pad">
         <!-- We have an if statement here to only show the Users index link if users are signed in -->
         <% if user_signed_in? %>
           <li><%= link_to 'Command Center', feed_path %></li>
@@ -70,32 +95,8 @@
           <li><%=  link_to "About", static_about_path %></li>
           <li><%= link_to 'Tour', static_tour_path %></li>
           <li><%=  link_to "Contact", static_contact_path %></li>
-         <% if user_signed_in? %>
-          <li><%= link_to image_tag(current_user.image.url(:icon)), current_user.image.url, class: "img-rounded pull-right" %></li>
-         <% end %> 
-          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <!-- This area is the title for the dropdown on the right hand side -->
-            <!-- I set it up so if a user is logged in, it displays their name. Otherwise it just says account -->
-            <% if user_signed_in? %>
-              <!-- <%= link_to image_tag(current_user.image.url(:icon)), current_user.image.url, class: "pull-left" %> -->
-              <%= current_user.first_name %>
-            <% else %>
-              Account
-            <% end %>
-             <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <!-- We have an if/else block here to show different links depending on if a user is signed in or not -->
-            <% if user_signed_in? %>
-              <li><%= link_to 'My Profile', profile_path %></li>
-              <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-              <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete%></li>
-            <% else %>
-              <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-              <li><%= link_to 'Sign In', new_user_session_path %></li>
-            <% end %>
-          </ul>
-        </li>
+        
+          
       </ul>
     </div><!-- /.navbar-collapse -->
 </div>

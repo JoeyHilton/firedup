@@ -28,7 +28,7 @@
 //   text-decoration: underline;
 // }
 body { 
-  padding-top: 120px; 
+  padding-top: 100px; 
   font-family: 'Oxygen', sans-serif;
 }
 
@@ -85,6 +85,8 @@ a:hover, a:focus {
   color: #5B0503;
 }
 
+// --- Nav Bar ---------------------//
+
 .navbar  {
   margin-bottom: 0px;
   border-radius: 0px;
@@ -96,27 +98,59 @@ a:hover, a:focus {
   padding-left: 10px;
 }
 
+.forgot {
+  color: #FFCC05;
+}
+
+.forgot:hover {
+  color: #FF6605;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+  padding-top: 5px;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: #9d9d9d;
+}
+
 .top-nav{
   background-color: black;
   height: 60px;
+  z-index: 2;
 }
 
 .bottom-nav {
   margin-top: 60px;
   background-color: #980905;
+  min-height: 30px;
+  height: 30px;
 }
 
 li.dropdown {
   padding-right: 25px;
+  padding-top: 20px;
 }
 
 .navbar-form{
   margin-top: 6px;
 }
 
+.bottom-pad {
+  padding-right: 19px;
+}
+
 .remember {
   color: white;
 }
+
+.nav-img {
+  padding-top: 13px;
+}
+
+// --- Nav Bar ---------------------//
+
 // --- Less Bootstrappy ---------------------//
 .panel {
   border-radius: 0px;
