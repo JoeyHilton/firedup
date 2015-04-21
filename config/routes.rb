@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'static/contact'
   
    get '/connect', to: 'users#connect', as: :connect
+   get '/approve/:user_id', to: 'users#approve', as: :approve
   
 
 

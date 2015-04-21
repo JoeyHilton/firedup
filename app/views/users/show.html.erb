@@ -5,9 +5,7 @@
       <div class="center panel-heading">      
         <h1> <%= "#{@user.first_name}'s Profile" %> </h1>
         <% if @user.followed_by?(current_user) %>
-  <%= link_to "Pending Connection...", connect_path(user: @user),  class: "btn btn-primary disabled" %>
-  <% elsif @user.followed_by?(current_user) && current_user.followed_by?(@user) %>
-    <%= link_to "Connected", connect_path(user: current_user),  class: "btn btn-primary disabled" %>
+  <%= link_to "Connected", connect_path(user: @user),  class: "btn btn-primary disabled" %>
 <% else %>
   <%= link_to "Connect", connect_path(user: @user),  class: "btn btn-primary" %>
 <% end %>

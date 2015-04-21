@@ -1,0 +1,10 @@
+<div> 
+  <% @pending_connections.each do |user| %>
+    <%= user.id %>
+    <% if :approved == true %>
+      <%= link_to "Connected", connect_path(user: @user), class: "btn btn-primary disabled" %>
+    <% else %>
+      <%= link_to "Accept Connection", connect_path(user: @user), approved: true, class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+</div>
