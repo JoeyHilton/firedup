@@ -42,7 +42,7 @@
 
             <%= f.text_field :twitter, label: "Twitter", placeholder: "@twittername"  %>
 
-            <%= f.date_select :birthdate, label: "Birthdate" %>
+            <%= f.date_select :birthdate, :start_year=>1950, label: "Birthdate" %>
 
             <%= f.text_field :phone, label: "Phone", placeholder: "123-456-7890" %>
 

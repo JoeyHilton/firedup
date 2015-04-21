@@ -3,8 +3,7 @@
 <strong> Company: </strong><br>
   <%= job.company %><br>
 <strong> Time at job: </strong><br>
-  <for
-  <% if :current_employer == false %>
+  <% if job.current_employer == false %>
     <%= "From: #{job.start_date} until: #{job.end_date}" %><br>
   <% else %>
     <%= "From: #{job.start_date} until: Present" %><br>

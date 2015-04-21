@@ -1,3 +1,9 @@
 $('#myModalLabel').html("New Job");
 $('#NewModalBody').html('<%= j render partial: 'form_fields', locals: {job: @job, using_modal: true} %>');
 $('#newModal').modal('show');
+
+$("label[for=job_current_employer]").unbind("click").click( function(){
+  console.log('Itworks!')
+  $("#end-date").toggleClass( "hidden" );
+  $("#current-working").toggleClass("hidden");
+});

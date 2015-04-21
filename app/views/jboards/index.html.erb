@@ -45,8 +45,10 @@
           <small class="text-muted">Posted <%= time_ago_in_words(jboard.created_at) %> ago </small>
           <small class="text-muted">in category: <%= jboard.category %></small><br>
           <small><%= link_to 'See Details', jboard_path(jboard) %></small>
-         | <%= link_to 'Edit', edit_jboard_path(jboard) %> | 
-        <%= link_to 'Delete', jboard_path(jboard), method: :delete %>
+          <% if jboard.user == current_user && user_signed_in? %>
+            | <%= link_to 'Edit', edit_jboard_path(jboard) %> | 
+            <%= link_to 'Delete', jboard_path(jboard), method: :delete %>
+          <% end %>
           
         </div> <!-- End panel body -->
       </div>
