@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   private
   
     def post_params
-        params.require(:post).permit(:content, :share_with, :user_id)
+        params.require(:post).permit(:content, :share_with, :user_id, :image)
     end
 
     def set_post
