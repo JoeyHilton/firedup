@@ -1,18 +1,5 @@
 Rails.application.routes.draw do
 
-  # get 'jboards/index'
-
-  # get 'jboards/show'
-
-  # get 'jboards/new'
-
-  # get 'jboards/create'
-
-  # get 'jboards/update'
-
-  # get 'jboards/destroy'
-
-  # get 'jboards/edit'
 
   root 'static#home'
 
@@ -22,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, :only => [:show, :index]
 
   resources :jsearches, :only => [:new, :create, :show]
+  resources :msearches, :only => [:new, :create, :show]
 
   get '/profile', to: 'users#profile', as: :profile
   get '/posts/feed', to: 'posts#feed', as: :feed

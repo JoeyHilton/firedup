@@ -4,9 +4,9 @@
 
     <%= s.select :state, options_for_select(@states), :include_blank => true %>
 
-    <%= s.select :city, options_for_select(@cities), :include_blank => true %>
+    <%= s.text_field :city, :include_blank => true %>
 
-    <%= s.select :agency, options_for_select(@agencies), :include_blank => true %>
+    <%= s.text_field :agency, :include_blank => true %>
 
   <div class="actions"><%= s.submit "Search" %></div>
   

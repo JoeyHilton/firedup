@@ -1,0 +1,13 @@
+<%= bootstrap_form_for @msearch do |msearch| %>
+
+    <%= msearch.text_field :first_name, :include_blank => true %>
+
+    <%= msearch.text_field :last_name, :include_blank => true %>
+
+    <%= msearch.select :city, options_for_select(@city), :include_blank => true %>
+
+    <%= msearch.select :state, options_for_select(@state), :include_blank => true %>
+
+  <div class="actions"><%= msearch.submit "Search" %></div>
+  
+<% end %>

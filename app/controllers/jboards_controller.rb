@@ -3,6 +3,10 @@ class JboardsController < ApplicationController
 
   def index
     @jboards = Jboard.all
+    if params[:last_seach]
+      jsearch = Jsearch.find(params[:last_search])
+      jsearch.destroy
+    end
     @jsearch = Jsearch.new
 
     @categories = Jboard.uniq.pluck(:category)
