@@ -28,17 +28,18 @@
 //   text-decoration: underline;
 // }
 body { 
-  padding-top: 70px; 
+  padding-top: 120px; 
   font-family: 'Oxygen', sans-serif;
+}
+
+blockquote {
+  font-size: 14px;
 }
 
 h1 {
   font-family: 'Russo One', sans-serif;
 }
 
-blockquote {
-  font-size: 14px;
-}
 
 .headline{
   font-family: 'Russo One', sans-serif;
@@ -76,6 +77,13 @@ img.bg {
   }
 }
 
+a {
+  color: #980905;
+}
+
+a:hover, a:focus {
+  color: #5B0503;
+}
 
 .navbar  {
   margin-bottom: 0px;
@@ -83,6 +91,32 @@ img.bg {
   z-index: 1;
 }
 
+.logo {
+  padding-top: 7px;
+  padding-left: 10px;
+}
+
+.top-nav{
+  background-color: black;
+  height: 60px;
+}
+
+.bottom-nav {
+  margin-top: 60px;
+  background-color: #980905;
+}
+
+li.dropdown {
+  padding-right: 25px;
+}
+
+.navbar-form{
+  margin-top: 6px;
+}
+
+.remember {
+  color: white;
+}
 // --- Less Bootstrappy ---------------------//
 .panel {
   border-radius: 0px;
