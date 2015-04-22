@@ -74,5 +74,7 @@ class User < ActiveRecord::Base
     end
     false
   end
+
+  
 end
 

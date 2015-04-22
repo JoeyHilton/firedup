@@ -1,36 +1,35 @@
-<div class="container">
 
-  <div class="container"><!-- START HEADER CONTAINER -->
-    <div class="row">
-          <div class="col-md-12 text-center headline3">
-            <h2>Command Center</h2>
-          </div>
-    </div>
-  </div><!-- END HEADER CONTAINER -->
+  <div id="wrapper"><!-- START BODY CONTAINER -->
+  
 
-  <div class="container"><!-- START Body CONTAINER -->
-  <div class="row"><!-- Start Second Row -->
-
-    <div class="col-md-2 text-center"><!-- Start Left Column -->
-      
-    </div><!-- End Left Column -->
-
-    <div class="col-md-6"><!-- Start Center Column -->
-        <div class="panel panel-default">
-          
-
-          <%= render partial: "posts/feed", locals: {posts: @posts} %>
-
-          
+      <div id="sidebar-wrapper" class="col-md-2">
+            <div id="sidebar">
+                <ul class="nav list-group">
+                    <li>
+                        <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
+                    </li>
+                    <li>
+                        <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
+                    </li>
+                    <li>
+                        <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
+                    </li>      
+                </ul>
+            </div>
         </div>
-    </div> <!-- End Center Column -->
 
-    <div class="col-md-4 text-center"><!-- Start Right Column -->
-      <h3>Right Column</h3>
-    </div><!-- End Right Column -->
+        <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
+          <div id="center">
+            <%= render partial: "posts/feed", locals: {posts: @posts} %>
+            
+          </div>
+        </div> <!-- END CENTER COLUMN -->
 
-  </div> <!-- End Second Row -->
-  </div> <!-- End body container Row -->
+        <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
+          <div id="sidebar">
+           
+          </div>
+        </div> <!-- END right COLUMN -->
 
-
-</div><!-- End Container -->
+   
+  </div><!-- END BODY CONTAINER --> 

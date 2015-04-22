@@ -1,10 +1,39 @@
-<div class="col-md-6 col-md-offset-2">
-    <div class="panel panel-default">
-      <div class="center panel-heading">      
-        <h1> New Job Post</h1>
-      </div>
-      <div class="panel-body">
-        <%= render 'jboard_form' %>
-      </div>
-  </div>
-</div>
+
+  <div id="wrapper"><!-- START BODY CONTAINER -->
+  
+
+      <div id="sidebar-wrapper" class="col-md-2">
+            <div id="sidebar">
+                <ul class="nav list-group">
+                    <li>
+                        <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
+                    </li>
+                    <li>
+                        <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
+                    </li>
+                    <li>
+                        <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
+          <div id="center">
+            <h4>Post a Job</h4>
+            <%= render 'jboard_form' %>
+            
+          </div>
+        </div> <!-- END CENTER COLUMN -->
+
+        <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
+          <div id="sidebar">
+           
+          </div>
+        </div> <!-- END right COLUMN -->
+
+   
+  </div><!-- END BODY CONTAINER --> 
+
+

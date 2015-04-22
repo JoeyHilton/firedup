@@ -11,9 +11,9 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
 
-    @jobs = @profile.jobs
-    @educations = @profile.educations
-    @certs = @profile.certs
+    @jobs = current_user.jobs
+    @educations = current_user.educations
+    @certs = current_user.certs
     @user = User.find(params[:id])
 
   end

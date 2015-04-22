@@ -17,6 +17,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @messages = @user.messages
+
+    @jobs = current_user.jobs
+    @educations = current_user.educations
+    @certs = current_user.certs
+    @user = User.find(params[:id])
   end
 
   def profile
