@@ -14,9 +14,8 @@
     <div class="col-md-2"><!-- Start Left Column -->
 
 
-      <h3>Search Jobs</h3>
+      <h3>Place Holder</h3>
  
-        <%= render 'layouts/jobsearchform'  %>
 
     </div><!-- End Left Column -->
 
@@ -25,7 +24,7 @@
         <div class="panel panel-default">
           <div class="center panel-heading">      
             <h1> Search Results </h1>
-            <%= link_to 'Search Again', jboards_path %>
+            <%= link_to 'Search Again', jboards_path(last_search: @jsearch.id), class: "btn btn-primary" %>
           </div>
           
           <div class="panel-body">
@@ -42,7 +41,7 @@
                     <small class="text-muted">Posted <%= time_ago_in_words(c.created_at) %> ago </small>
 
                   <small class="text-muted">in category: <%= c.category %></small><br>
-                  <small><%= link_to 'See Details', jboard_path(c) %></small> | 
+                  <small><%= link_to 'See Details', jboard_path(c) %></small> 
                   <%= link_to 'Edit', edit_jboard_path(c) %> | 
                   <%= link_to 'Delete', jboard_path(c), method: :delete %>
                   <hr>

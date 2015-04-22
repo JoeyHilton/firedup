@@ -10,15 +10,15 @@
     <%#= job_box(job) %>
   </div> -->
 
-  <%= f.date_select :start_date %>
+  <%= f.date_select :start_date, :start_year=>1950 %>
   <div id="end-date" class="">
-    <%= f.date_select :end_date %>
+    <%= f.date_select :end_date, :start_year=>1950 %>
   </div>
   <div id="current-working" class="hidden">
     I currently work here.
   </div>
 
-  <%= f.check_box :current_employer, :onclick=>"toggleCurrentJob();" %>
+  <%= f.check_box :current_employer %>
 
   <%#= f.label :job_description %>
   <%= f.text_area :description %>

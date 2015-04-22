@@ -7,11 +7,11 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:facebook]
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    where("email = ? OR provider = ? AND uid = ? ", auth.info.email, auth.provider, auth.uid).first_or_create do |user|
       user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
-      user.image = auth.info.image # assuming the user model has an image
+      user.password = user.password_confirmation = Devise.friendly_token[0,20]
+      # user.name = auth.info.name   # assuming the user model has a name
+      # user.image = auth.info.image # assuming the user model has an image
     end
   end
 
@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
   has_many :jobs
   has_many :certs
   has_many :posts
+  has_many :comments
   has_many :jboards
 
   has_attached_file :image, styles: { icon: "32x32", small: "64x64", med: "100x100", large: "200x200" },

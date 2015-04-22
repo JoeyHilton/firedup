@@ -1,3 +1,4 @@
+
 <div class="container"><!-- START MAIN CONTAINER -->
   
   <div class="container"><!-- START HEADER CONTAINER -->
@@ -12,9 +13,13 @@
     <div class="row"> 
 
       <div class="col-md-2"><!-- START LEFT COLUMN -->
+        <%= link_to 'Add a Job', new_user_jboard_path(current_user)%><br>
+        <%= link_to "Create A Post", new_user_post_path(current_user) %><br>
+        <%= link_to "Show Messages", user_messages_path(current_user) %><br>
       </div> <!-- END LEFT COLUMN -->
 
         <div class="col-md-6"><!-- START CENTER COLUMN -->
+          <%= paginate (@posts) %>
           <% posts.order("created_at DESC").each do |post| %>
             <% if post.user.followed_by?(current_user) || post.share_with == "public" || post.user == current_user %>
               <div class="panel panel-default">
@@ -22,13 +27,31 @@
                 <%= link_to image_tag(post.user.image.url(:icon)), post.user.image.url, class: "pull-left iconImagePanel" %>      
                   <strong> <%= "#{post.user.first_name} #{post.user.last_name}" %> </strong>
                   <small class="text-muted"><%= time_ago_in_words(post.created_at) %> ago </small>
+                  <% if post.user == current_user && user_signed_in? %>
+                         | <%= link_to "Edit", edit_post_path(post) %> |
+                        <%= link_to "Delete", post_path(post), method: :delete%>
+                  <% end %>
                 </div>
                 <div class="panel-body panelBodyFeed">
                   <%= post.content %>
+                  <%= image_tag post.image.url(:xlarge), class: "pull-right" if post.image_file_name %>
+                    <p><%= link_to "Add Comment", new_post_comment_path(post) %></p>
+                  <% post.comments.each do |comment| %>
+                    <blockquote>
+                      <p><%= comment.body %></p>
+                      <footer><%= comment.user.first_name %>
+                      <% if comment.user == current_user && user_signed_in? %>
+                         | <%= link_to "Edit", edit_comment_path(comment) %> |
+                        <%= link_to "Delete", comment_path(comment), method: :delete%>
+                      </footer>
+                      <% end %>
+                    </blockquote>
+                  <% end %>
                 </div>
               </div>
             <% end %>
           <% end %>
+          <%= paginate (@posts) %>
         </div> <!-- END CENTER COLUMN -->
 
         <div class="col-md-4"> <!-- Begin right column -->
@@ -37,4 +60,3 @@
     </div><!-- END ROW -->
   </div><!-- END BODY CONTAINER --> 
 
-</div><!-- END MAIN CONTAINER -->   
