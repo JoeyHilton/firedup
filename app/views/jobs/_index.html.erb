@@ -1,12 +1,9 @@
-<strong> Position: </strong><br>
-  <%= job.position %><br>
-<strong> Company: </strong><br>
+<strong> <%= job.position %></strong><br>
   <%= job.company %><br>
-<strong> Time at job: </strong><br>
   <% if job.current_employer == false %>
-    <%= "From: #{job.start_date} until: #{job.end_date}" %><br>
+    <%= "Employed from #{job.start_date} to #{job.end_date}" %><br>
   <% else %>
-    <%= "From: #{job.start_date} until: Present" %><br>
+    <%= "Employed from #{job.start_date} to Current" %><br>
   <% end %>
 <strong> Job Description: </strong><br>
   <%= job.description %><br><br>
