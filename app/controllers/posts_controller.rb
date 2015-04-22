@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(12)
   end
 
   def show
@@ -38,17 +38,17 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to user_posts_path(current_user)
+    redirect_to feed_path
   end
 
   def feed
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(12)
   end
 
   private
   
     def post_params
-        params.require(:post).permit(:content, :share_with, :user_id)
+        params.require(:post).permit(:content, :share_with, :user_id, :image)
     end
 
     def set_post

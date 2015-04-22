@@ -19,7 +19,7 @@ $(function() {
   
 $('#home a').click(function (e) {
   e.preventDefault()
-  $(this).tab('show')
+  // $(this).tab('show')
 })
 
 $('#education a').click(function (e) {
@@ -31,10 +31,6 @@ $('#certs a').click(function (e) {
   $(this).tab('show')
 })
 
-function toggleCurrentJob() {
-    $("#end-date").toggleClass( "hidden" );
-    $("#current-working").toggleClass("hidden");
-}
 });
 
 

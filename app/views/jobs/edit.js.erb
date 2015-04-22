@@ -1,3 +1,14 @@
 $('#myModalLabel').html("Edit Job");
 $('#NewModalBody').html('<%= j render partial: 'form_fields', locals: {job: @job, using_modal: true} %>');
 $('#newModal').modal('show');
+
+<% if @job.current_employer %>
+  $("#end-date").toggleClass( "hidden" );
+  $("#current-working").toggleClass("hidden");
+<% end %>
+
+$("label[for=job_current_employer]").on('click', function( event, myName ){
+  
+  $("#end-date").toggleClass( "hidden" );
+  $("#current-working").toggleClass("hidden");
+});

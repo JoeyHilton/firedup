@@ -18,13 +18,14 @@
           <strong> <%= "#{@user.first_name}  #{@user.last_name}" %> </strong><br>
         
             <%= @user.address %><br>
-            <%= "#{@user.city}, #{@user.state}, #{@user.zip}" %><br><br>
-
-          
+            <%= "#{@user.city}, #{@user.state}, #{@user.zip}" %><br>
+          <strong> Twitter:</strong><br>
+            <%= @user.twitter %><br>
+          <strong> Birthdate:</strong><br>
+            <%= @user.birthdate %><br>
+          <strong> Phone Numbers:</strong><br>
             Phone: <%= @user.phone %><br>
             Cell Phone: <%= @user.mobile_phone %><br>
-
-          
             <%= @user.email %><br>
             <%= @user.twitter %><br>
 

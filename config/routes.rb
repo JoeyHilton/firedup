@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root 'static#home'
 
   devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions',
@@ -21,8 +20,10 @@ Rails.application.routes.draw do
       resources :certs
       resources :educations
       resources :messages
-      resources :posts
       resources :jboards, :except => [:index]
+      resources :posts do
+        resources :comments, except: [:index, :show]
+      end
     end
   end
 

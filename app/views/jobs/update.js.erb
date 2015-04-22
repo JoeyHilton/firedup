@@ -1,2 +1,8 @@
 $('#newModal').modal('hide');
 $('#job-<%= @job.id %>').html('<%= j render partial: 'jobs/index', locals: { job: @job } %>');
+
+$("label[for=job_current_employer]").on('click', function( event, myName ){
+  
+  $("#end-date").toggleClass( "hidden" );
+  $("#current-working").toggleClass("hidden");
+});

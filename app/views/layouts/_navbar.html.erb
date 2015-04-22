@@ -1,9 +1,75 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
+<div class="navbar navbar-inverse navbar-fixed-top top-nav" role="navigation">  
+  
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </button>
+    <%= link_to(image_tag("logo.png", :alt => "FiredUp", :title => "Home", class: 'logo'), root_path)%>
+  </div>
+  
+  <div class="collapse navbar-collapse">
+      <% if !user_signed_in? %>
+      <tbody>
+       <%= form_for resource, as: resource_name, url: session_path(resource_name), method: :post, html: { class: "navbar-form form-inline pull-right"} do |f| %>
+        <tr>
+          <td>
+          
+            <%= f.email_field :email, autofocus: true, :placeholder => 'Email address' %>
+          </td>
 
+          <td>
+         
+            <%= f.password_field :password, autocomplete: "off", :placeholder => 'Password' %>
+          </td>
+          <td>
+            <%= f.submit "Log in", class: 'btn btn-warning btn-sm'%>
+          </td>
+        </tr><br>
+        <tr>
 
+          <% if devise_mapping.rememberable? -%>
+            <td>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, class: 'remember' %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            </td>
+          <% end -%>
+            <td>
+              <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to "Forgot your password?", new_password_path(resource_name), class: 'forgot' %><br />
+              <% end -%>
+            </td>
+        </tr>
+      <% end %>
+    </tbody>
+    <% else %>
+      <ul class="nav navbar-nav navbar-right">
+        <li class=" nav-img"><%= link_to image_tag(current_user.image.url(:icon)), current_user.image.url, class: "img-rounded pull-right" %></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- This area is the title for the dropdown on the right hand side -->
+              <!-- I set it up so if a user is logged in, it displays their name. Otherwise it just says account -->
+                <%= current_user.first_name %>
+           
+               <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <!-- We have an if/else block here to show different links depending on if a user is signed in or not -->
+              
+                <li><%= link_to 'My Profile', profile_path %></li>
+                <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+                <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete%></li>
+             
+            </ul>
+          </li>
 
+      <% end %>
+    </ul>
+  </div>
+</div>
 
+<div class="navbar navbar-inverse navbar-fixed-top bottom-nav" role="navigation"> 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -12,49 +78,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a><%= link_to "FiredUP", root_path, class: 'navbar-brand' %></a>
+      <!-- <a><%= link_to "FiredUP", root_path, class: 'navbar-brand' %></a> -->
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right bottom-pad">
         <!-- We have an if statement here to only show the Users index link if users are signed in -->
         <% if user_signed_in? %>
           <li><%= link_to 'Command Center', feed_path %></li>
           <li><%= link_to 'Members', users_path %></li>
-          <li><%= link_to "Create A Post", new_user_post_path(current_user) %></li>
-          <li><%= link_to "Job Board", jboards_path  %></li>
+          <li><%= link_to 'Job Board', jboards_path %></li>
         <% end %>
           <li><%=  link_to "About", static_about_path %></li>
           <li><%= link_to 'Tour', static_tour_path %></li>
           <li><%=  link_to "Contact", static_contact_path %></li>
-         <% if user_signed_in? %>
-          <li><%= link_to image_tag(current_user.image.url(:icon)), current_user.image.url, class: "img-rounded pull-right" %></li>
-         <% end %> 
-          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <!-- This area is the title for the dropdown on the right hand side -->
-            <!-- I set it up so if a user is logged in, it displays their name. Otherwise it just says account -->
-            <% if user_signed_in? %>
-              <!-- <%= link_to image_tag(current_user.image.url(:icon)), current_user.image.url, class: "pull-left" %> -->
-              <%= current_user.first_name %>
-            <% else %>
-              Account
-            <% end %>
-             <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <!-- We have an if/else block here to show different links depending on if a user is signed in or not -->
-            <% if user_signed_in? %>
-              <li><%= link_to 'My Profile', profile_path %></li>
-              <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-              <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete%></li>
-            <% else %>
-              <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-              <li><%= link_to 'Sign In', new_user_session_path %></li>
-            <% end %>
-          </ul>
-        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+</div>
