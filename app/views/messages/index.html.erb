@@ -13,23 +13,25 @@
     <div role="tabpanel" class="tab-pane active" id="messages">
       <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
       <div class="messagesIndex panel-body" id="messagesList"> 
-        <table class="table table-hover">
+        <table class="table">
           <thead>
             <tr>
               <th>Subject</th>
               <th>Content</th>
               <th>Archive</th>
-              <th>Show</th>
+              <th>Read</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             <% @received_messages.each do |message| %>
             
-            <tr >
+            <tr class="message-row <%= viewed_message_color(message.viewed)%>">
               <td><%= message.subject %></td>
               <td><%= message.content %></td>
               <td><%= link_to "", archive_path(message), class: "fa fa-archive"%></td>
               <td><%= link_to "", message_path(message), class: "fa fa-envelope"%></td>
+              <td><%= link_to "", message, method: :delete, class: "fa fa-trash" %></td>
             </tr>
             
             <% end %>

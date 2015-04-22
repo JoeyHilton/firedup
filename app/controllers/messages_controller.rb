@@ -1,5 +1,21 @@
 class MessagesController < ApplicationController
 
+  def new
+    @message = Message.new
+    @user = User.find(params[:user_id])
+  end
+
+  def create
+    @message = Message.new(message_params)
+    @message.user_id = current_user.id
+
+    if @message.save
+      redirect_to profile_path
+    else
+      render :new
+    end
+  end
+
   def index
     @user = User.find(params[:user_id])
     @received_messages = @user.received_messages.where(archived: false)
@@ -22,24 +38,13 @@ class MessagesController < ApplicationController
 
     @message.update_attributes(archived: true)
     redirect_to user_messages_path(current_user)
-
   end
 
-  def new
-    @message = Message.new
-    @user = User.find(params[:user_id])
-  end
-
-  def create
-    @message = Message.new(message_params)
-    @message.user_id = current_user.id
-
-    if @message.save
-      redirect_to profile_path
-    else
-      render :new
-    end
-  end
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy
+    redirect_to user_messages_path(current_user)
+  end  
 
   private
 

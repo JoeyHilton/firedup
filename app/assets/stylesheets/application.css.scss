@@ -223,11 +223,18 @@ li.dropdown {
 }
 
 .viewed {
-  background-color: blue;
+  background-color: #A7A7A7; 
+}
+.viewed:hover {
+  background-color: #BABABA;
 }
 
 .not_viewed {
-  background-color: red;
+  background-color: #828282;
+}
+
+.not_viewed:hover {
+  background-color: #959595;
 }
 
 .smallImage {
