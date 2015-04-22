@@ -23,7 +23,7 @@
           <div class="panel panel-default">
             <div class="panel-body memberPanelOverride">
               <h4 class="memberTitleOverride"><strong>
-                <%= link_to image_tag(user.image.url(:med)), user.image.url, class: "pull-left smallImage" %>
+                <%= link_to image_tag(user.image.url(:med)), user_path(user), class: "pull-left smallImage" %>
                 <%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%>
               </strong></h4>
 
