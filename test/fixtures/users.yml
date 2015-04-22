@@ -35,3 +35,19 @@ two:
   gender: male
   secondary_email: example2@example.com
   bio: MyText
+
+three: 
+  email: example3@example.com
+  first_name: Ryan2
+  last_name: Carter2
+  address: 1234 Main
+  city: Anywheres
+  state: Utahs
+  zip: 11112
+  twitter: carters
+  birthdate: <%= Date.today %>
+  phone: 5555556662
+  mobile_phone: 7778889992
+  gender: male
+  secondary_email: example4@example.com
+  bio: MyTexts
