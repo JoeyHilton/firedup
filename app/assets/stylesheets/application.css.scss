@@ -214,6 +214,22 @@ li.dropdown {
   text-indent: left;
 }
 
+
+.nav.navbar-nav.navbar-right li:first-child  {
+  color: red;
+}
+.new-message{
+  color: red !important;
+}
+
+.viewed {
+  background-color: blue;
+}
+
+.not_viewed {
+  background-color: red;
+}
+
 .smallImage {
   padding: 0px 10px 0px 0px;
 }

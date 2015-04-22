@@ -1,0 +1,11 @@
+<div> 
+  <h2>Pending Connections</h2>
+  <ul>
+  <% @pending_connections.each do |user| %>
+    <li><strong><%= "#{user.first_name}" %></strong> <strong><%= " #{user.last_name} " %></strong><%="would like to Connect with you!" %> <%= link_to "Approve", approve_path(user)  %> <%= link_to 'View Profile', user_path(user) %></li>
+
+  <% end %>
+
+  </ul>
+
+</div>
