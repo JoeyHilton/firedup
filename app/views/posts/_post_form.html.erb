@@ -7,7 +7,7 @@
 
     <%= f.select :share_with, Post::SHARES, prompt: "Pick one",label: "Share with:" %>
 
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-warning" %>
   <% end %>
 
   <!-- t.integer  "user_id"

@@ -1,2 +1,43 @@
-<%= render partial: "posts/feed", locals: {posts: @posts} %>
+
+  <div id="wrapper"><!-- START BODY CONTAINER -->
+  
+
+      <div id="sidebar-wrapper" class="col-md-2">
+            <div id="sidebar">
+                <ul class="nav list-group">
+                    <li>
+                        <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
+                    </li>
+                    <li>
+                        <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
+                    </li>
+                    <li>
+                        <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
+                    </li>
+                    <li>
+                        <a class="list-group-item" href="#"><i class="icon-home icon-1x"></i>Sidebar Item 10</a>
+                    </li>
+                    <li>
+                        <a class="list-group-item" href="#"><i class="icon-home icon-1x"></i>Sidebar Item 11</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
+          <div id="center">
+            <%= render partial: "posts/feed", locals: {posts: @posts} %>
+            
+          </div>
+        </div> <!-- END CENTER COLUMN -->
+
+        <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
+          <div id="sidebar">
+           
+          </div>
+        </div> <!-- END right COLUMN -->
+
+   
+  </div><!-- END BODY CONTAINER --> 
+
 
