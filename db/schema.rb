@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20150420201952) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +23,9 @@ ActiveRecord::Schema.define(version: 20150420201952) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "profile_id"
     t.integer  "user_id"
   end
 
-  add_index "certs", ["profile_id"], name: "index_certs_on_profile_id", using: :btree
   add_index "certs", ["user_id"], name: "index_certs_on_user_id", using: :btree
 
   create_table "educations", force: :cascade do |t|
@@ -41,11 +37,9 @@ ActiveRecord::Schema.define(version: 20150420201952) do
     t.string   "degree"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "profile_id"
     t.integer  "user_id"
   end
 
-  add_index "educations", ["profile_id"], name: "index_educations_on_profile_id", using: :btree
   add_index "educations", ["user_id"], name: "index_educations_on_user_id", using: :btree
 
   create_table "follows", force: :cascade do |t|
@@ -97,12 +91,10 @@ ActiveRecord::Schema.define(version: 20150420201952) do
     t.text     "description"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
-    t.integer  "profile_id"
     t.integer  "user_id"
     t.boolean  "current_employer", default: false
   end
 
-  add_index "jobs", ["profile_id"], name: "index_jobs_on_profile_id", using: :btree
   add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
   create_table "jsearches", force: :cascade do |t|
@@ -158,31 +150,11 @@ ActiveRecord::Schema.define(version: 20150420201952) do
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
-
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-
-  create_table "profiles", force: :cascade do |t|
-    t.string   "up_fname"
-    t.string   "up_lname"
-    t.string   "up_address"
-    t.string   "up_city"
-    t.string   "up_state"
-    t.integer  "up_zip"
-    t.string   "up_twitter"
-    t.date     "up_birthdate"
-    t.string   "up_phone"
-    t.string   "up_mobilephone"
-    t.string   "up_gender"
-    t.string   "up_secondemail"
-    t.text     "up_bio"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "user_id"
-
   end
 
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
@@ -226,16 +198,9 @@ ActiveRecord::Schema.define(version: 20150420201952) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "certs", "profiles"
-  add_foreign_key "certs", "profiles"
   add_foreign_key "certs", "users"
-  add_foreign_key "educations", "profiles"
-  add_foreign_key "educations", "profiles"
   add_foreign_key "educations", "users"
   add_foreign_key "jboards", "users"
-  add_foreign_key "jobs", "profiles"
   add_foreign_key "jobs", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "profiles", "users"
-  add_foreign_key "profiles", "users"
 end

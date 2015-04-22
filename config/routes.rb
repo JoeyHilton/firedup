@@ -44,8 +44,9 @@ Rails.application.routes.draw do
   get 'static/tour'
   get 'static/contact'
   
-   get '/connect', to: 'users#connect', as: :connect
-   get '/approve/:user_id', to: 'users#approve', as: :approve
+   get '/connect/:id', to: 'users#connect', as: :connect
+   get '/pending_connection', to: 'users#pending_connection', as: :pending_connection
+   get '/approve_connection/:id', to: 'users#approve_connection', as: :approve
   
 
 
