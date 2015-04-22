@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421223545) do
+ActiveRecord::Schema.define(version: 20150422050700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20150421223545) do
     t.string   "followable_type"
     t.integer  "followable_id"
     t.datetime "created_at"
+    t.boolean  "approved",        default: false
   end
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
@@ -142,11 +143,13 @@ ActiveRecord::Schema.define(version: 20150421223545) do
   create_table "messages", force: :cascade do |t|
     t.string   "subject"
     t.text     "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "user_id"
     t.integer  "receiver_id"
     t.integer  "sender_id"
+    t.boolean  "viewed",      default: false
+    t.boolean  "archived",    default: false
   end
 
   create_table "msearches", force: :cascade do |t|
