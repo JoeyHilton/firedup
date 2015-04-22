@@ -3,7 +3,7 @@
   <div class="container"><!-- START HEADER CONTAINER -->
     <div class="row">
           <div class="col-md-12 text-center headline3">
-            <h2>FiredUp Job Board</h2>
+            <h2>Members</h2>
           </div>
     </div>
   </div><!-- END HEADER CONTAINER -->
@@ -24,26 +24,27 @@
         <div class="panel panel-default">
           <div class="center panel-heading">      
             <h1> Search Results </h1>
-            <%= link_to 'Search Again', jboards_path(last_search: @jsearch.id), class: "btn btn-primary" %>
+            <%= link_to 'Search Again', users_path(), class: "btn btn-primary" %>
           </div>
           
           <div class="panel-body">
             
-            <% if @jsearch.search_jboards.empty? %>
+            <% if @msearch.search_members.empty? %>
                 <p>No Records Found</p>
             <% else %> 
                 
-              <% @jsearch.search_jboards.order("created_at DESC").each do |c| %>
-                  <strong><h4 class="jboardTitleOverride"><%= link_to c.title, jboard_path(c) %></h4></strong>
-                    <%= c.agency %><br>
-                    <%= "#{c.city}, #{c.state}" %><br>
+              <% @msearch.search_members.order("created_at DESC").each do |member| %>
 
-                    <small class="text-muted">Posted <%= time_ago_in_words(c.created_at) %> ago </small>
+                  <strong><h4 class="jboardTitleOverride"><%= link_to "#{member.first_name} #{member.last_name}", user_path(member) %></h4></strong>
 
-                  <small class="text-muted">in category: <%= c.category %></small><br>
-                  <small><%= link_to 'See Details', jboard_path(c) %></small> 
-                  <%= link_to 'Edit', edit_jboard_path(c) %> | 
-                  <%= link_to 'Delete', jboard_path(c), method: :delete %>
+                    <%= "#{member.city}, #{member.state}" %><br>
+
+                    <small class="text-muted">Member since: <%= member.created_at.strftime("%B %Y") %></small>
+                      <br>
+                  
+                   
+                  <%= link_to 'Edit', edit_jboard_path(member) %> | 
+                  <%= link_to 'Delete', jboard_path(member), method: :delete %>
                   <hr>
               <% end %>
             <% end %>
@@ -67,3 +68,4 @@
 
 
 </div><!-- End Container -->
+

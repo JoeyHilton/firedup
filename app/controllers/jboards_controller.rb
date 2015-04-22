@@ -3,20 +3,17 @@ class JboardsController < ApplicationController
 
   def index
     @jboards = Jboard.all
-    @searched = Jboard.search(params[:search])
+    if params[:last_seach]
+      jsearch = Jsearch.find(params[:last_search])
+      jsearch.destroy
+    end
     @jsearch = Jsearch.new
 
     @categories = Jboard.uniq.pluck(:category)
     @states = Jboard.uniq.pluck(:state)
     @cities = Jboard.uniq.pluck(:city)
     @agencies = Jboard.uniq.pluck(:agency)
-
   end
-
-  def sorted
-    @searched = Jboard.search(params[:search])
-
-  end 
 
 
   def show

@@ -1,17 +1,13 @@
-<h1>Advanced Search</h1>
- 
 <%= bootstrap_form_for @jsearch do |s| %>
-  
+
     <%= s.select :category, options_for_select(@categories), :include_blank => true %>
 
     <%= s.select :state, options_for_select(@states), :include_blank => true %>
 
-    <%= s.select :city, options_for_select(@cities), :include_blank => true %>
+    <%= s.text_field :city, :include_blank => true %>
 
-    <%= s.select :agency, options_for_select(@agencies), :include_blank => true %>
+    <%= s.text_field :agency, :include_blank => true %>
 
   <div class="actions"><%= s.submit "Search" %></div>
   
 <% end %>
-
-<%= link_to "Back", jboards_path %>

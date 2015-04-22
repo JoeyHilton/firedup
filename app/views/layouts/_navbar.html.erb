@@ -51,8 +51,6 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- This area is the title for the dropdown on the right hand side -->
               <!-- I set it up so if a user is logged in, it displays their name. Otherwise it just says account -->
-             
-                <!-- <%= link_to image_tag(current_user.image.url(:icon)), current_user.image.url, class: "pull-left" %> -->
                 <%= current_user.first_name %>
            
                <span class="caret"></span></a>
@@ -95,8 +93,6 @@
           <li><%=  link_to "About", static_about_path %></li>
           <li><%= link_to 'Tour', static_tour_path %></li>
           <li><%=  link_to "Contact", static_contact_path %></li>
-        
-          
       </ul>
     </div><!-- /.navbar-collapse -->
 </div>
