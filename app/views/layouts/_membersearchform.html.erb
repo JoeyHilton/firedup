@@ -8,6 +8,6 @@
 
     <%= msearch.select :state, options_for_select(@state), :include_blank => true %>
 
-  <div class="actions"><%= msearch.submit "Search" %></div>
+  <div class="actions"><%= msearch.submit "Search", class: "btn btn-warning" %></div>
   
 <% end %>
