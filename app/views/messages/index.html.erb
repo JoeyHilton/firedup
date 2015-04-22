@@ -1,81 +1,86 @@
 
 
 <div role="tabpanel">
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Received Messages</a></li>
-  <li role="presentation"><a href="#sent" aria-controls="sent-messages" role="tab" data-toggle="tab">Sent Messages</a></li>
-  <li role="presentation"><a href="#archived" aria-controls="archived-messages" role="tab" data-toggle="tab">Sent Messages</a></li>
-</ul>
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#messages" aria-controls="home" role="tab" data-toggle="tab">Received Messages</a></li>
+    <li role="presentation"><a href="#sent" aria-controls="sent-messages" role="tab" data-toggle="tab">Sent Messages</a></li>
+    <li role="presentation"><a href="#archived" aria-controls="archived-messages" role="tab" data-toggle="tab">Archived Messages</a></li>
+  </ul>
 
 
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="home">
-    <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
-    <div class="jobsIndex panel-body" id="jobsList"> 
-      <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Subject</th>
-        <th>Content</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @received_messages.each do |message| %>
-      
-      <tr class="message-row <%= viewed_message_color(message.viewed)%>" data-link="<%= message_path(message) %>">
-      <td><%= message.subject %></td>
-      <td><%= message.content %></td>
-      </tr>
-      
-      <% end %>
-    </tbody>
-  </table>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="messages">
+      <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
+      <div class="messagesIndex panel-body" id="messagesList"> 
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Content</th>
+              <th>Archive</th>
+              <th>Show</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @received_messages.each do |message| %>
+            
+            <tr >
+              <td><%= message.subject %></td>
+              <td><%= message.content %></td>
+              <td><%= link_to "", archive_path(message), class: "fa fa-archive"%></td>
+              <td><%= link_to "", message_path(message), class: "fa fa-envelope"%></td>
+            </tr>
+            
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <div role="tabpanel" class="tab-pane" id="sent">
+      <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
+      <div class="sentIndex panel-body" id="sentList"> 
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Content</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sent_messages.each do |message| %>
+            <tr>
+            <th><%= message.subject %></th>
+            <th><%= message.content %></th>
+            <% end %>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="archived">
+      <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
+      <div class="archivedIndex panel-body" id="archivedList"> 
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Content</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @archived_messages.each do |message| %>
+            <tr>
+            <th><%= message.subject %></th>
+            <th><%= message.content %></th>
+            <% end %>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-
-
-<div role="tabpanel" class="tab-pane" id="sent">
-    <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
-    <div class="jobsIndex panel-body" id="somethingelse"> 
-<table class="table">
-    <thead>
-      <tr>
-        <th>Subject</th>
-        <th>Content</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @sent_messages.each do |message| %>
-      <tr>
-      <th><%= message.subject %></th>
-      <th><%= message.content %></th>
-      <% end %>
-    </tr>
-    </tbody>
-  </table>
-</div>
-  </div>
-
-  <div role="tabpanel" class="tab-pane" id="archived">
-    <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
-    <div class="jobsIndex panel-body" id="somethingelseelse"> 
-<table class="table">
-    <thead>
-      <tr>
-        <th>Subject</th>
-        <th>Content</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @archived_messages.each do |message| %>
-      <tr>
-      <th><%= message.subject %></th>
-      <th><%= message.content %></th>
-      <% end %>
-    </tr>
-    </tbody>
-  </table>
-</div>
-  </div>
-</div>
-</div>
+</div>  

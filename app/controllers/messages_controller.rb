@@ -2,9 +2,9 @@ class MessagesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @received_messages = @user.received_messages
+    @received_messages = @user.received_messages.where(archived: false)
     @sent_messages = @user.sent_messages
-    @archived_messages = @user.archived_messages
+    @archived_messages = @user.received_messages.where(archived: true)
     # @received_messages.each do |message|
     #   message.update_attributes(viewed: true)
     # end
@@ -15,6 +15,14 @@ class MessagesController < ApplicationController
      @message = Message.find(params[:id])
      # @received_messages.each do |message|
       @message.update_attributes(viewed: true)
+  end
+
+  def archive
+    @message = Message.find(params[:id])
+
+    @message.update_attributes(archived: true)
+    redirect_to user_messages_path(current_user)
+
   end
 
   def new
