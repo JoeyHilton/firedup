@@ -10,6 +10,12 @@ class CertsControllerTest < ActionController::TestCase
     sign_in @user
   end
 
+  test "Certs should belong to profile when created/update" do
+    post :create, profile_id: @profile.id, cert: { :title => 'Test', :description => 'This is a test', :user_id => 1}
+    cert = assigns(:cert)
+    assert_equal @profile.id, cert.profile_id
+  end
+
   test "should get index" do
     get :index, user_id: @user.id
     assert_response :success
