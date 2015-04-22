@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
     @user = User.find(params[:user_id])
     @received_messages = @user.received_messages
     @sent_messages = @user.sent_messages
+    @archived_messages = @user.archived_messages
     # @received_messages.each do |message|
     #   message.update_attributes(viewed: true)
     # end
@@ -35,7 +36,7 @@ class MessagesController < ApplicationController
   private
 
     def message_params
-      params.require(:message).permit(:subject, :content, :user_id, :sender_id, :receiver_id, :viewed)
+      params.require(:message).permit(:subject, :content, :user_id, :sender_id, :receiver_id, :viewed, :archived)
     end
 
 end

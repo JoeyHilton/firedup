@@ -5,6 +5,7 @@ class JobsControllerTest < ActionController::TestCase
   def setup
     @user = users(:one)
     @other_user = users(:two)
+    @third_user = users(:three)
     @job = jobs(:one)
     @new_params = { company: "Updated", position: "This is updated"}
     sign_in @user
@@ -15,10 +16,10 @@ class JobsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get new" do
-    get :new, user_id: @user.id
-    assert_response :success
-  end
+  # test "should get new" do
+  #   get :new, user_id: @user.id
+  #   assert_response :success
+  # end
 
   test "should get create" do
     assert_difference('Job.count', 1) do
@@ -27,10 +28,10 @@ class JobsControllerTest < ActionController::TestCase
       assert_response :redirect
   end
 
-  test "should get edit" do
-    get :edit, id: @job.id, job: @new_params
-    assert_response :success
-  end
+  # test "should get edit" do
+  #   get :edit, id: @job.id, job: @new_params
+  #   assert_response :success
+  # end
 
   test "should get update" do
     put :update, id: @job.id, job: @new_params

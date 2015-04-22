@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :sent_messages, class_name: "Message", foreign_key: "sender_id" 
   has_many :received_messages, class_name: "Message", foreign_key: "receiver_id"
+  has_many :archived_messages, class_name: "Message", foreign_key: "archived"
   
   # validates :city, presence: true
   # validates :state, presence: true
