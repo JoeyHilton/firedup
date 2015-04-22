@@ -1,59 +1,59 @@
-<div class="container">
 
-  <div class="container"><!-- START HEADER CONTAINER -->
-    <div class="row">
-          <div class="col-md-12 text-center headline3">
-            <h2>FiredUp Job Board</h2>
-          </div>
-    </div>
-  </div><!-- END HEADER CONTAINER -->
+<div id="wrapper"><!-- START BODY CONTAINER -->
+  
 
-  <div class="container"><!-- START Body CONTAINER -->
-  <div class="row"><!-- Start Second Row -->
-
-    <div class="col-md-2 text-center"><!-- Start Left Column -->
-
-      <h3>Search Jobs</h3>
- 
-        <%= render 'layouts/jobsearchform'  %>
-
-    </div><!-- End Left Column -->
-
-    <div class="col-md-6"><!-- Start Center Column -->
-        <div class="panel panel-default">
-          <div class="center panel-heading text-center">      
-            <h1> Job Listings </h1>
-            <%= link_to 'Add a Job', new_user_jboard_path(current_user)%>
-          </div>
-          <div class="panel-body">
-              
-            <% @jboards.order("created_at DESC").each do |jboard| %>
-                <strong><h4 class="jboardTitleOverride"><%= jboard.title %></h4></strong>
-                  <%= jboard.agency %><br>
-                  <%= "#{jboard.city}, #{jboard.state}" %><br>
-
-                  <small class="text-muted">Posted <%= time_ago_in_words(jboard.created_at) %> ago </small>
-                <small class="text-muted">in category: <%= jboard.category %></small><br>
-                <small><%= link_to 'See Details', jboard_path(jboard) %></small> | 
-                <%= link_to 'Edit', edit_jboard_path(jboard) %> | 
-                <%= link_to 'Delete', jboard_path(jboard), method: :delete %>
-                <hr>
-            <% end %>
-            
-          </div>
+      <div id="sidebar-wrapper" class="col-md-2">
+            <div id="sidebar">
+                <!-- <ul class="nav list-group">
+                    <li>
+                        <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
+                    </li>
+                    <li>
+                        <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
+                    </li>
+                    <li>
+                        <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
+                    </li>
+                </ul> -->
+                <ul class="well">
+                  <h5>Search Jobs</h5>
+                  <%= render 'layouts/jobsearchform'  %>
+                </ul>
+            </div>
         </div>
-    </div> <!-- End Center Column -->
 
-    <div class="col-md-4 text-center"><!-- Start Right Column -->
-    
+        <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
+          <div id="center">
+            <h4>FiredUp Job Board</h4>
+            <%= link_to 'Post a Job', new_user_jboard_path(current_user)%>
+            <% @jboards.order("created_at DESC").each do |jboard| %>
+            <div class="panel panel-default">
+              <div class="center panel-heading">      
+                <h4 class="jboardTitleOverride"><%= jboard.title %></h4>
+              </div>
+              <div class="panel-body memberPanelOverride">
+                  
+                <%= jboard.agency %><br>
+                <%= "#{jboard.city}, #{jboard.state}" %><br>
 
-      <h1>Place Holder</h1>
+                <small class="text-muted">Posted <%= time_ago_in_words(jboard.created_at) %> ago </small>
+                <small class="text-muted">in category: <%= jboard.category %></small><br>
+                <small><%= link_to 'See Details', jboard_path(jboard) %></small>
+                <% if jboard.user == current_user && user_signed_in? %>
+                 | <%= link_to 'Edit', edit_jboard_path(jboard) %> | 
+                  <%= link_to 'Delete', jboard_path(jboard), method: :delete %>
+                <% end %>
+              </div> <!-- End panel body -->
+            </div>
+          <% end %>
+          </div>
+        </div> <!-- END CENTER COLUMN -->
 
+        <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
+          <div id="sidebar">
+           
+          </div>
+        </div> <!-- END right COLUMN -->
 
-    </div><!-- End Right Column -->
-
-  </div> <!-- End Second Row -->
-  </div> <!-- End body container Row -->
-
-
-</div><!-- End Container -->
+   
+  </div><!-- END BODY CONTAINER --> 

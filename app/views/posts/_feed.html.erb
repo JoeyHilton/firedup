@@ -1,26 +1,7 @@
 
-<div class="container"><!-- START MAIN CONTAINER -->
-  
-  <div class="container"><!-- START HEADER CONTAINER -->
-    <div class="row">
-          <div class="col-md-12 text-center headline3">
-            <h2>Command Center</h2>
-          </div>
-    </div>
-  </div><!-- END HEADER CONTAINER -->
-
-  <div class="container"><!-- START BODY CONTAINER -->
-    <div class="row"> 
-
-      <div class="col-md-2"><!-- START LEFT COLUMN -->
-        <%= link_to 'Add a Job', new_user_jboard_path(current_user)%><br>
-        <%= link_to "Create A Post", new_user_post_path(current_user) %><br>
-        <%= link_to "Show Messages", user_messages_path(current_user) %><br>
-      </div> <!-- END LEFT COLUMN -->
-
-        <div class="col-md-6"><!-- START CENTER COLUMN -->
-          <%= paginate (@posts) %>
-          <% posts.order("created_at DESC").each do |post| %>
+<!-- <h2 class="text-center headline3">Command Center</h2> -->
+<h4>Command Center</h4>
+<% posts.order("created_at DESC").each do |post| %>
             <% if post.user.followed_by?(current_user) || post.share_with == "public" || post.user == current_user %>
               <div class="panel panel-default">
                 <div class="center panel-heading panelOverride">
@@ -55,13 +36,5 @@
                 </div>
               </div>
             <% end %>
-          <% end %>
-          <%= paginate (@posts) %>
-        </div> <!-- END CENTER COLUMN -->
-
-        <div class="col-md-4"> <!-- Begin right column -->
-      </div> <!-- END right COLUMN -->
-
-    </div><!-- END ROW -->
-  </div><!-- END BODY CONTAINER --> 
-
+<%= paginate (@posts) %>
+            <% end %>
