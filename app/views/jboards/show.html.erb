@@ -1,35 +1,63 @@
-<div class="col-md-6 col-md-offset-2">
-    <div class="panel panel-default">
-      <div class="center panel-heading">      
-        <h1> Job Information </h1>
-      </div>
-      <div class="panel-body">
-          <strong> Job: </strong><br>
+
+          
+
+<div id="wrapper"><!-- START BODY CONTAINER -->
+  
+
+      <div id="sidebar-wrapper" class="col-md-2">
+            <div id="sidebar">
+                <!-- <ul class="nav list-group">
+                    <li>
+                        <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
+                    </li>
+                    <li>
+                        <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
+                    </li>
+                    <li>
+                        <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
+                    </li>
+                </ul> -->
+                
+            </div>
+        </div>
+
+        <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
+          <div id="center">
+            <h4>Job Details</h4>
+            <strong> Job: </strong><br>
               <%= @jboard.title%><br>
-          <strong> Category: </strong><br>
-              <%= @jboard.category %><br>
-          <strong> Job Id: </strong><br>
-              <%= @jboard.identifier%><br>
-          <strong> Job Availability: </strong><br>
-          <%= "Open: #{@jboard.open_date} until: #{@jboard.close_date}" %><br>
-          <strong> Agency: </strong><br>
-              <%= @jboard.agency %><br>
-          <strong> Address: </strong><br>
-            <%= "#{@jboard.city}, #{@jboard.state}, #{@jboard.zip}" %><br>
-          <strong> Company Website: </strong><br>
-            <%= @jboard.website%><br>
-          <strong> Posted By: </strong><br>
-            <%= "#{@jboard.first_name} #{@jboard.last_name}"%><br>
-          <strong> Phone: </strong><br>
-            <%= @jboard.phone%><br>
-          <strong> Email: </strong><br>
-            <%= @jboard.email%><br>
-          <strong> More Info: </strong><br>
-            <%= @jboard.job_link%><br>
-          <%= link_to 'Back', :back %> | 
-          <%= link_to 'Edit', edit_jboard_path(@jboard) %> | 
-          <%= link_to 'Delete', jboard_path(@jboard), method: :delete %>
-        
-      </div>
-  </div>
-</div>
+            <strong> Category: </strong><br>
+                <%= @jboard.category %><br>
+            <strong> Job Id: </strong><br>
+                <%= @jboard.identifier%><br>
+            <strong> Job Availability: </strong><br>
+            <%= "Open: #{@jboard.open_date} until: #{@jboard.close_date}" %><br>
+            <strong> Agency: </strong><br>
+                <%= @jboard.agency %><br>
+            <strong> Address: </strong><br>
+              <%= "#{@jboard.city}, #{@jboard.state}, #{@jboard.zip}" %><br>
+            <strong> Company Website: </strong><br>
+              <%= @jboard.website%><br>
+            <strong> Posted By: </strong><br>
+              <%= "#{@jboard.first_name} #{@jboard.last_name}"%><br>
+            <strong> Phone: </strong><br>
+              <%= @jboard.phone%><br>
+            <strong> Email: </strong><br>
+              <%= @jboard.email%><br>
+            <strong> More Info: </strong><br>
+              <%= @jboard.job_link%><br>
+            <%= link_to 'Back', jboards_path %> | 
+            <%= link_to 'Edit', edit_jboard_path(@jboard) %> | 
+            <%= link_to 'Delete', jboard_path(@jboard), method: :delete %>
+            
+          </div>
+        </div> <!-- END CENTER COLUMN -->
+
+        <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
+          <div id="sidebar">
+           
+          </div>
+        </div> <!-- END right COLUMN -->
+
+   
+  </div><!-- END BODY CONTAINER --> 
