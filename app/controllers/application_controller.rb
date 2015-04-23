@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :navbar_pending_connection
 
+
   private
 
     def navbar_pending_connection

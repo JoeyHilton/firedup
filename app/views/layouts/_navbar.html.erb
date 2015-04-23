@@ -1,59 +1,72 @@
 <div class="navbar navbar-inverse navbar-fixed-top top-nav" role="navigation">  
   
   <div class="navbar-header">
-    
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </button>
     <%= link_to(image_tag("logo.png", :alt => "FiredUp", :title => "Home", class: 'logo'), root_path)%>
   </div>
   
+  <div class="collapse navbar-collapse">
       <% if !user_signed_in? %>
-      <div class="collapse navbar-collapse">
-        <tbody>
-         <%= form_for resource, as: resource_name, url: session_path(resource_name), method: :post, html: { class: "navbar-form form-inline pull-right"} do |f| %>
-          <tr>
-            <td>
-            
-              <%= f.email_field :email, autofocus: true, :placeholder => 'Email address' %>
-            </td>
+      <tbody>
+       <%= form_for resource, as: resource_name, url: session_path(resource_name), method: :post, html: { class: "navbar-form form-inline pull-right"} do |f| %>
+        <tr>
+          <td>
+          
+            <%= f.email_field :email, autofocus: true, :placeholder => 'Email address' %>
+          </td>
 
-            <td>
-           
-              <%= f.password_field :password, autocomplete: "off", :placeholder => 'Password' %>
-            </td>
-            <td>
-              <%= f.submit "Log in", class: 'btn btn-warning btn-sm'%>
-            </td>
-          </tr><br>
-          <tr>
+          <td>
+         
+            <%= f.password_field :password, autocomplete: "off", :placeholder => 'Password' %>
+          </td>
+          <td>
+            <%= f.submit "Log in", class: 'btn btn-warning btn-sm'%>
+          </td>
+        </tr><br>
+        <tr>
 
-            <% if devise_mapping.rememberable? -%>
-              <td>
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me, class: 'remember' %>
-              </td>
-            <% end -%>
-              <td>
-                <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-                  <%= link_to "Forgot your password?", new_password_path(resource_name), class: 'forgot' %><br />
-                <% end -%>
-              </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </div>
+          <% if devise_mapping.rememberable? -%>
+            <td>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, class: 'remember' %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            </td>
+          <% end -%>
+            <td>
+              <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to "Forgot your password?", new_password_path(resource_name), class: 'forgot' %><br />
+              <% end -%>
+            </td>
+        </tr>
+      <% end %>
+    </tbody>
     <% else %>
       <ul class="nav navbar-nav navbar-right">
-
-        <li class=" nav-img"><%= link_to image_tag(current_user.image.url(:icon)), profile_path, class: "img-rounded pull-right" %></li>
+        <li class=" nav-img"><%= link_to image_tag(current_user.image.url(:icon)), current_user.image.url, class: "img-rounded pull-right" %></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- This area is the title for the dropdown on the right hand side -->
               <!-- I set it up so if a user is logged in, it displays their name. Otherwise it just says account -->
-              <li class="username">
                 <%= current_user.first_name %>
-              </li>
            
-            
+               <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <!-- We have an if/else block here to show different links depending on if a user is signed in or not -->
+              
+                <li><%= link_to 'My Profile', profile_path %></li>
+                <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+                <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete%></li>
+             
+            </ul>
           </li>
+
       <% end %>
     </ul>
+  </div>
 </div>
 
 <div class="navbar navbar-inverse navbar-fixed-top bottom-nav" role="navigation"> 
@@ -73,15 +86,15 @@
       <ul class="nav navbar-nav navbar-right bottom-pad">
         <!-- We have an if statement here to only show the Users index link if users are signed in -->
         <% if user_signed_in? %>
-
-          <% if @pending_connections.any? %>
-            <li> pending connections: <%= @pending_connections.count %> </li>
-            <% else %>
-            <li> popo </li>
-            <% end %>
-          <li>
-            <%= link_to "", user_messages_path(current_user), class: "#{notification_color(current_user.has_new_messages?)} fa fa-user-plus" if user_signed_in? %>
-          </li>
+        <% if @pending_connections.any? %>
+            <li>
+            <%= link_to "", pending_connection_path , class: "#{connection_color(@pending_connections.any?)} fa fa-user-plus" if user_signed_in? %>
+            </li>
+          <% else %>
+            <li>
+            <%= link_to "", pending_connection_path, class: "#{connection_color(@pending_connections.any?)} fa fa-user" if user_signed_in? %>
+            </li>
+          <% end %>
           <li class="#{notification_color(current_user.has_new_messages?)}"><%= link_to "", user_messages_path(current_user), class: "#{notification_color(current_user.has_new_messages?)} fa fa-envelope-o" if user_signed_in? %></li>
           <li><%= link_to 'Command Center', feed_path %></li>
           <li><%= link_to 'Members', users_path %></li>
@@ -90,25 +103,6 @@
           <li><%=  link_to "About", static_about_path %></li>
           <li><%= link_to 'Tour', static_tour_path %></li>
           <li><%=  link_to "Contact", static_contact_path %></li>
-          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <!-- This area is the title for the dropdown on the right hand side -->
-            <!-- I set it up so if a user is logged in, it displays their name. Otherwise it just says account -->
-            <% if user_signed_in? %>
-              Account Settings
-             <span class="caret"></span></a>
-            <% else %>
-             
-            <% end %>
-          <ul class="dropdown-menu" role="menu">
-            <!-- We have an if/else block here to show different links depending on if a user is signed in or not -->
-            <% if user_signed_in? %>
-              <li><%= link_to 'My Profile', profile_path %></li>
-              <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-              <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete%></li>
-            <% end %>
-          </ul>
-        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
 </div>
