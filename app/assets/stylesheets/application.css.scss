@@ -89,6 +89,13 @@ a:hover, a:focus {
   color: #5B0503;
 }
 
+.notice {
+  color: #FF6605;
+  z-index: 2;
+  position: absolute;
+  padding-left: 20px;
+}
+
 // --- Nav Bar ---------------------//
 
 .navbar  {
