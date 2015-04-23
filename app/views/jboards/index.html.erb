@@ -4,19 +4,19 @@
 
       <div id="sidebar-wrapper" class="col-md-2">
             <div id="sidebar">
-                <!-- <ul class="nav list-group">
+                <ul class="nav list-group">
                     <li>
                         <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
                     </li>
-                    <li>
+                    <!-- <li>
                         <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
                     </li>
                     <li>
                         <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
-                    </li>
-                </ul> -->
-                <ul class="well">
-                  <h5>Search Jobs</h5>
+                    </li> -->
+                </ul> 
+                <ul class="panel-body">
+                  <h4>Job Search</h4>
                   <%= render 'layouts/jobsearchform'  %>
                 </ul>
             </div>

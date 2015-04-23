@@ -1,34 +1,21 @@
-<div class="container">
 
-  <div class="container"><!-- START HEADER CONTAINER -->
-    <div class="row">
-          <div class="col-md-12 text-center headline3">
-            <h2>Members</h2>
-          </div>
-    </div>
-  </div><!-- END HEADER CONTAINER -->
+<div id="wrapper"><!-- START BODY CONTAINER -->
+  
 
-  <div class="container"><!-- START Body CONTAINER -->
-  <div class="row"><!-- Start Second Row -->
+      <div id="sidebar-wrapper" class="col-md-2">
+            <div id="sidebar">
+                <ul class="well">
+                  <h4>Member Search</h4>
+                 
+                </ul>
+            </div>
+        </div>
 
-    <div class="col-md-2"><!-- Start Left Column -->
-
-
-      <h3>Place Holder</h3>
- 
-
-    </div><!-- End Left Column -->
-
-    <div class="col-md-6"><!-- Start Center Column -->
-
-        <div class="panel panel-default">
-          <div class="center panel-heading">      
-            <h1> Search Results </h1>
-            <%= link_to 'Search Again', users_path(), class: "btn btn-primary" %>
-          </div>
-          
-          <div class="panel-body">
-            
+        <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
+          <div id="center">
+            <h3 class="inline"> Search Results 
+            <%= link_to 'Search Again', users_path(), class: "btn btn-warning btn-xs" %>
+            </h3>
             <% if @msearch.search_members.empty? %>
                 <p>No Records Found</p>
             <% else %> 
@@ -40,32 +27,24 @@
                     <%= "#{member.city}, #{member.state}" %><br>
 
                     <small class="text-muted">Member since: <%= member.created_at.strftime("%B %Y") %></small>
-                      <br>
-                  
-                   
-                  <%= link_to 'Edit', edit_jboard_path(member) %> | 
-                  <%= link_to 'Delete', jboard_path(member), method: :delete %>
                   <hr>
               <% end %>
             <% end %>
+          </div>
+        </div> <!-- END CENTER COLUMN -->
+
+        <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
+          <div id="sidebar">
+           
+
+        <%= link_to(image_tag("300x250.png", :alt => "whatever", :width => 300, :height => 250, :title => "something", class: 'reference'), "http://www.google.com/") %>
+
+        
+
 
           </div>
-        </div>
+        </div> <!-- END right COLUMN -->
 
-      
-    </div> <!-- End Center Column -->
-
-    <div class="col-md-4"><!-- Start Right Column -->
-    
-
-      <h1>Place Holder</h1>
-
-
-    </div><!-- End Right Column -->
-
-  </div> <!-- End Second Row -->
-  </div> <!-- End body container Row -->
-
-
-</div><!-- End Container -->
+   
+  </div><!-- END BODY CONTAINER --> 
 
