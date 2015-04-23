@@ -6,7 +6,8 @@
     <%= cert.expire_date %><br>
 <strong> Description: </strong><br>
     <%= cert.description %><br><br>
-
-<%= link_to 'Edit', edit_cert_path(cert), remote: true %> | 
-<%= link_to 'Delete', cert, method: :delete %>
+<% if @user == current_user %>
+  <%= link_to 'Edit', edit_cert_path(cert), remote: true %> | 
+  <%= link_to 'Delete', cert, method: :delete %>
+<% end %>
 <hr>

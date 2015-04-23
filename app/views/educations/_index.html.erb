@@ -8,9 +8,10 @@
 <%= "From: #{education.start_date} until: #{education.end_date}" %><br>
 <strong> Description: </strong><br>
     <%= education.description %><br><br>
-
-<%= link_to 'Edit', edit_education_path(education), remote: true %> | 
-<%= link_to 'Delete', education, method: :delete %>
+<% if @user == current_user %>
+  <%= link_to 'Edit', edit_education_path(education), remote: true %> | 
+  <%= link_to 'Delete', education, method: :delete %>
+<% end %>
 <hr>
 
 
