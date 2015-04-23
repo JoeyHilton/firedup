@@ -24,11 +24,12 @@
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
             <h4>FiredUp Members</h4>
-           <% @users.each do |user| %> <!-- First Loop -->
+            <%= paginate @users %>
+            <% @users.each do |user| %> <!-- First Loop -->
             <div class="panel panel-default">
               <div class="panel-body memberPanelOverride">
                 <h4 class="memberTitleOverride"><strong>
-                  <%= link_to image_tag(user.image.url(:med)), user.image.url, class: "pull-left smallImage" %>
+                  <%= link_to image_tag(user.image.url(:med)), user_path(user), class: "pull-left smallImage" %>
                   <%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%>
                 </strong></h4>
 
@@ -43,7 +44,7 @@
 
               </div> <!-- End Panel body-->
             </div> <!-- END Panel default -->
-          <% end %> <!-- End First Loop -->
+            <% end %> <!-- End First Loop -->
            <%= paginate @users %>  
             
           </div>
