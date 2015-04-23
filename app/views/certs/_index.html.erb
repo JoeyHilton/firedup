@@ -6,6 +6,8 @@
     <%= cert.expire_date %><br>
 <strong> Description: </strong><br>
     <%= cert.description %><br><br>
+    <%= link_to 'See Attachment', cert.attachment.url, target: '_blank' if cert.attachment_file_name %>
+    <%# image_tag cert.attachment.url, class: "pull-right" if cert.attachment_file_name %><br>
 <% if @user == current_user %>
   <%= link_to 'Edit', edit_cert_path(cert), remote: true %> | 
   <%= link_to 'Delete', cert, method: :delete %>

@@ -1,6 +1,7 @@
 
-  <%= bootstrap_form_for [@user, @cert], remote: using_modal do |f| %>
+  <%= bootstrap_form_for [@user, @cert], html: { multipart: true }, remote: using_modal do |f| %>
   <%= render 'devise/shared/error_messages', object: f.object %>
+  <%= token_tag(nil) %>
   <%#= f.label :job_company %>
   <%= f.text_field :title %>
 
@@ -13,7 +14,7 @@
   <%#= f.label :job_description %>
   <%= f.text_area :description %>
 
-  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.file_field :attachment, label: "Add File"%>
 
   <%= f.submit class: "btn btn-warning"%>
   <% end %>
