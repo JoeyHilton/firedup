@@ -1,14 +1,19 @@
+<div class="container"> <!-- Main Container -->
+  <div class="row"> <!-- First Row -->
+    <div class="col-md-2">
+    </div> <!-- End left column -->
+
+    <div class="col-md-6">
+      <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#messages" aria-controls="home" role="tab" data-toggle="tab">Received Messages</a></li>
+          <li role="presentation"><a href="#sent" aria-controls="sent-messages" role="tab" data-toggle="tab">Sent Messages</a></li>
+          <li role="presentation"><a href="#archived" aria-controls="archived-messages" role="tab" data-toggle="tab">Archived Messages</a></li>
+        </ul>
 
 
-<div role="tabpanel">
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#messages" aria-controls="home" role="tab" data-toggle="tab">Received Messages</a></li>
-    <li role="presentation"><a href="#sent" aria-controls="sent-messages" role="tab" data-toggle="tab">Sent Messages</a></li>
-    <li role="presentation"><a href="#archived" aria-controls="archived-messages" role="tab" data-toggle="tab">Archived Messages</a></li>
-  </ul>
 
-
-
+<!-- <<<<<<< HEAD -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="messages">
       <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
@@ -39,50 +44,62 @@
         </table>
       </div>
     </div>
+<!-- ======= -->
+              <!-- </table>  End Table 1 -->
+            <!-- </div> End Table 1 div -->
+          <!-- </div> End Table Pane 1 -->
+<!-- >>>>>>> 1ad16a23907223dcf3b6b624d1fb06e5d9be7b99
+ --> 
 
+          <div role="tabpanel" class="tab-pane" id="sent"> <!-- Table Pane 2 -->
+            <div class="sentIndex panel-body" id="sentList"> 
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Subject</th>
+                    <th>Content</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @sent_messages.each do |message| %>
+                  <tr>
+                  <th><%= message.subject %></th>
+                  <th><%= message.content %></th>
+                  <% end %>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div> <!-- End Table Pane 2 -->
 
-    <div role="tabpanel" class="tab-pane" id="sent">
-      <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
-      <div class="sentIndex panel-body" id="sentList"> 
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Subject</th>
-              <th>Content</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @sent_messages.each do |message| %>
-            <tr>
-            <th><%= message.subject %></th>
-            <th><%= message.content %></th>
-            <% end %>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+          <div role="tabpanel" class="tab-pane" id="archived">
+            <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
+            <div class="archivedIndex panel-body" id="archivedList"> 
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Subject</th>
+                    <th>Content</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @archived_messages.each do |message| %>
+                  <tr>
+                  <th><%= message.subject %></th>
+                  <th><%= message.content %></th>
+                  <% end %>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+       
+      </div> <!-- End Tab Panel -->
+    </div> <!-- End Center Column --> 
 
-    <div role="tabpanel" class="tab-pane" id="archived">
-      <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
-      <div class="archivedIndex panel-body" id="archivedList"> 
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Subject</th>
-              <th>Content</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @archived_messages.each do |message| %>
-            <tr>
-            <th><%= message.subject %></th>
-            <th><%= message.content %></th>
-            <% end %>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>  
+    <div class="col-md-4">
+    </div> <!-- End Right Column -->
+
+  </div> <!-- End First Row -->
+</div> <!-- End Main Container -->

@@ -20,6 +20,7 @@
 
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
+            
             <%= render partial: "posts/feed", locals: {posts: @posts} %>
             
           </div>
@@ -28,6 +29,12 @@
         <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
           <div id="sidebar">
            
+
+        <%= link_to(image_tag("300x250.png", :alt => "whatever", :width => 300, :height => 250, :title => "something", class: 'reference'), "http://www.google.com/") %>
+
+        
+
+
           </div>
         </div> <!-- END right COLUMN -->
 
