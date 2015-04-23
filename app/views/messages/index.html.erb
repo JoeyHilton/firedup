@@ -1,9 +1,9 @@
 <div class="container"> <!-- Main Container -->
   <div class="row"> <!-- First Row -->
-    <div class="col-md-2"
+    <div class="col-md-2">
     </div> <!-- End left column -->
 
-    <div class="col-md-6"
+    <div class="col-md-6">
       <div role="tabpanel">
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a href="#messages" aria-controls="home" role="tab" data-toggle="tab">Received Messages</a></li>
@@ -11,35 +11,45 @@
           <li role="presentation"><a href="#archived" aria-controls="archived-messages" role="tab" data-toggle="tab">Archived Messages</a></li>
         </ul>
 
-        <div class="tab-content">
 
-          <div role="tabpanel" class="tab-pane active" id="messages"> <!-- Table Pane 1 -->
-            <div class="messagesIndex panel-body" id="messagesList"> <!-- Table 1 div -->
-              <table class="table table-hover"> <!-- Table 1 -->
-                <thead>
-                  <tr>
-                    <th>Subject</th>
-                    <th>Content</th>
-                    <th>Archive</th>
-                    <th>Open</th>
-                  </tr>
-                </thead>
 
-                <tbody>
-                  <% @received_messages.each do |message| %>
-                    <tr >
-                      <td><%= message.subject %></td>
-                      <td><%= message.content %></td>
-                      <td><%= link_to "", archive_path(message), class: "fa fa-archive"%></td>
-                      <td><%= link_to "", message_path(message), class: "fa fa-envelope"%></td>
-                    </tr>
-                  <% end %>
-                </tbody>
-
-              </table> <!-- End Table 1 -->
-            </div> <!-- End Table 1 div -->
-          </div> <!-- End Table Pane 1 -->
-
+<!-- <<<<<<< HEAD -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="messages">
+      <!-- <div class="well well-lg" style="margin-top: 25px;"> -->
+      <div class="messagesIndex panel-body" id="messagesList"> 
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Content</th>
+              <th>Archive</th>
+              <th>Read</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @received_messages.each do |message| %>
+            
+            <tr class="message-row <%= viewed_message_color(message.viewed)%>">
+              <td><%= message.subject %></td>
+              <td><%= message.content %></td>
+              <td><%= link_to "", archive_path(message), class: "fa fa-archive"%></td>
+              <td><%= link_to "", message_path(message), class: "fa fa-envelope"%></td>
+              <td><%= link_to "", message, method: :delete, class: "fa fa-trash" %></td>
+            </tr>
+            
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+<!-- ======= -->
+              <!-- </table>  End Table 1 -->
+            <!-- </div> End Table 1 div -->
+          <!-- </div> End Table Pane 1 -->
+<!-- >>>>>>> 1ad16a23907223dcf3b6b624d1fb06e5d9be7b99
+ --> 
 
           <div role="tabpanel" class="tab-pane" id="sent"> <!-- Table Pane 2 -->
             <div class="sentIndex panel-body" id="sentList"> 
@@ -88,7 +98,7 @@
       </div> <!-- End Tab Panel -->
     </div> <!-- End Center Column --> 
 
-    <div class="col-md-4"
+    <div class="col-md-4">
     </div> <!-- End Right Column -->
 
   </div> <!-- End First Row -->

@@ -38,6 +38,7 @@ Rails.application.routes.draw do
    get '/approve_connection/:id', to: 'users#approve_connection', as: :approve
    get '/archive/:id', to: 'messages#archive', as: :archive
   
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.

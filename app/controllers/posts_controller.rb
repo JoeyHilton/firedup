@@ -42,6 +42,7 @@ class PostsController < ApplicationController
   end
 
   def feed
+    # @user = User.find(params[:id])
     @posts = Post.page(params[:page]).per(12)
   end
 

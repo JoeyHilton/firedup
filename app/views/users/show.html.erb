@@ -1,3 +1,6 @@
+
+ <!-- Start Main Container --> 
+
 <div id="wrapper"><!-- START BODY CONTAINER -->
   <div id="sidebar-wrapper" class="col-md-2">
         <div id="sidebar">
@@ -20,6 +23,7 @@
         </div>
     </div>
 
+
     <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
       <div id="center">
         <div class="panel panel-default">
@@ -28,7 +32,9 @@
             <% if @user.followed_by?(current_user) && current_user.followed_by?(@user)%>
               <%= link_to "Connected", connect_path(@user),  class: "btn btn-warning btn-xs disabled" %>
             <% elsif @user.followed_by?(current_user) %>
-              <%= link_to "Pending", connect_path(@user),  class: "btn btn-warning btn-xs disabled" %>    
+              <%= link_to "Pending", connect_path(@user),  class: "btn btn-warning btn-xs disabled" %> 
+            <% elsif current_user.followed_by?(@user) %>
+              <%= link_to "Approve", approve_path(@user), class: "btn btn-primary" %>
             <% else %>
                 <%= link_to "Connect", connect_path(@user),  class: "btn btn-warning btn-xs" %>
             <% end %>
