@@ -1,111 +1,132 @@
-<div class="container"> <!-- Start Main Container -->
- 
-  <div class="row">
-    <div class="col-md-2"> <!-- Start Left Column -->
-      <h2>Your Profile</h2>
-      <%= link_to "Pending Connections...", pending_connection_path %>
-    </div><!-- End Left Column -->
-
-    <div class="col-md-6"><!-- Start Middle Column -->
-      <div class="panel panel-default">
-        <div class="center panel-heading">      
-          <h3 class="inline"> <%= "#{@user.first_name}'s Profile" %> </h3>
-          <% if @user.followed_by?(current_user) && current_user.followed_by?(@user)%>
-            <%= link_to "Connected", connect_path(@user),  class: "btn btn-primary disabled" %>
-          <% elsif @user.followed_by?(current_user) %>
-            <%= link_to "Pending", connect_path(@user),  class: "btn btn-primary disabled" %>    
-          <% else %>
-              <%= link_to "Connect", connect_path(@user),  class: "btn btn-primary" %>
-          <% end %>
+<div id="wrapper"><!-- START BODY CONTAINER -->
+  <div id="sidebar-wrapper" class="col-md-2">
+        <div id="sidebar">
+            <ul class="nav list-group">
+              <li><h3 class="text-center">Your Profile</h3></li>
+              <li>
+              <%= link_to "Pending Connections...", pending_connection_path %>
+              </li>
+                <li>
+                    <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
+                </li>
+                <li>
+                    <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
+                </li>
+                <li>
+                    <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
+                </li>
+                
+            </ul>
         </div>
-        
-        <div class="panel-body">
-          <%= link_to fa_icon("envelope", text: "Send a New Message"), new_user_message_path(@user) %><br><br>
-          <%= link_to image_tag(@user.image.url(:large)), @user.image.url, class: "pull-right" %>
+    </div>
 
-          <strong> <%= "#{@user.first_name}  #{@user.last_name}" %> </strong><br>
-            <%= @user.address %><br>
-            <%= "#{@user.city}, #{@user.state}, #{@user.zip}" %><br><br>
+    <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
+      <div id="center">
+        <div class="panel panel-default">
+          <div class="center panel-heading">      
+            <h3 class="inline"> <%= "#{@user.first_name}'s Profile" %> 
+            <% if @user.followed_by?(current_user) && current_user.followed_by?(@user)%>
+              <%= link_to "Connected", connect_path(@user),  class: "btn btn-warning btn-xs disabled" %>
+            <% elsif @user.followed_by?(current_user) %>
+              <%= link_to "Pending", connect_path(@user),  class: "btn btn-warning btn-xs disabled" %>    
+            <% else %>
+                <%= link_to "Connect", connect_path(@user),  class: "btn btn-warning btn-xs" %>
+            <% end %>
+            </h3>
+          </div>
           
-          <strong> Contact:</strong><br>
-            Phone: <%= @user.phone %><br>
-            Cell Phone: <%= @user.mobile_phone %><br>
-            <%= @user.email %><br>
-            <%= @user.twitter %><br>
-          <strong> Birthdate:</strong> <%= @user.birthdate.strftime("%B %d, %Y") %><br><br>
+          <div class="panel-body">
+            <%= link_to fa_icon("envelope", text: "Send a New Message"), new_user_message_path(@user) %><br><br>
+            <%= link_to image_tag(@user.image.url(:large)), @user.image.url, class: "pull-right" %>
 
-          <strong> About Me:  </strong>
-            <%= @user.bio %><br><br>
+            <strong> <%= "#{@user.first_name}  #{@user.last_name}" %> </strong><br>
+              <%= @user.address %><br>
+              <%= "#{@user.city}, #{@user.state}, #{@user.zip}" %><br><br>
             
-        </div> <!-- End Panel Body -->
-      </div><!-- End panel -->
+            <strong> Contact:</strong><br>
+              Phone: <%= @user.phone %><br>
+              Cell Phone: <%= @user.mobile_phone %><br>
+              <%= @user.email %><br>
+              <%= @user.twitter %><br>
+            <strong> Birthdate:</strong> <%= @user.birthdate.strftime("%B %d, %Y") %><br><br>
 
-      <% if user_signed_in? %>
-        <div role="tabpanel"> 
+            <strong> About Me:  </strong>
+              <%= @user.bio %><br><br>
+              
+          </div> <!-- End Panel Body -->
+        </div><!-- End panel -->
 
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#home"
-                aria-controls="home" role="tab" data-toggle="tab">Work Experience</a></li>
-            <li role="presentation"><a href="#education"
-                aria-controls="profile" role="tab" data-toggle="tab">Education</a></li>
-            <li role="presentation"><a href="#certs"
-                aria-controls="profile" role="tab" data-toggle="tab">Certifications</a></li>
-          </ul>
+        <% if user_signed_in? %>
+          <div role="tabpanel"> 
 
-          <!-- Tab panes -->
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="home">
-              <div class="well well-lg" style="margin-top: 0px;">
-                <p><%= link_to 'Add Work Experience', new_user_job_path(current_user), remote: true %></p>
-                <div class="jobsIndex panel-body" id="jobsList"> 
-                  <% @jobs.each do |job| %>
-                    <div id="job-<%= job.id %>">
-                      <%= render partial: 'jobs/index', locals: { job: job } %>
-                    </div>  
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#home"
+                  aria-controls="home" role="tab" data-toggle="tab">Work Experience</a></li>
+              <li role="presentation"><a href="#education"
+                  aria-controls="profile" role="tab" data-toggle="tab">Education</a></li>
+              <li role="presentation"><a href="#certs"
+                  aria-controls="profile" role="tab" data-toggle="tab">Certifications</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="home">
+                <div class="well well-lg" style="margin-top: 0px;">
+                  <% if @user == current_user %>
+                    <p><%= link_to 'Add Work Experience', new_user_job_path(current_user), remote: true %></p>
                   <% end %>
+                  <div class="jobsIndex panel-body" id="jobsList"> 
+                    <% @jobs.each do |job| %>
+                      <div id="job-<%= job.id %>">
+                        <%= render partial: 'jobs/index', locals: { job: job } %>
+                      </div>  
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div role="tabpanel" class="tab-pane" id="education">
-              <div class="well well-lg" style="margin-top: 0px;">
-                <p><%= link_to 'Add Education', new_user_education_path(current_user), remote: true %></p>
-                <div class="educationIndex panel-body" id="eduList">
-                  <% @educations.each do |education| %>
-                    <div id="education-<%= education.id %>">
-                      <%= render partial: 'educations/index', locals: { education: education }%>
-                    </div>
-                  <% end %>
+              <div role="tabpanel" class="tab-pane" id="education">
+                <div class="well well-lg" style="margin-top: 0px;">
+                  <p><%= link_to 'Add Education', new_user_education_path(current_user), remote: true %></p>
+                  <div class="educationIndex panel-body" id="eduList">
+                    <% @educations.each do |education| %>
+                      <div id="education-<%= education.id %>">
+                        <%= render partial: 'educations/index', locals: { education: education }%>
+                      </div>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div role="tabpanel" class="tab-pane" id="certs">
-              <div class="well well-lg" style="margin-top: 0px;">
-               <p><%= link_to 'Add Certification', new_user_cert_path(current_user), remote: true %></p>
-                <div class="certIndex panel-body" id="certList">
-                  <% @certs.each do |cert| %>
-                    <div id="cert-<%= cert.id %>">
-                      <%= render partial: 'certs/index', locals: { cert: cert } %>
-                    </div>
-                  <% end %>
+              <div role="tabpanel" class="tab-pane" id="certs">
+                <div class="well well-lg" style="margin-top: 0px;">
+                 <p><%= link_to 'Add Certification', new_user_cert_path(current_user), remote: true %></p>
+                  <div class="certIndex panel-body" id="certList">
+                    <% @certs.each do |cert| %>
+                      <div id="cert-<%= cert.id %>">
+                        <%= render partial: 'certs/index', locals: { cert: cert } %>
+                      </div>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div> <!-- End Tab Panes -->
+            </div> <!-- End Tab Panes -->
 
-        </div><!-- Ends Tab Panel -->
-      <% end %>
-    </div><!-- END CENTER COLUMN -->
-
-    <div class="col-md-4"> <!-- Start Right Column -->
-        <h2>Place Holder</h2>
+          </div><!-- Ends Tab Panel -->
+        <% end %>
         
-    </div><!-- End Right Column -->
+      </div>
+    </div> <!-- END CENTER COLUMN -->
 
-</div> <!-- Main Container Column -->
+  <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
+    <div id="sidebar">
+     
+    </div>
+  </div> <!-- END right COLUMN -->
 
+ 
+</div><!-- END Wrapper --> 
 
 <!-- New Modal -->
 <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
