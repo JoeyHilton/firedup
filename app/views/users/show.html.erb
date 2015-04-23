@@ -88,7 +88,9 @@
 
               <div role="tabpanel" class="tab-pane" id="education">
                 <div class="well well-lg" style="margin-top: 0px;">
-                  <p><%= link_to 'Add Education', new_user_education_path(current_user), remote: true %></p>
+                  <% if @user == current_user %>
+                    <p><%= link_to 'Add Education', new_user_education_path(current_user), remote: true %></p>
+                    <% end %>
                   <div class="educationIndex panel-body" id="eduList">
                     <% @educations.each do |education| %>
                       <div id="education-<%= education.id %>">
@@ -101,7 +103,9 @@
 
               <div role="tabpanel" class="tab-pane" id="certs">
                 <div class="well well-lg" style="margin-top: 0px;">
-                 <p><%= link_to 'Add Certification', new_user_cert_path(current_user), remote: true %></p>
+                  <% if @user == current_user %>
+                    <p><%= link_to 'Add Certification', new_user_cert_path(current_user), remote: true %></p>
+                  <% end %>
                   <div class="certIndex panel-body" id="certList">
                     <% @certs.each do |cert| %>
                       <div id="cert-<%= cert.id %>">
