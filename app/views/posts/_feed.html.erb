@@ -18,10 +18,11 @@
                 <div class="panel-body panelBodyFeed">
                   <%= post.content %>
                   <%= image_tag post.image.url(:xlarge), class: "pull-right" if post.image_file_name %><br>
-                  <small><%= link_to "Add Comment", new_post_comment_path(post) %></small><br><br>
+                  <small><%= link_to "Add Comment", new_post_comment_path(post) %></small><br>
 
             <!-- Add comments -->
                   <% post.comments.each do |comment| %>
+                    <br>
                     <strong><%= "#{comment.user.first_name} #{comment.user.last_name}" %></strong> <small>said...</small>
                     <blockquote>
                       <p><%= comment.body %></p>
@@ -36,5 +37,5 @@
                 </div>
               </div>
             <% end %>
-<%= paginate (@posts) %>
             <% end %>
+<%= paginate (@posts) %>
