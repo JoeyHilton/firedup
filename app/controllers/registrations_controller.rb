@@ -7,7 +7,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    profile_path
+    flash[:notice] = "You're almost done. Add work experience, education and certifications."
+    user_path(user)
   end
 
   private
