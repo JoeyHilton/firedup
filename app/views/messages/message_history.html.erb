@@ -17,32 +17,22 @@
 
     <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
-            
-           <table class="table">
-          <thead>
-            <tr>
-              <th>Author</th>
-              <th>Subject</th>
-              <th>Read</th>
-              <th>Archive</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @received_messages.each do |message| %>
-            
-            <tr class="message-row <%= viewed_message_color(message.viewed)%>">
-              <td><%= "#{message.sender.first_name} #{message.sender.last_name}" %></td>
-              <td><%= message.subject %></td>
-              <td><%= link_to "", message_path(message), class: "fa fa-envelope"%></td>
-              <td><%= link_to "", archive_path(message), class: "fa fa-archive"%></td>
-              <td><%= link_to "", message, method: :delete, class: "fa fa-trash" %></td>
-            </tr>
-            
+            <% @sorted_history.each do |message| %>
+            <div class="panel panel-default">
+              <div class="center panel-heading panelOverride">
+                <%= link_to image_tag(message.user.image.url(:icon)), user_path(message.user_id), class: "pull-left iconImagePanel img-circle" %>      
+                  <strong> <%= link_to "#{message.user.first_name} #{message.user.last_name}", user_path(message.user_id) %> </strong>
+
+                  <small class="text-muted"><%= time_ago_in_words(message.created_at) %> ago </small>
+                  <% if message.user == current_user && user_signed_in? %>
+                        <%= link_to "Delete", message, method: :delete%>
+                  <% end %>
+                </div>
+              <h3 class="well-sm"><strong><%= message.subject %></strong></h3>
+              <h5 class="well"><%= message.content %></h5>
+            </div>
+              <hr>
             <% end %>
-          </tbody>
-        </table>
-            
           </div>
         </div>
 
@@ -52,3 +42,4 @@
     </div> <!-- End Right Column -->
 
 </div> <!-- End Main wrapper -->
+

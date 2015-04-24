@@ -1,2 +1,36 @@
- <h1><%= @message.subject %></h1>
-  <h5><%= @message.content %></h5>
+ <div id="wrapper"> <!-- Main Container --> <!-- First Row -->
+    <div  id="sidebar-wrapper" class="col-md-2">
+      <div id="sidebar">
+        <ul class="nav list-group">
+                    <li>
+                        <%= link_to 'Received Messages', received_messages_path(current_user), class: "list-group-item"%>
+                    </li>
+                    <li>
+                        <%= link_to "Sent Messages", sent_messages_path(current_user), class: "list-group-item" %>
+                    </li>
+                    <li>
+                        <%= link_to "Archived Messages", archived_messages_path(current_user), class: "list-group-item" %>
+                    </li>    
+                </ul>
+      </div>
+    </div> <!-- End left column -->
+
+    <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
+          <div id="center">
+
+            <%= link_to "Message History", message_history_path(@other_user), class: "list-group-item" %>
+            
+           <h1><%= @message.subject %></h1>
+          <h5><%= @message.content %></h5>
+          <%= link_to fa_icon("envelope", text: "Reply"), new_user_message_path(@other_user) %>
+            
+          </div>
+        </div>
+
+
+    <div id="right-wrapper" class="col-md-4">
+      
+    </div> <!-- End Right Column -->
+
+</div> <!-- End Main wrapper -->
+

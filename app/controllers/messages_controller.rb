@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     @message.user_id = current_user.id
 
     if @message.save
-      redirect_to profile_path
+      redirect_to user_messages_path
     else
       render :new
     end
@@ -26,11 +26,44 @@ class MessagesController < ApplicationController
     # end
   end
 
+  def received_messages
+    @user = User.find(params[:user_id])
+    @received_messages = @user.received_messages.where(archived: false)
+  end
+
+  def sent_messages
+    @user = User.find(params[:user_id])
+    @sent_messages = @user.sent_messages
+  end
+
+  def archived_messages
+    @user = User.find(params[:user_id])
+    @archived_messages = @user.received_messages.where(archived: true)
+  end
+
   def show
-     @user = current_user
-     @message = Message.find(params[:id])
+    @user = current_user
+    
+    @message = Message.find(params[:id])
      # @received_messages.each do |message|
-      @message.update_attributes(viewed: true)
+    @message.update_attributes(viewed: true)
+
+    if @message.sender == @user
+      @other_user = @message.receiver
+    else
+      @other_user = @message.sender
+    end
+
+    
+  end
+
+  def message_history
+    @user = User.find(params[:user_id])
+
+    @sent_messages = Message.where(receiver_id: @user, sender_id: current_user)
+    @received_messages = Message.where(receiver_id: current_user, sender_id: @user)
+    @history = @sent_messages + @received_messages
+    @sorted_history = @history.sort_by{|e| e.created_at}.reverse!
   end
 
   def archive

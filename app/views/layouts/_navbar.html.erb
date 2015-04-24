@@ -46,7 +46,7 @@
     </tbody>
     <% else %>
       <ul class="nav navbar-nav navbar-right">
-        <li class=" nav-img"><%= link_to image_tag(current_user.image.url(:icon)), current_user.image.url, class: "img-rounded pull-right" %></li>
+        <li class=" nav-img"><%= link_to image_tag(current_user.image.url(:icon)), user_path(current_user), class: "img-rounded pull-right" %></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- This area is the title for the dropdown on the right hand side -->
