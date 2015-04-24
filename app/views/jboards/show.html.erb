@@ -6,17 +6,17 @@
 
       <div id="sidebar-wrapper" class="col-md-2">
             <div id="sidebar">
-                <!-- <ul class="nav list-group">
+                <ul class="nav list-group">
                     <li>
                         <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
                     </li>
-                    <li>
+                    <!-- <li>
                         <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
                     </li>
                     <li>
                         <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
-                    </li>
-                </ul> -->
+                    </li> -->
+                </ul>
                 
             </div>
         </div>
@@ -46,9 +46,10 @@
               <%= @jboard.email%><br>
             <strong> More Info: </strong><br>
               <%= @jboard.job_link%><br>
-            <%= link_to 'Back', jboards_path %> | 
-            <%= link_to 'Edit', edit_jboard_path(@jboard) %> | 
-            <%= link_to 'Delete', jboard_path(@jboard), method: :delete %>
+            <% if @jboard.user == current_user && user_signed_in? %> 
+              <%= link_to 'Edit', edit_jboard_path(@jboard) %> | 
+              <%= link_to 'Delete', jboard_path(@jboard), method: :delete %>
+            <% end %>
             
           </div>
         </div> <!-- END CENTER COLUMN -->
