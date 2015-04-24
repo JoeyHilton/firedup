@@ -58,11 +58,11 @@
 
             <%= f.password_field :current_password, autocomplete: "off", label: "Current Password - Needed to make changes" %>
 
-            <%= f.submit "Update", class: "btn btn-primary" %>
+            <%= f.submit "Update Profile", class: "btn btn-warning" %>
+        <%= link_to "Go Back", :back, class: "btn btn-warning" %>
         <% end %>
-        <br>
+        <br><br>
 
-        <%= link_to "Go Back", :back, class: "btn btn-primary" %>
       
   </div><!-- END LEFT COLUMN -->
 
