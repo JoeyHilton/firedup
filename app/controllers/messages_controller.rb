@@ -19,6 +19,7 @@ class MessagesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @received_messages = @user.received_messages.where(archived: false)
+    @sorted_received_messages = @received_messages.sort_by{|e| e.created_at}.reverse!
     @sent_messages = @user.sent_messages
     @archived_messages = @user.received_messages.where(archived: true)
     # @received_messages.each do |message|
@@ -29,11 +30,13 @@ class MessagesController < ApplicationController
   def received_messages
     @user = User.find(params[:user_id])
     @received_messages = @user.received_messages.where(archived: false)
+    @sorted_received_messages = @received_messages.sort_by{|e| e.created_at}.reverse!
   end
 
   def sent_messages
     @user = User.find(params[:user_id])
     @sent_messages = @user.sent_messages
+    @sorted_sent_messages = @sent_messages.sort_by{|e| e.created_at}.reverse!
   end
 
   def archived_messages

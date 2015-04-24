@@ -29,7 +29,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @received_messages.each do |message| %>
+            <% @sorted_received_messages.each do |message| %>
             
             <tr class="message-row <%= viewed_message_color(message.viewed)%>">
               <td><%= "#{message.sender.first_name} #{message.sender.last_name}" %></td>
