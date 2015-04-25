@@ -1,6 +1,7 @@
 class EducationsController < ApplicationController
-
+before_action :authenticate_user!
 before_action :set_education, only: [:show, :edit, :update, :destroy]
+
 
   def show
   end
@@ -30,27 +31,34 @@ before_action :set_education, only: [:show, :edit, :update, :destroy]
   end
 
   def edit
+    if current_user.id == @education.user_id
     respond_to do |format|
-        format.html { redirect_to profile_path }
+        format.html 
         format.js 
       end
+    end
   end
 
   def update
-    if @education.update(education_params)
-      respond_to do |format|
-        format.html { redirect_to profile_path }
-        format.js 
-      end
+    if current_user == @education.user
+      if @education.update(education_params)
+        respond_to do |format|
+          format.html { redirect_to profile_path }
+          format.js 
+        end
+
     # redirect_to profile_path
-    else
-      render :edit
+      else
+        render :edit
+      end
     end
   end
 
   def destroy
+    if current_user.id == @education.user_id
     @education.destroy
     redirect_to profile_path
+  end
   end
 
   private

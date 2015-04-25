@@ -46,6 +46,10 @@ class PostsController < ApplicationController
     @posts = Post.page(params[:page]).per(12)
   end
 
+  # def pictured_connection
+  #   @user = User.find(params[:user_id])
+  # end
+
   private
   
     def post_params

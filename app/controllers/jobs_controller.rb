@@ -1,5 +1,7 @@
 class JobsController < ApplicationController
-  
+  before_action :authenticate_user!
+
+
   def index
     @jobs = Job.all
   end
@@ -34,15 +36,17 @@ class JobsController < ApplicationController
 
   def edit
     @job = Job.find(params[:id])
+    if current_user.id == @job.user_id
     respond_to do |format|
-      format.html { redirect_to profile_path }
+      format.html 
       format.js
     end
+  end
   end
 
   def update
     @job = Job.find(params[:id])
-
+if current_user.id == @job.user_id
     if @job.update(job_params)
       respond_to do |format|
         format.html { redirect_to profile_path }
@@ -53,11 +57,14 @@ class JobsController < ApplicationController
       render :edit
     end
   end
+  end
 
   def destroy
-    @job = Job.find(params[:id])
+     @job = Job.find(params[:id])
+    if current_user.id == @job.user_id
     @job.destroy
     redirect_to profile_path
+    end
   end
 
   private

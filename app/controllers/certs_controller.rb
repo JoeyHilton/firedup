@@ -1,5 +1,5 @@
 class CertsController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :set_cert, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -33,28 +33,36 @@ class CertsController < ApplicationController
 
   def edit
     # @cert = Cert.find(params[:id])
+    if current_user.id == @cert.user_id
     
       respond_to do |format|
         format.html 
         format.js 
       end
+    end
   end
 
   def update
-    if @cert.update(cert_params)
+    if current_user.id == @cert.user_id
+      if @cert.update(cert_params)
         respond_to do |format|
           format.html { redirect_to profile_path }
           format.js 
         end
+
     # redirect_to profile_path
-    else
-      render :edit
+      else
+        render :edit
+      end
     end
   end
 
   def destroy
+    if current_user.id == @cert.user_id
+
     @cert.destroy
     redirect_to profile_path, notice: "Certificate deleted"
+  end
   end
 
   private

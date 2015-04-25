@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get '/sent_messages/:user_id', to: 'messages#sent_messages', as: :sent_messages
   get '/archived_messages/:user_id', to: 'messages#archived_messages', as: :archived_messages
   get '/message_history/:user_id', to: 'messages#message_history', as: :message_history
+  get '/pictured_connection/:user_id', to: 'posts#pictured_connection', as: :pictured_connection
   
 
 

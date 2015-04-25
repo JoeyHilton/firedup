@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+
   def index
     @users = User.page(params[:page]).per(12)
     @jobs = Job.all
