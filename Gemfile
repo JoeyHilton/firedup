@@ -15,6 +15,8 @@ gem 'paperclip' # for image file uploads
 gem 'aws-sdk', '< 2.0'
 gem 'omniauth-facebook'
 gem 'kaminari'
+gem 'capybara'
+gem 'capybara_minitest_spec'
 # gem 'kaminari-bootstrap'
 gem 'puma'
 
@@ -59,6 +61,7 @@ group :test do
   gem 'minitest-reporters', '1.0.5'
   gem 'mini_backtrace',     '0.1.3'
   gem 'guard-minitest',     '2.3.1'
+  gem 'simplecov', :require => false, :group => :test
 end
 
 
