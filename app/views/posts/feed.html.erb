@@ -4,16 +4,17 @@
 
       <div id="sidebar-wrapper" class="col-md-2">
             <div id="sidebar">
+              <h4 class="centerText"><strong>Command Center</strong></h4>
                 <ul class="nav list-group">
-                    <li>
-                        <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
-                    </li>
                     <li>
                         <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
                     </li>
                     <li>
                         <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
                     </li>      
+                    <li>
+                        <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -29,11 +30,7 @@
         <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
           <div id="sidebar">
            
-
-        <%= link_to(image_tag("300x250.png", :alt => "whatever", :width => 300, :height => 250, :title => "something", class: 'reference'), "http://www.google.com/") %>
-
-        
-
+            <%= render "shared/top_right_banner" %>
 
           </div>
         </div> <!-- END right COLUMN -->
