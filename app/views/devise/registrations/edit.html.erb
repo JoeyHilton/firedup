@@ -19,9 +19,9 @@
 
         <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
           <%= devise_error_messages! %>
-            <%= f.text_field :first_name, label: "First Name" %>
+            <%= f.text_field :first_name, label: "First Name", :required => true %>
 
-            <%= f.text_field :last_name, label: "Last Name" %>
+            <%= f.text_field :last_name, label: "Last Name", :required => true %>
             <%= f.email_field :email, autofocus: true %>
 
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -42,7 +42,7 @@
 
             <%= f.text_field :twitter, label: "Twitter", placeholder: "@twittername"  %>
 
-            <%= f.date_select :birthdate, :start_year=>1950, label: "Birthdate" %>
+            <%= f.date_select :birthdate, :start_year=>1950, label: "Birthdate", :required => true %>
 
             <%= f.text_field :phone, label: "Phone", placeholder: "123-456-7890" %>
 
@@ -58,11 +58,11 @@
 
             <%= f.password_field :current_password, autocomplete: "off", label: "Current Password - Needed to make changes" %>
 
-            <%= f.submit "Update", class: "btn btn-primary" %>
+            <%= f.submit "Update Profile", class: "btn btn-warning" %>
+        <%= link_to "Go Back", :back, class: "btn btn-warning" %>
         <% end %>
-        <br>
+        <br><br>
 
-        <%= link_to "Go Back", :back, class: "btn btn-primary" %>
       
   </div><!-- END LEFT COLUMN -->
 

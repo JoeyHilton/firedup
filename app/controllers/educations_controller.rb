@@ -1,5 +1,6 @@
 class EducationsController < ApplicationController
 
+before_action :set_user, only: [:index, :new, :create]
 before_action :set_education, only: [:show, :edit, :update, :destroy]
 
   def show
@@ -10,12 +11,11 @@ before_action :set_education, only: [:show, :edit, :update, :destroy]
   end
 
   def new
-    @education = Education.new
-    @user = current_user
+    @education = @user.educations.build
   end
 
   def create
-    @education = Education.new(education_params)
+    @education = @user.educations.build(education_params)
     @education.user_id = current_user.id
   
     if @education.save
@@ -61,6 +61,10 @@ before_action :set_education, only: [:show, :edit, :update, :destroy]
 
     def set_education
       @education = Education.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(params[:user_id])
     end
 end
 

@@ -5,7 +5,7 @@
 
     <%= f.file_field :image, label: "Add Image"%>
 
-    <%= f.select :share_with, Post::SHARES, prompt: "Pick one",label: "Share with:" %>
+    <%= f.select :share_with, Post::SHARES, prompt: "Pick one",label: "Share with:" , :selected => 'Everyone'%>
 
     <%= f.submit class: "btn btn-warning" %>
   <% end %>

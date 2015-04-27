@@ -24,22 +24,30 @@ $(function() {
       $(this).tab('show')
     })
 
-    $('#education a').click(function (e) {
-      e.preventDefault()
-      $(this).tab('show')
-    })
-    $('#certs a').click(function (e) {
-      e.preventDefault()
-      $(this).tab('show')
-    })
 
-    function toggleCurrentJob() {
-        $("#end-date").toggleClass( "hidden" );
-        $("#current-working").toggleClass("hidden");
-    }
+  function toggleCurrentJob() {
+      $("#end-date").toggleClass( "hidden" );
+      $("#current-working").toggleClass("hidden");
+  }
 
-    $("tr[data-link]").click(function() {
-     window.location = $(this).data("link");
-    })
+    
+  $('#home a').click(function (e) {
+    e.preventDefault()
+    // $(this).tab('show')
+  })
+
+  $('#education a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
+  // $('#certs a').click(function (e) {
+    // e.preventDefault()
+    // $(this).tab('show')
+  // })
+
+
+  $("tr[data-link]").click(function() {
+   window.location = $(this).data("link");
+  })
 
 });

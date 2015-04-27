@@ -3,22 +3,34 @@
 
       <div id="sidebar-wrapper" class="col-md-2">
             <div id="sidebar">
-                  <h4 class="centerText"><strong>FiredUp Members</strong></h4>
-                <ul class="well">
-                  <h5>Search Members</h5>
+                <!-- <ul class="nav list-group">
+                    <li>
+                        <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
+                    </li>
+                    <li>
+                        <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
+                    </li>
+                    <li>
+                        <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
+                    </li>
+                </ul> -->
+               <h4 class="centerText"><strong>FiredUp Members</strong></h4>
+                <ul class="panel-body">
+                  <h4>Member Search</h4>
                   <%= render 'layouts/membersearchform'  %>
                 </ul>
+                <%= render 'layouts/footer'  %>
             </div>
         </div>
 
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
-            
-           <% @users.each do |user| %> <!-- First Loop -->
+            <%= paginate @users %>
+            <% @users.each do |user| %> <!-- First Loop -->
             <div class="panel panel-default">
               <div class="panel-body memberPanelOverride">
                 <h4 class="memberTitleOverride"><strong>
-                  <%= link_to image_tag(user.image.url(:med)), user.image.url, class: "pull-left smallImage" %>
+                  <%= link_to image_tag(user.image.url(:med)), user_path(user), class: "pull-left smallImage" %>
                   <%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%>
                 </strong></h4>
 
@@ -33,7 +45,7 @@
 
               </div> <!-- End Panel body-->
             </div> <!-- END Panel default -->
-          <% end %> <!-- End First Loop -->
+            <% end %> <!-- End First Loop -->
            <%= paginate @users %>  
             
           </div>

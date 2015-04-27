@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!
+
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -26,19 +28,29 @@ class PostsController < ApplicationController
   end
 
   def edit
-  end
-
-  def update
-    if @post.update(post_params)
-    redirect_to post_path
-    else
-      render :edit
+    if current_user.id != @post.user_id
+      flash[:danger] = "You are not authorized to edit this post."
     end
   end
 
+  def update
+    if current_user.id == @post.user_id
+      if @post.update(post_params)
+      else
+        render :edit
+      end
+    end
+      redirect_to feed_path
+  end
+
   def destroy
-    @post.destroy
-    redirect_to feed_path
+    if current_user.id == @post.user_id
+      @post.destroy
+      redirect_to feed_path
+      else
+      flash[:danger] = "You are not authorized to delete this project."
+      redirect_to feed_path
+    end
   end
 
   def feed

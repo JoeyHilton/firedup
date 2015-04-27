@@ -4,29 +4,30 @@
 
       <div id="sidebar-wrapper" class="col-md-2">
             <div id="sidebar">
-                <!-- <ul class="nav list-group">
+                <ul class="panel-body">
+                  <h4 class="centerText"><strong>Job Board</strong></h4>
+                <ul class="nav list-group">
                     <li>
                         <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
                     </li>
-                    <li>
+                    <!-- <li>
                         <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
                     </li>
                     <li>
                         <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
-                    </li>
-                </ul> -->
-                <ul class="well">
-                  <h4 class="centerText"><strong>Job Board</strong></h4>
-                  <h5>Search Jobs</h5>
+                    </li> -->
+                </ul> 
+                  <h4>Job Search</h4>
                   <%= render 'layouts/jobsearchform'  %>
                 </ul>
+                <%= render 'layouts/footer'  %>
             </div>
         </div>
 
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
             
-            <%= link_to 'Post a Job', new_user_jboard_path(current_user)%>
+            <!--<%= link_to 'Post a Job', new_user_jboard_path(current_user)%>-->
             <% @jboards.order("created_at DESC").each do |jboard| %>
             <div class="panel panel-default">
               <div class="center panel-heading">      

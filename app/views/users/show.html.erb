@@ -5,9 +5,9 @@
   <div id="sidebar-wrapper" class="col-md-2">
         <div id="sidebar">
             <ul class="nav list-group">
-              <li><h3 class="text-center">Your Profile</h3></li>
+              
               <li>
-              <%= link_to "Pending Connections...", pending_connection_path %>
+              <%= link_to "Pending Connections...", pending_connection_path, class: "list-group-item" %>
               </li>
                 <li>
                     <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
@@ -20,6 +20,7 @@
                 </li>
                 
             </ul>
+            <%= render 'layouts/footer'  %>
         </div>
     </div>
 
@@ -29,20 +30,28 @@
         <div class="panel panel-default">
           <div class="center panel-heading">      
             <h3 class="inline"> <%= "#{@user.first_name}'s Profile" %> 
-            <% if @user.followed_by?(current_user) && current_user.followed_by?(@user)%>
-              <%= link_to "Connected", connect_path(@user),  class: "btn btn-warning btn-xs disabled" %>
-            <% elsif @user.followed_by?(current_user) %>
-              <%= link_to "Pending", connect_path(@user),  class: "btn btn-warning btn-xs disabled" %> 
-            <% elsif current_user.followed_by?(@user) %>
-              <%= link_to "Approve", approve_path(@user), class: "btn btn-primary" %>
-            <% else %>
-                <%= link_to "Connect", connect_path(@user),  class: "btn btn-warning btn-xs" %>
-            <% end %>
+              <% if @user == current_user %>
+
+              <% else %>
+                  <% if @user.followed_by?(current_user) && current_user.followed_by?(@user)%>
+                    <%= link_to "Connected", connect_path(@user),  class: "btn btn-warning btn-xs disabled" %>
+                  <% elsif @user.followed_by?(current_user) %>
+                    <%= link_to "Pending", connect_path(@user),  class: "btn btn-warning btn-xs disabled" %>    
+                  <% elsif current_user.followed_by?(@user) %>
+                    <%= link_to "Approve", approve_path(@user), class: "btn btn-primary" %>
+                  <% else %>
+                      <%= link_to "Connect", connect_path(@user),  class: "btn btn-warning btn-xs" %>
+                  <% end %> 
+               <% end %>
             </h3>
           </div>
           
           <div class="panel-body">
-            <%= link_to fa_icon("envelope", text: "Send a New Message"), new_user_message_path(@user) %><br><br>
+            <% if @user == current_user %>
+
+            <% else %>
+              <%= link_to fa_icon("envelope", text: "Send a Message to #{@user.first_name}."), new_user_message_path(@user) %><br><br>
+            <% end %>
             <%= link_to image_tag(@user.image.url(:large)), @user.image.url, class: "pull-right" %>
 
             <strong> <%= "#{@user.first_name}  #{@user.last_name}" %> </strong><br>
