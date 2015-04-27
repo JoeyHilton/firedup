@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.0'
 
 
 
@@ -17,6 +18,7 @@ gem 'kaminari'
 gem 'capybara'
 gem 'capybara_minitest_spec'
 # gem 'kaminari-bootstrap'
+gem 'puma'
 
 
 
