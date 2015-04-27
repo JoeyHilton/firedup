@@ -21,6 +21,7 @@ one:
   email: MyString
   job_link: MyString
   poster: MyString
+  category: Paramedic
 
 two:
   title: MyString
