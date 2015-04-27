@@ -17,5 +17,5 @@ class ConnectionManager
 
 @users.each do |user|
   if current_user_list.include(user) && user_list.include(user)
-
+  end
 end
