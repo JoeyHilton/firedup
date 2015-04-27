@@ -1,6 +1,6 @@
 
 <!-- <h2 class="text-center headline3">Command Center</h2> -->
-<h4>Command Center</h4>
+
 <% posts.order("created_at DESC").each do |post| %>
     <% if post.user.followed_by?(current_user) || post.share_with == "public" || post.user == current_user %>
       <div class="panel panel-default">
@@ -21,7 +21,7 @@
           <div class="float-left"><%= image_tag post.image.url(:xlarge), class: "pull-left" if post.image_file_name %></div>
 
           <div class="float-left"> 
-           <%= link_to "Add Comment", new_post_comment_path(post), class: "btn btn-primary btn-xs paddingAddComment" %><br>
+           <%= link_to "Add Comment", new_post_comment_path(post), class: "btn btn-warning btn-xs paddingAddComment" %><br>
 
       <!-- Add comments -->
             <% post.comments.each do |comment| %>
