@@ -16,7 +16,11 @@
                         <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
                     </li>
                 </ul>
+
+              <%= render 'posts/pictured_connection' %>
+
                 <%= render 'layouts/footer'  %>
+
             </div>
         </div>
 

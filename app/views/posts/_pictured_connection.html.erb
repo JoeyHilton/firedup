@@ -1,0 +1,8 @@
+<% connections.each do |connection| %>
+
+<div>
+  <%= link_to image_tag(connection.image.url(:icon)), user_path(connection), class: "pull-left iconImagePanel img-circle" %>
+
+</div>
+
+<% end %>

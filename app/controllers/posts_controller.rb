@@ -60,6 +60,10 @@ class PostsController < ApplicationController
     @comment = Comment.new
   end
 
+  # def pictured_connection
+  #   @user = User.find(params[:user_id])
+  # end
+
   private
   
     def post_params

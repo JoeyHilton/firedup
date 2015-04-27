@@ -30,10 +30,9 @@
             <div class="panel panel-default">
               <div class="panel-body memberPanelOverride">
                 <h4 class="memberTitleOverride"><strong>
-                  <%= link_to image_tag(user.image.url(:med)), user_path(user), class: "pull-left smallImage" %>
-                  <%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%>
-                </strong></h4>
-
+                  <%= link_to image_tag(user.image.url(:med)), user.image.url, class: "pull-left smallImage" %>
+                  <span><%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%>
+                </strong><%= link_to fa_icon("envelope"), new_user_message_path(user) %></span></h4>
                   <% user.jobs.each do |job| %> <!-- Second Loop -->
                     <% if job.current_employer == true %>
                       <strong><%= job.position %></strong> - <%= job.company %><br>
@@ -42,6 +41,7 @@
 
                 <%= "#{user.city}, #{user.state}" %><br>
                 <small class="text-muted">Member since: <%= user.created_at.strftime("%B %Y") %></small><br><br>
+                
 
               </div> <!-- End Panel body-->
             </div> <!-- END Panel default -->

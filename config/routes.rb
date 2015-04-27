@@ -33,11 +33,15 @@ Rails.application.routes.draw do
   get 'static/tour'
   get 'static/contact'
   
-   get '/connect/:id', to: 'users#connect', as: :connect
-   get '/pending_connection', to: 'users#pending_connection', as: :pending_connection
-   get '/approve_connection/:id', to: 'users#approve_connection', as: :approve
-   get '/archive/:id', to: 'messages#archive', as: :archive
-  
+  get '/connect/:id', to: 'users#connect', as: :connect
+  get '/pending_connection', to: 'users#pending_connection', as: :pending_connection
+  get '/approve_connection/:id', to: 'users#approve_connection', as: :approve
+  get '/archive/:id', to: 'messages#archive', as: :archive
+  get '/received_messages/:user_id', to: 'messages#received_messages', as: :received_messages
+  get '/sent_messages/:user_id', to: 'messages#sent_messages', as: :sent_messages
+  get '/archived_messages/:user_id', to: 'messages#archived_messages', as: :archived_messages
+  get '/message_history/:user_id', to: 'messages#message_history', as: :message_history
+  get '/pictured_connection/:user_id', to: 'posts#pictured_connection', as: :pictured_connection
   
 
 
