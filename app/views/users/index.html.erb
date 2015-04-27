@@ -3,17 +3,7 @@
 
       <div id="sidebar-wrapper" class="col-md-2">
             <div id="sidebar">
-                <!-- <ul class="nav list-group">
-                    <li>
-                        <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
-                    </li>
-                    <li>
-                        <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
-                    </li>
-                    <li>
-                        <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
-                    </li>
-                </ul> -->
+                  <h4 class="centerText"><strong>FiredUp Members</strong></h4>
                 <ul class="well">
                   <h5>Search Members</h5>
                   <%= render 'layouts/membersearchform'  %>
@@ -23,7 +13,7 @@
 
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
-            <h4>FiredUp Members</h4>
+            
            <% @users.each do |user| %> <!-- First Loop -->
             <div class="panel panel-default">
               <div class="panel-body memberPanelOverride">
@@ -51,7 +41,7 @@
 
         <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
           <div id="sidebar">
-           
+           <%= render "shared/top_right_banner" %>
           </div>
         </div> <!-- END right COLUMN -->
 
