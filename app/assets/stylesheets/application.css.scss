@@ -339,15 +339,34 @@ a:hover, a:focus {
   color: red;
 }
 .new-message{
-  color: red !important;
+  color: #287AA9 !important;
+}
+
+.new-message:hover {
+  color: #4593BC !important;
+}
+
+.new-connection{
+  color: #4593BC !important;
+}
+
+.new-connection:hover {
+  color: #287AA9 !important;
 }
 
 .viewed {
-  background-color: blue;
+  background-color: #A7A7A7; 
+}
+.viewed:hover {
+  background-color: #BABABA;
 }
 
 .not_viewed {
-  background-color: red;
+  background-color: #828282;
+}
+
+.not_viewed:hover {
+  background-color: #959595;
 }
 
 .smallImage {
@@ -374,6 +393,24 @@ a:hover, a:focus {
   margin: 0;
 }
 
+.block {
+  display: block;
+  float: none;
+}
 
+.float-left {
+  float: left;
+  width: 500px;
+}
 
+.paddingAddComment {
+  margin-top: 10px;
+}
 
+.centerText {
+  text-align: center;
+}
+
+.banner {
+  padding-left: 15px;
+}

@@ -24,7 +24,6 @@ $(function() {
       $(this).tab('show')
     })
 
-    
 
   function toggleCurrentJob() {
       $("#end-date").toggleClass( "hidden" );

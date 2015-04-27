@@ -31,12 +31,11 @@ class CertsController < ApplicationController
 
   def edit
     # @cert = Cert.find(params[:id])
-    if @cert.save
+    
       respond_to do |format|
         format.html { redirect_to user_path(current_user) }
         format.js 
       end
-    end
   end
 
   def update

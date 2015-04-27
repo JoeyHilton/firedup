@@ -14,6 +14,7 @@
                         <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
                     </li>
                 </ul> -->
+               <h4 class="centerText"><strong>FiredUp Members</strong></h4>
                 <ul class="panel-body">
                   <h4>Member Search</h4>
                   <%= render 'layouts/membersearchform'  %>
@@ -24,7 +25,6 @@
 
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
-            <h4>FiredUp Members</h4>
             <%= paginate @users %>
             <% @users.each do |user| %> <!-- First Loop -->
             <div class="panel panel-default">
@@ -53,7 +53,7 @@
 
         <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
           <div id="sidebar">
-           
+           <%= render "shared/top_right_banner" %>
           </div>
         </div> <!-- END right COLUMN -->
 
