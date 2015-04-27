@@ -23,7 +23,19 @@
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
             <h4>Wanna Share Something?</h4>
-           <%= render "post_form" %>
+          
+        <%= bootstrap_form_for [@user, Post.new], html: { multipart: true } do |f| %>
+
+          <%= f.text_area :content, class: 'form-control' %>
+
+          <%= f.file_field :image, label: "Add Image"%>
+
+          <%= f.select :share_with, Post::SHARES, prompt: "Pick one",label: "Share with:" , :selected => 'Everyone'%>
+
+          <%= f.submit class: "btn btn-warning" %>
+        <% end %>
+
+
             
           </div>
         </div> <!-- END CENTER COLUMN -->

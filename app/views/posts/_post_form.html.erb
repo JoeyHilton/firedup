@@ -1,6 +1,6 @@
 
-  <%= form_for [@user, @posts], html: { multipart: true } do |f| %>
-  
+  <%= bootstrap_form_for [@user, @post], html: { multipart: true } do |f| %>
+
     <%= f.text_area :content, class: 'form-control' %>
 
     <%= f.file_field :image, label: "Add Image"%>
