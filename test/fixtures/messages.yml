@@ -3,9 +3,9 @@
 one:
   subject: MyString
   content: MyText
-  user_id: 
-  sender_id: 
-  receiver_id: 
+  user: one
+  sender: one 
+  receiver: two 
 
 
 two:
