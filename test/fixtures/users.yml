@@ -51,3 +51,19 @@ three:
   gender: male
   secondary_email: example4@example.com
   bio: MyTexts
+
+frodo: 
+  email: frodo@example.com
+  first_name: Frodo
+  last_name: Bag
+  address: 123 Main
+  city: Baggend
+  state: Shire
+  zip: 11111
+  twitter: carter
+  birthdate: <%= Date.today %>
+  phone: 5555556666
+  mobile_phone: 7778889999
+  gender: male
+  secondary_email: example22@example.com
+  bio: MyText  
