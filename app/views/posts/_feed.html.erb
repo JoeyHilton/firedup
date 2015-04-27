@@ -2,7 +2,7 @@
 <!-- <h2 class="text-center headline3">Command Center</h2> -->
 
 <% posts.order("created_at DESC").each do |post| %>
-    <% if post.user.followed_by?(current_user) || post.share_with == "public" || post.user == current_user %>
+    <% if post.user.followed_by?(current_user) || post.share_with == "Everyone" || post.user == current_user %>
       <div class="panel panel-default">
         <div class="center panel-heading panelOverride">
         <%= link_to image_tag(post.user.image.url(:icon)), user_path(post.user_id), class: "pull-left iconImagePanel img-circle" %>      
