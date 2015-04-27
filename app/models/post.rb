@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :comments, dependent: :destroy
 
-  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200", xlarge: "300x300" }
+  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200", xlarge: "400x400" }
 
   validates :content, presence: true
   validates :share_with, presence: true

@@ -381,6 +381,16 @@ a:hover, a:focus {
   margin: 0;
 }
 
+.block {
+  display: block;
+  float: none;
+}
 
+.float-left {
+  float: left;
+  width: 500px;
+}
 
-
+.paddingAddComment {
+  margin-top: 10px;
+}
