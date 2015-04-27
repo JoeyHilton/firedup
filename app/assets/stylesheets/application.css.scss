@@ -37,9 +37,9 @@ h1 {
   color: #980905;
 }
 
-h2, h3, h4, h5 {
-  color: #980905;
-}
+// h2, h3, h4, h5 {
+//   color: #980905;
+// }
 
 .panel-heading {
   padding: 2px 5px 2px 10px;
@@ -87,6 +87,13 @@ a {
 
 a:hover, a:focus {
   color: #5B0503;
+}
+
+.notice {
+  color: #FF6605;
+  z-index: 2;
+  position: absolute;
+  padding-left: 20px;
 }
 
 // --- Nav Bar ---------------------//
@@ -147,7 +154,7 @@ a:hover, a:focus {
 
 .remember {
   color: white;
-  padding-right: 38px;
+  padding-right: 0px;
 }
 
 .nav-img {
@@ -167,6 +174,11 @@ a:hover, a:focus {
 }
 
 // --- Nav Bar ---------------------//
+
+.navbar-fixed-bottom {
+  padding-left: 55px;
+  
+}
 
 // --- Less Bootstrappy ---------------------//
 .panel {
@@ -381,6 +393,24 @@ a:hover, a:focus {
   margin: 0;
 }
 
+.block {
+  display: block;
+  float: none;
+}
 
+.float-left {
+  float: left;
+  width: 500px;
+}
 
+.paddingAddComment {
+  margin-top: 10px;
+}
 
+.centerText {
+  text-align: center;
+}
+
+.banner {
+  padding-left: 15px;
+}

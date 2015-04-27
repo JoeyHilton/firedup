@@ -1,5 +1,8 @@
 class JobsController < ApplicationController
+
   before_action :authenticate_user!
+
+  before_action :set_user, only: [:index, :new, :create]
 
 
   def index
@@ -14,13 +17,11 @@ class JobsController < ApplicationController
   end
 
   def new
-    @job = Job.new
-    @user = current_user
-    # @user = User.find_by(user_id: current_user)
+    @job = @user.jobs.build
   end
 
   def create
-    @job = Job.new(job_params)
+    @job = @user.jobs.build(job_params)
     @job.user_id = current_user.id
   
     if @job.save
@@ -72,5 +73,9 @@ if current_user.id == @job.user_id
   def job_params
     params.require(:job).permit(:company, :start_date, :end_date, :position, :description, :user_id, :current_employer)
   end
+
+  def set_user
+      @user = User.find(params[:user_id])
+    end
 
 end

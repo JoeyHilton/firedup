@@ -23,7 +23,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  # --------  above this line for devise only ----------------      
+  # --------  above this line for devise only ----------------   
+
+  # validates :birthdate   
+  validates_format_of :zip, :with => /\A\d{5}-\d{4}|\A\d{5}\z/, :message => "should be in the form 12345 or 12345-1234", :allow_blank => true
+  validates :phone, format: { with: /\d{3}-\d{3}-\d{4}/, message: "bad format" }, :allow_blank => true
+  validates :mobile_phone, format: { with: /\d{3}-\d{3}-\d{4}/, message: "bad format" }, :allow_blank => true
 
   # has_one :profile, dependent: :destroy
   has_many :educations

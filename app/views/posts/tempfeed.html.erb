@@ -1,0 +1,34 @@
+<p> <%= link_to "Comments", "#"%> </p>
+
+                  <section id="comments-section">
+                    <ol id="comments">
+                      
+                      <% post.comments.each do |comment| %>
+                        <br>
+                        <strong><%= "#{comment.user.first_name} #{comment.user.last_name}" %></strong> <small>said...</small>
+                        <blockquote>
+                          <p><%= comment.body %></p>
+                          <small class="text-muted"> <%= time_ago_in_words(post.created_at) %> ago </small>
+                            <% if comment.user == current_user && user_signed_in? %>
+                              <%= link_to "Edit", edit_comment_path(comment) %> |
+                              <%= link_to "Delete", comment_path(comment), method: :delete%>
+                            <% end %>
+                        </blockquote>
+                      <% end %>
+
+                    </ol>
+                    <%= form_for [@post, @comment] do |f| %>
+                      <fieldset>
+                        <ol>
+                          <li>
+                            <%= f.text_area :body, rows: 2, cols: 60,
+                                            placeholder: "Write a comment..." %>
+                            <%= f.hidden_field :user_id, value: current_user.id %>
+                          </li>
+                          <li>
+                            <%= f.submit 'Post Comment', class: 'button' %>
+                          </li>
+                        </ol>
+                      </fieldset>
+                    <% end %>
+                  </section> 
