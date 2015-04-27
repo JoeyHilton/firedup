@@ -14,6 +14,8 @@ gem 'paperclip' # for image file uploads
 gem 'aws-sdk', '< 2.0'
 gem 'omniauth-facebook'
 gem 'kaminari'
+gem 'capybara'
+gem 'capybara_minitest_spec'
 # gem 'kaminari-bootstrap'
 
 
