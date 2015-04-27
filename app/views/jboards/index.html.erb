@@ -16,6 +16,7 @@
                     </li>
                 </ul> -->
                 <ul class="well">
+                  <h4 class="centerText"><strong>FiredUp Job Board</strong></h4>
                   <h5>Search Jobs</h5>
                   <%= render 'layouts/jobsearchform'  %>
                 </ul>
@@ -24,7 +25,7 @@
 
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
-            <h4>FiredUp Job Board</h4>
+            
             <%= link_to 'Post a Job', new_user_jboard_path(current_user)%>
             <% @jboards.order("created_at DESC").each do |jboard| %>
             <div class="panel panel-default">
@@ -38,10 +39,10 @@
 
                 <small class="text-muted">Posted <%= time_ago_in_words(jboard.created_at) %> ago </small>
                 <small class="text-muted">in category: <%= jboard.category %></small><br>
-                <small><%= link_to 'See Details', jboard_path(jboard) %></small>
+                <small class="text-muted"><%= link_to 'See Details', jboard_path(jboard) %></small>
                 <% if jboard.user == current_user && user_signed_in? %>
-                 | <%= link_to 'Edit', edit_jboard_path(jboard) %> | 
-                  <%= link_to 'Delete', jboard_path(jboard), method: :delete %>
+                 <small class="text-muted">| <%= link_to 'Edit', edit_jboard_path(jboard) %> | </small>
+                  <small class="text-muted"><%= link_to 'Delete', jboard_path(jboard), method: :delete %></small>
                 <% end %>
               </div> <!-- End panel body -->
             </div>
@@ -51,7 +52,7 @@
 
         <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
           <div id="sidebar">
-           
+           <%= render "shared/top_right_banner" %>
           </div>
         </div> <!-- END right COLUMN -->
 
