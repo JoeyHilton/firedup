@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
   def sent_messages
     @user = User.find(params[:user_id])
     @sent_messages = @user.sent_messages
-    @sorted_sent_messages = @sent_messages.sort_by{|e| e.created_at}.reverse!
+    @sorted_sent_messages = @sent_messages.order(created_at: :desc)
   end
 
   def archived_messages
