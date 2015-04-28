@@ -14,4 +14,12 @@ module MessagesHelper
       "not_viewed"
     end 
   end
+
+  def message_history_color(user_message)
+    if user_message
+      "my_message"
+    else
+      "not_my_message"
+    end
+  end
 end

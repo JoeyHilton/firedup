@@ -33,9 +33,13 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should approve connection" do
     sign_in @user
+    get :approve_connection
     # Follower is other user
+    @follower = Follower.create(follower_id: @other_user.id, followable_id: @user.id)
     # Followee is current user
+    @followee = Follower.create(follower_id: @user.id, followable_id: @other_user.id)    
     # Make sure other user and current user ids are
+    
     # in the Follow table. Pluck them out of the 
     # table. When follow is approved; update to true
     # To follow back, make sure the Follow table
