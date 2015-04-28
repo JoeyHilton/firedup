@@ -101,7 +101,7 @@ a:hover, a:focus {
 .navbar  {
   margin-bottom: 0px;
   border-radius: 0px;
-  z-index: 1;
+  // z-index: 1;
 }
 
 .logo {
@@ -129,14 +129,23 @@ a:hover, a:focus {
 .top-nav{
   background-color: black;
   height: 60px;
-  z-index: 2;
+  // z-index: 2;
 }
 
 .bottom-nav {
-  margin-top: 60px;
+  // margin-top: 60px;
   background-color: #980905;
   min-height: 30px;
   height: 30px;
+  min-width: 1292px;
+  // text-align: right;
+  // li {
+  //   float: right;
+  // }
+}
+
+.contact {
+  margin-right: 1%;
 }
 
 // li.dropdown {
@@ -145,7 +154,9 @@ a:hover, a:focus {
 // }
 
 .navbar-form{
-  margin-top: 6px;
+  // margin-top: 6px;
+  margin-bottom: 0;
+  background-color: black;
 }
 
 .bottom-pad {
@@ -154,11 +165,12 @@ a:hover, a:focus {
 
 .remember {
   color: white;
-  padding-right: 0px;
+  padding-right: 37px;
+  margin-bottom: 0;
 }
 
 .nav-img {
-  padding-top: 13px;
+  // padding-top: 13px;
 }
 
 .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, 
@@ -170,7 +182,8 @@ a:hover, a:focus {
 .username {
   color: white;
   padding-right: 30px;
-  padding-top: 25px;
+  padding-left: 30px;
+  padding-top: 15px;
 }
 
 .navbar-fixed-bottom {
@@ -186,8 +199,19 @@ a:hover, a:focus {
 .navbar-fixed-bottom {
   padding-left: 55px;
   width: 205px;
-  
 }
+
+@media screen and (max-width: 767px) {
+  .bottom-nav {
+      width: inherit;
+  }
+}
+
+// @media screen and (min-width: 768px) {
+//   .contact {
+//       margin-right: 100px;
+//   }
+// }
 
 // --- Less Bootstrappy ---------------------//
 .panel {
