@@ -45,6 +45,7 @@ class CertsController < ApplicationController
   end
 
   def update
+    @user = @cert.user
     if current_user.id == @cert.user_id
       if @cert.update(cert_params)
         respond_to do |format|

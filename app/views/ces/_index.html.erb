@@ -1,0 +1,20 @@
+<strong><%= ce.topic %></strong>
+
+<% if @user == current_user %>
+  <small class="text-muted"><%= link_to 'Edit', edit_ce_path(ce), remote: true %> |</small> 
+  <small class="text-muted"><%= link_to 'Delete', ce, method: :delete %></small>
+<% end %><br>
+
+&nbsp;&nbsp;&nbsp;Taken on <%= ce.date %><br>
+&nbsp;&nbsp;&nbsp;<%= ce.hours %> hours
+<%= ce.classtype %><br>
+<strong> Notes: </strong><br>
+&nbsp;&nbsp;&nbsp;<%= ce.notes %><br>
+<hr>
+
+    <!-- t.string   "topic"
+    t.date     "date"
+    t.integer  "hours"
+    t.string   "classtype"
+    t.text     "notes"
+    t.integer  "user_id" -->

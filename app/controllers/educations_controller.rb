@@ -44,6 +44,7 @@ before_action :set_education, only: [:show, :edit, :update, :destroy]
   end
 
   def update
+    @user = @education.user
     if current_user == @education.user
       if @education.update(education_params)
         respond_to do |format|

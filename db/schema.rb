@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423192339) do
+ActiveRecord::Schema.define(version: 20150428172709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,19 @@ ActiveRecord::Schema.define(version: 20150423192339) do
 
   add_index "certs", ["user_id"], name: "index_certs_on_user_id", using: :btree
 
+  create_table "ces", force: :cascade do |t|
+    t.string   "topic"
+    t.date     "date"
+    t.integer  "hours"
+    t.string   "classtype"
+    t.text     "notes"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "ces", ["user_id"], name: "index_ces_on_user_id", using: :btree
+
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "post_id"
@@ -42,6 +55,19 @@ ActiveRecord::Schema.define(version: 20150423192339) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "continuing_eds", force: :cascade do |t|
+    t.string   "topic"
+    t.date     "date"
+    t.integer  "hours"
+    t.string   "ClassType"
+    t.text     "Notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "continuing_eds", ["user_id"], name: "index_continuing_eds_on_user_id", using: :btree
 
   create_table "educations", force: :cascade do |t|
     t.string   "school"
@@ -219,8 +245,10 @@ ActiveRecord::Schema.define(version: 20150423192339) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "certs", "users"
+  add_foreign_key "ces", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "continuing_eds", "users"
   add_foreign_key "educations", "users"
   add_foreign_key "jboards", "users"
   add_foreign_key "jobs", "users"
