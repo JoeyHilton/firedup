@@ -1,17 +1,15 @@
-<strong> School: </strong><br>
-    <%= education.school %><br>
-<strong> Degree: </strong><br>
-    <%= education.degree %><br>
-<strong> Subject: </strong><br>
-    <%= education.subject %><br>
-<strong> Time at School: </strong><br>
-<%= "From: #{education.start_date} until: #{education.end_date}" %><br>
-<strong> Description: </strong><br>
-    <%= education.description %><br><br>
+<strong><%= education.degree %></strong>
+
 <% if @user == current_user %>
-  <%= link_to 'Edit', edit_education_path(education), remote: true %> | 
-  <%= link_to 'Delete', education, method: :delete %>
-<% end %>
+  <small class="text-muted"><%= link_to 'Edit', edit_education_path(education), remote: true %> | </small>
+  <small class="text-muted"><%= link_to 'Delete', education, method: :delete %> </small>
+<% end %><br>
+
+&nbsp;&nbsp;&nbsp;<%= education.school %><br>
+&nbsp;&nbsp;&nbsp;Subject: <%= education.subject %><br>
+&nbsp;&nbsp;&nbsp;<%= "#{education.start_date} - #{education.end_date}" %><br>
+<strong> Description: </strong><br>
+&nbsp;&nbsp;&nbsp;<%= education.description %><br>
 <hr>
 
 

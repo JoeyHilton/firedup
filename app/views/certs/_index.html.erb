@@ -1,15 +1,13 @@
-<strong> Title: </strong><br>
-    <%= cert.title %><br>
-<strong> Issue Date: </strong><br>
-    <%= cert.start_date %><br>
-<strong> Expiration Date: </strong><br>
-    <%= cert.expire_date %><br>
-<strong> Description: </strong><br>
-    <%= cert.description %><br><br>
-    <%= link_to 'See Attachment', cert.attachment.url, target: '_blank' if cert.attachment_file_name %>
-    <%# image_tag cert.attachment.url, class: "pull-right" if cert.attachment_file_name %><br>
+<strong><%= cert.title %></strong>
+
 <% if @user == current_user %>
-  <%= link_to 'Edit', edit_cert_path(cert), remote: true %> | 
-  <%= link_to 'Delete', cert, method: :delete %>
-<% end %>
+  <small class="text-muted"><%= link_to 'Edit', edit_cert_path(cert), remote: true %> | </small>
+  <small class="text-muted"><%= link_to 'Delete', cert, method: :delete %> </small>
+<% end %><br>
+
+&nbsp;&nbsp;&nbsp;Issued: <%= cert.start_date %><br>
+&nbsp;&nbsp;&nbsp;Expires: <%= cert.expire_date %><br>
+<strong> Description: </strong><br>
+&nbsp;&nbsp;&nbsp;<%= cert.description %><br>
+    <%= link_to 'See Attachment', cert.attachment.url, target: '_blank' if cert.attachment_file_name %>
 <hr>

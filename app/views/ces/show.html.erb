@@ -1,0 +1,31 @@
+<div class="col-md-6 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="center panel-heading">      
+        <h1> Continuting Ed</h1>
+      </div>
+      <div class="panel-body">
+          <strong> Topic: </strong><br>
+              <%= @ce.topic%><br>
+          <strong> Date: </strong><br>
+              <%= @ce.date %><br>
+          <strong> Hours: </strong><br>
+              <%= @ce.hours %><br>
+          <strong> Type: </strong><br>
+              <%= @ce.classtype %><br><br>
+          <strong> Notes: </strong><br>
+              <%= @ce.notes %><br><br>
+          <%= link_to 'Back', profile_path %> | 
+          <%= link_to 'Edit', edit_ce_path(@ce)%> | 
+          <%= link_to 'Delete', @ce, method: :delete %>
+        
+      </div>
+  </div>
+</div>
+
+
+<!--     t.string   "topic"
+    t.date     "date"
+    t.integer  "hours"
+    t.string   "classtype"
+    t.text     "notes"
+    t.integer  "user_id" -->

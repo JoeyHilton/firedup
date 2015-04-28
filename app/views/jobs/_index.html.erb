@@ -1,14 +1,16 @@
-<strong> <%= job.position %></strong><br>
-  <%= job.company %><br>
+<strong> <%= job.position %></strong>
+
+<% if @user == current_user %>
+  <small class="text-muted"><%= link_to 'Edit', edit_job_path(job), remote: true %> | </small>
+  <small class="text-muted"><%= link_to 'Delete', job, method: :delete %> </small>
+<% end %><br>
+
+  &nbsp;&nbsp;&nbsp;<%= job.company %><br>
   <% if job.current_employer == false %>
-    <%= "Employed from #{job.start_date} to #{job.end_date}" %><br>
+    &nbsp;&nbsp;&nbsp;<%= "Employed from #{job.start_date} to #{job.end_date}" %><br>
   <% else %>
-    <%= "Employed from #{job.start_date} to Current" %><br>
+    &nbsp;&nbsp;&nbsp;<%= "Employed from #{job.start_date} to Current" %><br>
   <% end %>
 <strong> Job Description: </strong><br>
-  <%= job.description %><br><br>
-<% if @user == current_user %>
-  <%= link_to 'Edit', edit_job_path(job), remote: true %> | 
-  <%= link_to 'Delete', job, method: :delete %>
-<% end %>
+  &nbsp;&nbsp;&nbsp;<%= job.description %><br>
 <hr>
