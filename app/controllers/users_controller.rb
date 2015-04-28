@@ -21,9 +21,9 @@ before_action :authenticate_user!
     @user = User.find(params[:id])
     @messages = @user.messages
 
-    @jobs = current_user.jobs
-    @educations = current_user.educations
-    @certs = current_user.certs
+    @jobs = @user.jobs
+    @educations = @user.educations
+    @certs = @user.certs
     @user = User.find(params[:id])
   end
 

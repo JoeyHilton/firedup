@@ -2,14 +2,14 @@
 
 one:
   keywords: MyString
-  category: MyString
+  category: EMT
   state: MyString
   city: MyString
   agency: MyString
 
 two:
   keywords: MyString
-  category: MyString
+  category: Paramedic
   state: MyString
   city: MyString
   agency: MyString
