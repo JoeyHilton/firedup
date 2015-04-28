@@ -18,9 +18,9 @@ class CertsControllerTest < ActionController::TestCase
   end
 
   test "Only cert creator can edit" do
-    post :create, user_id: @user.id, cert: { :title => 'Test', :description => 'This is a test', :user_id => 1}
+    post :create, user_id: @user.id, cert: { :title => 'Test', start_date: Date.today, expire_date: Date.today, :description => 'This is a test', :user_id => @user.id}
     cert = assigns(:cert)
-    get :edit, user_id: @user.id, id: cert.id
+    get :edit, id: cert.id
     # This breaks because edit is redirecting using a modal
     assert_response :success
     assert_template :edit
@@ -35,14 +35,14 @@ class CertsControllerTest < ActionController::TestCase
     patch :update, user_id: @user.id, id: cert.id, cert: @new_params
     updated_cert = assigns(:cert)
     assert_not_equal updated_cert.title, @new_params[:title]
-    assert_response :success
+    assert_redirected_to user_path(@user)
   end
 
   test "should create cert" do
     assert_difference('Cert.count', 1) do    
-      post :create, user_id: @user.id, cert: { :title => 'Test', :description => 'This is a test', :user_id => 1}
+      post :create, user_id: @user.id, cert: { :title => 'Test', start_date: Date.today, expire_date: Date.today, :description => 'This is a test', :user_id => 1}
     end
-    assert_response :redirect
+    assert_redirected_to user_path(@user)
   end
 
   test "should get index" do
@@ -71,9 +71,9 @@ class CertsControllerTest < ActionController::TestCase
     post :create, user_id: @user.id, cert: { :title => 'Test', :description => 'This is a test', :user_id => 1}
     cert = assigns(:cert)
     sign_out @user
-    sign_in @third_user
+    sign_in @other_user
     assert_no_difference('Cert.count') do
-      get :destroy, user_id: @user.id, id: cert.id
+      delete :destroy, user_id: @user.id, id: @cert.id
     end
     assert_response :success
   end
