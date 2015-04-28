@@ -28,9 +28,13 @@
                 <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
               <% end %>
 
-            <%= f.password_field :password, autocomplete: "off", label: "New Password"%>
+            <% if flash[:notice] == "You have successfully signed up! Please fill-in your profile information." %> 
 
-            <%= f.password_field :password_confirmation, autocomplete: "off", label: "New Password Confirmation" %>
+              <% else %> 
+              <%= f.password_field :password, autocomplete: "off", label: "New Password"%>
+
+              <%= f.password_field :password_confirmation, autocomplete: "off", label: "New Password Confirmation" %>
+            <% end %>
      
             <%= f.text_field :address, label: "Address" %>
 
@@ -68,16 +72,19 @@
 
   <div class="col-md-6"> <!-- RIGHT COLUMN -->
 
+    <% if flash[:notice] == "You have successfully signed up! Please fill-in your profile information." %> 
 
-    <h3>Cancel my account</h3>
+    <% else %>
+      <h3>Cancel my account</h3>
 
-        <h4>Unhappy?</h4>  
-        <p>We are sorry to see you go, but all you have to do to cancel your account is click the 
-            button below.</p> 
-        <%= button_to "Cancel My Account", registration_path(resource_name),
-                      data: { confirm: "Are you sure?" }, method: :delete,
-                      class: "btn btn-danger" %>
-    <br>
+          <h4>Unhappy?</h4>  
+          <p>We are sorry to see you go, but all you have to do to cancel your account is click the 
+              button below.</p> 
+          <%= button_to "Cancel My Account", registration_path(resource_name),
+                        data: { confirm: "Are you sure?" }, method: :delete,
+                        class: "btn btn-danger" %>
+      <br>
+    <% end %>
 
   </div><!-- END RIGHT COLUMN -->
 
