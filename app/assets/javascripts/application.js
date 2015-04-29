@@ -24,11 +24,33 @@ $(function() {
       $(this).tab('show')
     })
 
+    $('.show_comment_field').click(function () {
+      $(this).siblings('.comment_field').removeClass('hidden');
+      $(this).addClass('hidden');
+    })
+
+    $(".pop").popover({ trigger: "manual" , html: true, animation:false})
+    .on("mouseenter", function () {
+        var _this = this;
+        $(this).popover("show");
+        $(".popover").on("mouseleave", function () {
+            $(_this).popover('hide');
+        });
+    }).on("mouseleave", function () {
+        var _this = this;
+        setTimeout(function () {
+            if (!$(".popover:hover").length) {
+                $(_this).popover("hide");
+            }
+        }, 300);
+});
 
   function toggleCurrentJob() {
       $("#end-date").toggleClass( "hidden" );
       $("#current-working").toggleClass("hidden");
   }
+
+  $('.max_number_connections').popover({ trigger: "hover" });
 
     
   $('#home a').click(function (e) {
