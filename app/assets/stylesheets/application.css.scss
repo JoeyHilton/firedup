@@ -186,20 +186,20 @@ a:hover, a:focus {
   padding-top: 15px;
 }
 
-.navbar-fixed-bottom {
-  padding-left: 30px;
-}
+// .navbar-fixed-bottom {
+//   padding-left: 30px;
+// }
 
+.navbar-fixed-bottom {
+  padding-left: 5%;
+  width: 205px;
+}
 .copyright {
-  padding-left: 30px;
+  padding-left: 1%;
 }
 
 // --- Nav Bar ---------------------//
 
-.navbar-fixed-bottom {
-  padding-left: 30px;
-  width: 205px;
-}
 
 @media screen and (max-width: 767px) {
   .bottom-nav {
