@@ -193,7 +193,6 @@ ActiveRecord::Schema.define(version: 20150429033453) do
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
-
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -218,7 +217,6 @@ ActiveRecord::Schema.define(version: 20150429033453) do
   end
 
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
-
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
