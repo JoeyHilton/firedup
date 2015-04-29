@@ -71,7 +71,7 @@ class CesController < ApplicationController
   private
     
     def ce_params
-      params.require(:ce).permit(:topic, :date, :hours, :classtype, :notes, :user_id)
+      params.require(:ce).permit(:topic, :date, :hours, :classtype, :notes, :user_id, :file)
     end
 
 end

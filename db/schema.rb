@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428172709) do
+ActiveRecord::Schema.define(version: 20150429211337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,12 @@ ActiveRecord::Schema.define(version: 20150428172709) do
     t.string   "classtype"
     t.text     "notes"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   add_index "ces", ["user_id"], name: "index_ces_on_user_id", using: :btree
@@ -55,19 +59,6 @@ ActiveRecord::Schema.define(version: 20150428172709) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
-
-  create_table "continuing_eds", force: :cascade do |t|
-    t.string   "topic"
-    t.date     "date"
-    t.integer  "hours"
-    t.string   "ClassType"
-    t.text     "Notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-  end
-
-  add_index "continuing_eds", ["user_id"], name: "index_continuing_eds_on_user_id", using: :btree
 
   create_table "educations", force: :cascade do |t|
     t.string   "school"
@@ -248,7 +239,6 @@ ActiveRecord::Schema.define(version: 20150428172709) do
   add_foreign_key "ces", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "continuing_eds", "users"
   add_foreign_key "educations", "users"
   add_foreign_key "jboards", "users"
   add_foreign_key "jobs", "users"
