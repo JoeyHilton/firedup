@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   has_many :certs
   has_many :posts
   has_many :jboards
+  has_many :ces
 
   has_attached_file :image, styles: { icon: "32x32", small: "64x64", med: "100x100", large: "200x200" },
                     :default_url => "/images/:style/missing.png"

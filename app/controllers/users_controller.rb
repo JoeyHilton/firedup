@@ -24,7 +24,7 @@ before_action :authenticate_user!
     @jobs = @user.jobs
     @educations = @user.educations
     @certs = @user.certs
-    @user = User.find(params[:id])
+    @ces = @user.ces
   end
 
   def profile

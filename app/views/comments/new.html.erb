@@ -6,13 +6,13 @@
             <div id="sidebar">
                 <ul class="nav list-group">
                     <li>
-                        <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
-                    </li>
-                    <li>
                         <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
                     </li>
                     <li>
                         <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
+                    </li>
+                    <li>
+                        <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
                     </li>
                     
                 </ul>

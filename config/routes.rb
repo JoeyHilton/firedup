@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :educations
       resources :messages
       resources :jboards, :except => [:index]
+      resources :ces
       resources :posts do
         resources :comments, except: [:index, :show]
       end

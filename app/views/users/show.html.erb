@@ -10,13 +10,13 @@
               <%= link_to "Pending Connections...", pending_connection_path, class: "list-group-item" %>
               </li>
                 <li>
-                    <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
-                </li>
-                <li>
                     <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
                 </li>
                 <li>
                     <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
+                </li>
+                <li>
+                    <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
                 </li>
                 
             </ul>
@@ -29,7 +29,7 @@
       <div id="center">
         <div class="panel panel-default">
           <div class="center panel-heading">      
-            <h3 class="inline"> <%= "#{@user.first_name}'s Profile" %> 
+            <h3 class="inline"><strong> <%= "#{@user.first_name}'s Profile" %> </strong>
               <% if @user == current_user %>
 
               <% else %>
@@ -83,6 +83,8 @@
                   aria-controls="profile" role="tab" data-toggle="tab">Education</a></li>
               <li role="presentation"><a href="#certs"
                   aria-controls="profile" role="tab" data-toggle="tab">Certifications</a></li>
+              <li role="presentation"><a href="#ces"
+                  aria-controls="profile" role="tab" data-toggle="tab">Continuing Education</a></li>
             </ul>
 
             <!-- Tab panes -->
@@ -90,7 +92,7 @@
               <div role="tabpanel" class="tab-pane active" id="home">
                 <div class="well well-lg" style="margin-top: 0px;">
                   <% if @user == current_user %>
-                    <p><%= link_to 'Add Work Experience', new_user_job_path(current_user), remote: true %></p>
+                    <p><%= link_to 'Add Work Experience', new_user_job_path(current_user), class: "btn btn-warning btn-xs paddingAddComment", remote: true %></p>
                   <% end %>
                   <div class="jobsIndex panel-body" id="jobsList"> 
                     <% @jobs.each do |job| %>
@@ -105,7 +107,7 @@
               <div role="tabpanel" class="tab-pane" id="education">
                 <div class="well well-lg" style="margin-top: 0px;">
                   <% if @user == current_user %>
-                    <p><%= link_to 'Add Education', new_user_education_path(current_user), remote: true %></p>
+                    <p><%= link_to 'Add Education', new_user_education_path(current_user), class: "btn btn-warning btn-xs paddingAddComment", remote: true %></p>
                     <% end %>
                   <div class="educationIndex panel-body" id="eduList">
                     <% @educations.each do |education| %>
@@ -117,10 +119,10 @@
                 </div>
               </div>
 
-              <div role="tabpanel" class="tab-pane" id="certs">
+              <div role="tabpanel" class="tab-pane" id="certs"> <!-- CERTS panel start -->
                 <div class="well well-lg" style="margin-top: 0px;">
                   <% if @user == current_user %>
-                    <p><%= link_to 'Add Certification', new_user_cert_path(current_user), remote: true %></p>
+                    <p><%= link_to 'Add Certification', new_user_cert_path(current_user), class: "btn btn-warning btn-xs paddingAddComment", remote: true %></p>
                   <% end %>
                   <div class="certIndex panel-body" id="certList">
                     <% @certs.each do |cert| %>
@@ -130,9 +132,24 @@
                     <% end %>
                   </div>
                 </div>
-              </div>
-            </div> <!-- End Tab Panes -->
+              </div> <!-- CERTS panel end -->
 
+              <div role="tabpanel" class="tab-pane" id="ces"> <!-- CE panel start -->
+                <div class="well well-lg" style="margin-top: 0px;">
+                  <% if @user == current_user %>
+                    <p><%= link_to 'Add Continuing Education', new_user_ce_path(current_user), class: "btn btn-warning btn-xs paddingAddComment", remote: true %></p>
+                  <% end %>
+                  <div class="ceIndex panel-body" id="ceList">
+                    <% @ces.each do |ce| %>
+                      <div id="ce-<%= ce.id %>">
+                        <%= render partial: 'ces/index', locals: { ce: ce } %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div> <!-- CE panel end -->
+
+            </div> <!-- End Tab Panes -->
           </div><!-- Ends Tab Panel -->
         <% end %>
         

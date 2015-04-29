@@ -47,17 +47,17 @@ class JobsController < ApplicationController
 
   def update
     @job = Job.find(params[:id])
-if current_user.id == @job.user_id
-    if @job.update(job_params)
-      respond_to do |format|
-        format.html { redirect_to profile_path }
-        format.js 
+    @user = @job.user
+    if current_user.id == @job.user_id
+      if @job.update(job_params)
+        respond_to do |format|
+          format.html { redirect_to profile_path }
+          format.js 
+        end
+      else
+        render :edit
       end
-      # redirect_to profile_path
-    else
-      render :edit
     end
-  end
   end
 
   def destroy
