@@ -10,15 +10,18 @@
                         <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
                     </li>
                     <li>
+                        <%= link_to 'New Task', new_user_task_path(current_user), class: "list-group-item"%>
+                    </li>
+                    <li>
                         <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
                     </li>      
                     <li>
                         <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
                     </li>
                 </ul>
-
+                <div class="dereklol">
               <%= render 'posts/pictured_connection' %>
-
+</div>
                 <%= render 'layouts/footer'  %>
 
             </div>
@@ -33,12 +36,26 @@
         </div> <!-- END CENTER COLUMN -->
 
         <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
-          <div id="sidebar">
+          <div >
            
             <%= render "shared/top_right_banner" %>
+
+            <%= render "tasks/task_view" %>
 
           </div>
         </div> <!-- END right COLUMN -->
 
-   
+   <div class="qtip qtip-stylename">
+   <div class="qtip-tip" rel="cornerValue"></div>
+   <div class="qtip-wrapper">
+      <div class="qtip-borderTop"></div> 
+      <div class="qtip-contentWrapper">
+         <div class="qtip-title"> 
+            <div class="qtip-button"></div> 
+         </div>
+         <div class="qtip-content"></div> 
+      </div>
+      <div class="qtip-borderBottom"></div> 
+   </div>
+</div>
   </div><!-- END BODY CONTAINER --> 

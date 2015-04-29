@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  title: MyString
+  due_date: 2015-04-28
+  due_time: 2015-04-28 21:34:53
+  category: MyString
+  private: false
+  notes: MyText
+
+two:
+  user_id: 
+  title: MyString
+  due_date: 2015-04-28
+  due_time: 2015-04-28 21:34:53
+  category: MyString
+  private: false
+  notes: MyText

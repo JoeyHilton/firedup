@@ -1,0 +1,5 @@
+console.log("");
+$('#comment_section_<%= @comment.post.id %>').html("<%= j render partial: 'posts/comments', locals: { post: @comment.post } %>");
+$('#compose_comment_box_<%= @comment.post.id %>').addClass('hidden');
+$('#compose_comment_box_<%= @comment.post.id %>').siblings('.show_comment_field').removeClass('hidden');
+$('.comment_body_class_<%= @comment.post.id %>').val('');

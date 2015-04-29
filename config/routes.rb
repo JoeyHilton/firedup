@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   shallow do
     resources :users do
+      resources :tasks
       resources :jobs
       resources :certs
       resources :educations
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
   get '/connect/:id', to: 'users#connect', as: :connect
   get '/pending_connection', to: 'users#pending_connection', as: :pending_connection
   get '/approve_connection/:id', to: 'users#approve_connection', as: :approve
+  get '/disconnect/:id', to: 'users#disconnect', as: :disconnect
   get '/archive/:id', to: 'messages#archive', as: :archive
   get '/received_messages/:user_id', to: 'messages#received_messages', as: :received_messages
   get '/sent_messages/:user_id', to: 'messages#sent_messages', as: :sent_messages
