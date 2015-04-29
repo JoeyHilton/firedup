@@ -97,7 +97,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav bottom-nav pull-right">
         <!-- We have an if statement here to only show the Users index link if users are signed in -->
-          <li  class="pull-right"><%=  link_to "Contact", static_contact_path %></li> 
+          <li  class="pull-right"><%=  link_to "Contact", contacts_path %></li> 
           <li class="pull-right"><%= link_to 'Tour', static_tour_path %></li>
           <li class="pull-right"><%=  link_to "About", static_about_path %></li>
         <% if user_signed_in? %>

@@ -137,7 +137,7 @@ a:hover, a:focus {
   background-color: #980905;
   min-height: 30px;
   height: 30px;
-  min-width: 1292px;
+  min-width: 2000px;
   // text-align: right;
   // li {
   //   float: right;
@@ -186,20 +186,20 @@ a:hover, a:focus {
   padding-top: 15px;
 }
 
-.navbar-fixed-bottom {
-  padding-left: 50px;
-}
+// .navbar-fixed-bottom {
+//   padding-left: 30px;
+// }
 
+.navbar-fixed-bottom {
+  padding-left: 5%;
+  width: 205px;
+}
 .copyright {
-  padding-left: 20px;
+  padding-left: 1%;
 }
 
 // --- Nav Bar ---------------------//
 
-.navbar-fixed-bottom {
-  padding-left: 55px;
-  width: 205px;
-}
 
 @media screen and (max-width: 767px) {
   .bottom-nav {
@@ -220,7 +220,7 @@ a:hover, a:focus {
 
 .well {
   border-radius: 0px;
-  background-color: rgba(255,255,255, 0.9);
+  background-color: rgba(255,255,255, 0.8);
   border-style: none;
 }
 

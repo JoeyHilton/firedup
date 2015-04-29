@@ -10,6 +10,7 @@
 <%= ce.classtype %><br>
 <strong> Notes: </strong><br>
 &nbsp;&nbsp;&nbsp;<%= ce.notes %><br>
+<%= link_to 'See Attachment', ce.file.url, target: '_blank' if ce.file_file_name %>
 <hr>
 
     <!-- t.string   "topic"

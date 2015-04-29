@@ -38,7 +38,7 @@ class CesController < ApplicationController
     if current_user.id == @ce.user_id
     
       respond_to do |format|
-        format.html { redirect_to user_path(current_user) }
+        format.html 
         format.js 
       end
     end
@@ -71,7 +71,7 @@ class CesController < ApplicationController
   private
     
     def ce_params
-      params.require(:ce).permit(:topic, :date, :hours, :classtype, :notes, :user_id)
+      params.require(:ce).permit(:topic, :date, :hours, :classtype, :notes, :user_id, :file)
     end
 
 end

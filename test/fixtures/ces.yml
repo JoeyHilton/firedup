@@ -6,7 +6,7 @@ one:
   hours: 1
   classtype: MyString
   notes: MyText
-  user_id: 
+  user_id: 50
 
 two:
   topic: MyString
@@ -14,4 +14,4 @@ two:
   hours: 1
   classtype: MyString
   notes: MyText
-  user_id: 
+  user_id: 51

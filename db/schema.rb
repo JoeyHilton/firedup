@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429033453) do
+
+ActiveRecord::Schema.define(version: 20150429211337) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +41,12 @@ ActiveRecord::Schema.define(version: 20150429033453) do
     t.string   "classtype"
     t.text     "notes"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   add_index "ces", ["user_id"], name: "index_ces_on_user_id", using: :btree

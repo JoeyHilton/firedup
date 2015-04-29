@@ -17,6 +17,7 @@
   <%#= f.label :job_description %>
   <%= f.text_area :notes %>
 
+  <%= f.file_field :file, label: "Add File"%>
 
-  <%= f.submit class: "btn btn-warning"%>
+  <%= f.submit "Submit", class: "btn btn-warning"%>
   <% end %>
