@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   shallow do
     resources :users do
+      resources :tasks
       resources :jobs
       resources :certs
       resources :educations

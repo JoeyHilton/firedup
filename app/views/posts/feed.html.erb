@@ -10,6 +10,9 @@
                         <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
                     </li>
                     <li>
+                        <%= link_to 'New Task', new_user_task_path(current_user), class: "list-group-item"%>
+                    </li>
+                    <li>
                         <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
                     </li>      
                     <li>
@@ -33,9 +36,11 @@
         </div> <!-- END CENTER COLUMN -->
 
         <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
-          <div id="sidebar">
+          <div >
            
             <%= render "shared/top_right_banner" %>
+
+            <%= render "tasks/task_view" %>
 
           </div>
         </div> <!-- END right COLUMN -->
