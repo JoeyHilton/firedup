@@ -19,7 +19,8 @@ gem 'capybara'
 gem 'capybara_minitest_spec'
 # gem 'kaminari-bootstrap'
 gem 'puma'
-
+gem 'mail_form'
+gem "letter_opener", :group => :development
 
 
 
@@ -62,6 +63,7 @@ group :test do
   gem 'mini_backtrace',     '0.1.3'
   gem 'guard-minitest',     '2.3.1'
   gem 'simplecov', :require => false, :group => :test
+  gem 'foreman'
 end
 
 
