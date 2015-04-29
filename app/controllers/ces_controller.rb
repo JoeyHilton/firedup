@@ -38,7 +38,7 @@ class CesController < ApplicationController
     if current_user.id == @ce.user_id
     
       respond_to do |format|
-        format.html { redirect_to user_path(current_user) }
+        format.html 
         format.js 
       end
     end
