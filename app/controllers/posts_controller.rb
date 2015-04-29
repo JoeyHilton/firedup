@@ -58,6 +58,7 @@ class PostsController < ApplicationController
     # @user = User.find(params[:id])
     @posts = Post.page(params[:page]).per(12)
     @comment = Comment.new
+    @tasks = current_user.tasks
   end
 
   # def pictured_connection
