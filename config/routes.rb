@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
+  match '/contacts',     to: 'contacts#new',             via: 'get'
+  resources "contacts", only: [:new, :create]
   
 
   get 'static/about'
