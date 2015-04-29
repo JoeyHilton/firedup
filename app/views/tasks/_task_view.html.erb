@@ -1,0 +1,90 @@
+
+
+<div class="container">
+  <div class"col-md-4">
+
+  <div class="row"><!-- First row -->
+    <div class="col-md-4">
+      <h3 class="centerText"><strong> Tasks </strong></h3>
+    </div>
+  </div><!-- End first row -->
+
+  <div class="row"><!-- Start Overdue row -->
+    <div class="col-md-4">
+      <h4> --- Overdue --------------------</h4>
+      <% @tasks.order("due_date DESC").each do |task| %>
+          <% if task.due_date < Date.today %>
+
+            <kbd><%= task.category%></kbd>  <small><%= task.title %></small><br>
+            <p class="editFont"><small class="text-muted">  
+              <%= link_to "Edit", edit_task_path(task) %> |
+              <%= link_to "Delete", task_path(task), method: :delete%><br>
+            </small></p>
+
+          <% end %>
+      <% end %>
+    </div>
+  </div> <!-- End Overdue row -->
+
+  <div class="row"><!-- Start Due Today row -->
+    <div class="col-md-4">
+      <h4> --- Due Today ------------------</h4>
+      <% @tasks.order("due_date DESC").each do |task| %>
+        <% if task.due_date == Date.today %>
+
+          <kbd><%= task.category%></kbd>  <small><strong class="timeColor"><%= task.due_time.strftime("%I:%M %p") %></strong> <%= task.title %></small><br>
+          <p class="editFont"><small class="text-muted">  
+            <%= link_to "Edit", edit_task_path(task) %> |
+            <%= link_to "Delete", task_path(task), method: :delete%><br>
+          </small></p>
+
+        <% end %>
+      <% end %>
+    </div>
+  </div> <!-- End Due Todayrow -->
+
+  <div class="row"><!-- Start Due Tomorrow row -->
+    <div class="col-md-4">
+      <h4> --- Due Tomorrow ------------ </h4>
+      <% @tasks.order("due_date DESC").each do |task| %>
+          <% if task.due_date == Date.today %>
+
+          <kbd><%= task.category%></kbd>  <small><strong class="timeColor"><%= task.due_time.strftime("%I:%M %p") %></strong> <%= task.title %></small><br>
+          <p class="editFont"><small class="text-muted">  
+            <%= link_to "Edit", edit_task_path(task) %> |
+            <%= link_to "Delete", task_path(task), method: :delete%><br>
+          </small></p>
+
+        <% end %>
+      <% end %>
+    </div>
+  </div> <!-- End Due Tomorrow row -->
+
+  <div class="row"><!-- Start Due Tomorrow row -->
+    <div class="col-md-4">
+      <h4> --- Upcoming ------------------ </h4>
+      <% @tasks.order("due_date DESC").each do |task| %> 
+          <% if task.due_date > DateTime.tomorrow  %>
+
+            <kbd><%= task.category%></kbd>  <small><strong class="timeColor"><%= task.due_time.strftime("%I:%M %p") %></strong> <%= task.title %></small><br>
+          <p class="editFont"><small class="text-muted">  
+            <%= link_to "Edit", edit_task_path(task) %> |
+            <%= link_to "Delete", task_path(task), method: :delete%><br>
+          </small></p>
+
+          <% end %>
+      <% end %>
+    </div>
+  </div> <!-- End Due Tomorrow row -->
+
+</div>
+</div> <!-- End Main Container -->
+
+
+   <!--  # t.integer  "user_id"
+    # t.string   "title"
+    # t.date     "due_date"
+    # t.time     "due_time"
+    # t.string   "category"
+    # t.boolean  "private"
+    # t.text     "notes" -->
