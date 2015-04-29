@@ -12,7 +12,7 @@ class CertsControllerTest < ActionController::TestCase
   end
 
   test "Certs should belong to user when created" do
-    post :create, user_id: @user.id, cert: { :title => 'Test', :description => 'This is a test', :user_id => 1}
+    post :create, user_id: @user.id, cert: { :title => 'Test', :description => 'This is a test', :user_id => @user.id}
     cert = assigns(:cert)
     assert_equal @user.id, cert.user_id
   end

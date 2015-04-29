@@ -11,7 +11,7 @@
           <small class="text-muted"><%= time_ago_in_words(post.created_at) %> ago </small>
           <% if post.user == current_user && user_signed_in? %>
                 <small class="text-muted"><%= link_to "Edit", edit_post_path(post) %> |</small>
-                <small class="text-muted"><%= link_to "Delete", post_path(post), method: :delete%></small>
+                <small class="text-muted"><%= link_to "Delete", post_path(post), method: :delete %></small>
           <% end %>
         </div>
     <!-- Post Content -->
@@ -20,23 +20,18 @@
           <div class="float-left"><%= image_tag post.image.url(:xlarge), class: "pull-left" if post.image_file_name %></div>
 
           <div class="float-left"> 
-           <%= link_to "Add Comment", new_post_comment_path(post), class: "btn btn-warning btn-xs paddingAddComment" %><br>
+           <br>
 
       <!-- Add comments -->
-            <% post.comments.each do |comment| %>
-              <br>
-              <strong><%= link_to "#{comment.user.first_name} #{comment.user.last_name}", user_path(comment.user_id) %></strong>
-                  <% if comment.user == current_user && user_signed_in? %>
-                    <small class="text-muted"><%= link_to "Edit", edit_comment_path(comment) %> |</small>
-                    <small class="text-muted"><%= link_to "Delete", comment_path(comment), method: :delete%></small>
-                  <% end %>
-              <blockquote>
-                <%= comment.body %>
-              
-                <small class="text-muted"> <%= time_ago_in_words(post.created_at) %> ago </small>
-              
-                </blockquote>
-            <% end %>
+      <div id="comment_section_<%= post.id %>">
+        <%= render partial: 'posts/comments', locals: { post: post } %>
+      </div>
+
+            
+            <div class="hidden comment_field" id="compose_comment_box_<%= post.id %>">
+            <%= render partial: 'comments/form_fields', locals: { post: post, comment: post.comments.build } %>  
+          </div>
+          <button class="show_comment_field btn btn-warning btn-xs paddingAddComment">Add Comment</button>
           </div> <!-- End Float Left -->
         </div>
       </div>

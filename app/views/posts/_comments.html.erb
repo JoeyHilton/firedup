@@ -1,0 +1,14 @@
+<% post.comments.each do |comment| %>
+              <br>
+              <strong><%= link_to "#{comment.user.first_name} #{comment.user.last_name}", user_path(comment.user_id) %></strong>
+                  <% if comment.user == current_user && user_signed_in? %>
+                    <small class="text-muted"><%= link_to "Edit", edit_comment_path(comment) %> |</small>
+                    <small class="text-muted"><%= link_to "Delete", comment_path(comment), method: :delete, remote: true %></small>
+                  <% end %>
+              <blockquote>
+                <%= comment.body %>
+              
+                <small class="text-muted"> <%= time_ago_in_words(post.created_at) %> ago </small>
+              
+                </blockquote>
+            <% end %>

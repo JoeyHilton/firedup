@@ -50,6 +50,16 @@ before_action :authenticate_user!
     redirect_to @user
   end
 
+  def disconnect
+    @user = User.find(params[:id])
+
+    if current_user.follows?(@user) && @user.follows?(current_user)
+      @user.unfollow!(current_user)
+      current_user.unfollow!(@user)
+    end
+    redirect_to user_path(@user)
+  end
+
   def pending_connection
     # All recored where current user is being followed and approved is false
     @follow_records = Follow.where(followable_id: current_user.id, approved: false)

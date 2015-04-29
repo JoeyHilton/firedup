@@ -1,5 +1,5 @@
-<%= bootstrap_form_for [@post, @comment] do |f| %>
-  <%= f.text_area :body %>
+<%= bootstrap_form_for [post, comment], remote: true do |f| %>
+  <%= f.text_area :body, class: "comment_body_class_#{post.id}" %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit class: "btn btn-warning" %>
 <% end %>

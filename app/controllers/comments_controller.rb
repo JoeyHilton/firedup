@@ -10,10 +10,17 @@ before_action :set_post, except: [:edit, :update, :destroy]
   def create
     @comment = @post.comments.build(comment_params)
     if @comment.save
-      redirect_to feed_path
+
+      respond_to do |format|
+      format.html 
+      format.js
+      end
     else
       render :new
     end
+
+    
+    
   end
 
   def edit
@@ -36,7 +43,10 @@ before_action :set_post, except: [:edit, :update, :destroy]
     @comment = Comment.find(params[:id])
     if @comment.user == current_user
       @comment.destroy
-      redirect_to feed_path
+      
+      respond_to do |format|
+        format.js {render :layout => false}
+      end
     else
       redirect_to feed_path, notice: "Nope"
     end  
