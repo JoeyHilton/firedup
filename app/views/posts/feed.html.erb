@@ -1,61 +1,59 @@
 
-  <div id="wrapper"><!-- START BODY CONTAINER -->
+<div id="wrapper"><!-- START BODY CONTAINER -->
   
+  <div id="sidebar-wrapper" class="col-md-2">
+    <div id="sidebar">
+      <h4 class="centerText"><strong>Command Center</strong></h4>
+        <ul class="nav list-group">
+            <li>
+                <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
+            </li>
+            <li>
+                <%= link_to 'New Task', new_user_task_path(current_user), class: "list-group-item"%>
+            </li>
+            <li>
+                <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
+            </li>      
+            <li>
+                <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
+            </li>
+        </ul>
+      <div class="dereklol">
+      <%= render 'posts/pictured_connection' %>
+      </div>
+      <%= render 'layouts/footer'  %>
+    </div>
+  </div>
 
-      <div id="sidebar-wrapper" class="col-md-2">
-            <div id="sidebar">
-              <h4 class="centerText"><strong>Command Center</strong></h4>
-                <ul class="nav list-group">
-                    <li>
-                        <%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>
-                    </li>
-                    <li>
-                        <%= link_to 'New Task', new_user_task_path(current_user), class: "list-group-item"%>
-                    </li>
-                    <li>
-                        <%= link_to "Show Messages", user_messages_path(current_user), class: "list-group-item" %>
-                    </li>      
-                    <li>
-                        <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
-                    </li>
-                </ul>
-                <div class="dereklol">
-              <%= render 'posts/pictured_connection' %>
-</div>
-                <%= render 'layouts/footer'  %>
+    <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
+      <div id="center">
+        
+        <%= render partial: "posts/feed", locals: {posts: @posts} %>
+        
+      </div>
+  </div> <!-- END CENTER COLUMN -->
 
-            </div>
-        </div>
+  <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
+    <div >
+     
+      <%= render "shared/top_right_banner" %>
 
-        <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
-          <div id="center">
-            
-            <%= render partial: "posts/feed", locals: {posts: @posts} %>
-            
-          </div>
-        </div> <!-- END CENTER COLUMN -->
+      <%= render "tasks/task_view" %>
 
-        <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
-          <div >
-           
-            <%= render "shared/top_right_banner" %>
-
-            <%= render "tasks/task_view" %>
-
-          </div>
-        </div> <!-- END right COLUMN -->
+    </div>
+  </div> <!-- END right COLUMN -->
 
    <div class="qtip qtip-stylename">
-   <div class="qtip-tip" rel="cornerValue"></div>
-   <div class="qtip-wrapper">
+    <div class="qtip-tip" rel="cornerValue"></div>
+    <div class="qtip-wrapper">
       <div class="qtip-borderTop"></div> 
       <div class="qtip-contentWrapper">
          <div class="qtip-title"> 
-            <div class="qtip-button"></div> 
+          <div class="qtip-button"></div> 
          </div>
          <div class="qtip-content"></div> 
       </div>
       <div class="qtip-borderBottom"></div> 
    </div>
-</div>
-  </div><!-- END BODY CONTAINER --> 
+  </div>
+</div><!-- END BODY CONTAINER --> 
