@@ -47,7 +47,7 @@
     <div class="col-md-4">
       <h4> --- Due Tomorrow ------------ </h4>
       <% @tasks.order("due_date DESC").each do |task| %>
-          <% if task.due_date == Date.today %>
+          <% if task.due_date == Date.tomorrow %>
 
           <kbd><%= task.category%></kbd>  <small><strong class="timeColor"><%= task.due_time.strftime("%I:%M %p") %></strong> <%= task.title %></small><br>
           <p class="editFont"><small class="text-muted">  
