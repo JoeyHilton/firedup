@@ -34,11 +34,10 @@
   </div> <!-- END CENTER COLUMN -->
 
   <div id="right-wrapper" class="col-md-4"> <!-- Begin right column -->
-    <div >
      
       <%= render "shared/top_right_banner" %>
-
-      <%= render "tasks/task_view" %>
+    <div id="taskList">
+        <%= render partial: "tasks/task_view", locals: {tasks: @tasks} %>
 
     </div>
   </div> <!-- END right COLUMN -->
