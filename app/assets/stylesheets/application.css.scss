@@ -21,7 +21,7 @@
 
 
 
-
+// --- Universal ---------------------//
 body { 
   padding-top: 100px; 
   font-family: 'Oxygen', sans-serif;
@@ -95,6 +95,14 @@ a:hover, a:focus {
   position: absolute;
   padding-left: 20px;
 }
+
+// --- Universal ---------------------//
+
+// --- Tasks ---------------------//
+.task-box {
+  background-color: #DCDCDC;
+}
+// --- Tasks ---------------------//
 
 // --- Nav Bar ---------------------//
 
@@ -198,9 +206,6 @@ a:hover, a:focus {
   padding-left: 1%;
 }
 
-// --- Nav Bar ---------------------//
-
-
 @media screen and (max-width: 767px) {
   .bottom-nav {
       width: inherit;
@@ -212,6 +217,9 @@ a:hover, a:focus {
 //       margin-right: 100px;
 //   }
 // }
+
+// --- Nav Bar ---------------------//
+
 
 // --- Less Bootstrappy ---------------------//
 .panel {
