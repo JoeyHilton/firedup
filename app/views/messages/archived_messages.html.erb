@@ -1,49 +1,53 @@
 <div id="wrapper"> <!-- Main Container --> <!-- First Row -->
-    <div  id="sidebar-wrapper" class="col-md-2">
-      <div id="sidebar">
-        <ul class="nav list-group">
-                    <li>
-                        <%= link_to 'Received Messages', received_messages_path(current_user), class: "list-group-item"%>
-                    </li>
-                    <li>
-                        <%= link_to "Sent Messages", sent_messages_path(current_user), class: "list-group-item" %>
-                    </li>
-                    <li>
-                        <%= link_to "Archived Messages", archived_messages_path(current_user), class: "list-group-item" %>
-                    </li>      
-                </ul>
-                <%= render 'layouts/footer'  %>
-      </div>
-    </div> <!-- End left column -->
+  <div  id="sidebar-wrapper" class="col-md-2">
+    <div id="sidebar">
+      <ul class="nav list-group">
+        <li>
+          <%= link_to 'Received Messages', received_messages_path(current_user), class: "list-group-item"%>
+        </li>
+        <li>
+          <%= link_to "Sent Messages", sent_messages_path(current_user), class: "list-group-item" %>
+        </li>
+        <li>
+          <%= link_to "Archived Messages", archived_messages_path(current_user), class: "list-group-item" %>
+        </li>      
+      </ul>
+      <%= render 'layouts/footer'  %>
+    </div>
+  </div> <!-- End left column -->
 
-    <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
-          <div id="center">
-            
-           <table class="table">
-                <thead>
-                  <tr>
-                    <th>Author</th>
-                    <th>Subject</th>
-                    <th>Content</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @archived_messages.each do |message| %>
-                  <tr class="message-row <%= viewed_message_color(message.viewed)%>">
-                  <td><%= "#{message.receiver.first_name} #{message.receiver.last_name}" %></td>
-                  <td><%= message.subject %></td>
-                  <td><%= message.content %></td>
-                  <td><%= link_to "", message, method: :delete, class: "fa fa-trash" %></td>
-                  <% end %>
-                </tr>
-                </tbody>
-              </table>
-            
-          </div>
-        </div>
-<div id="right-wrapper" class="col-md-4">
+  <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
+    <div id="center">         
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Author</th>
+            <th>Subject</th>
+            <th>Open</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @archived_messages.each do |message| %>
+          <tr class="message-row <%= viewed_message_color(message.viewed)%>">
+          <td><%= "#{message.receiver.first_name} #{message.receiver.last_name}" %></td>
+          <td><%= message.subject %></td>
+          <td><%= link_to "", message_path(message), class: "fa fa-envelope"%></td>
+          <td><%= link_to "", message, method: :delete, class: "fa fa-trash" %></td>
+          <% end %>
+        </tr>
+        </tbody>
+      </table>          
+    </div>
+  </div>
+
+  <div id="right-wrapper" class="col-md-4">
+    <div id="sidebar">
+     
+      <%= render "shared/top_right_banner" %>
+
+    </div>
       
-    </div> <!-- End Right Column -->
+  </div> <!-- End Right Column -->
 
 </div> <!-- End Main wrapper -->

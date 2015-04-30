@@ -1,7 +1,6 @@
 
   <div id="wrapper"><!-- START BODY CONTAINER -->
   
-
       <div id="sidebar-wrapper" class="col-md-2">
             <div id="sidebar">
               <h4 class="centerText"><strong>Pending Connections</strong></h4>
@@ -26,15 +25,21 @@
 
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
-            
-            <ul>
-            <% @pending_connections.each do |user| %>
-              <li><strong><%= "#{user.first_name}" %></strong> <strong><%= " #{user.last_name} " %></strong><%="would like to Connect with you!" %> <%= link_to "Approve", approve_path(user)  %> <%= link_to 'View Profile', user_path(user) %></li>
-
-            <% end %>
-
-            </ul>
-            
+            <table class="table table-hover">
+              <tbody>
+                <% @pending_connections.each do |user| %>
+                  <tr>
+                    <td><strong><%= "#{user.first_name} #{user.last_name} " %></strong><%="would like to Connect with you!"%></td>
+                    <td>
+                      <%= link_to "Approve", approve_path(user) %>
+                    </td>
+                    <td>
+                      <%= link_to 'View Profile', user_path(user) %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table> 
           </div>
         </div> <!-- END CENTER COLUMN -->
 
