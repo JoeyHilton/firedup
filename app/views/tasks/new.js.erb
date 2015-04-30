@@ -1,0 +1,3 @@
+$('#myModalLabel').html("New Task");
+$('#NewModalBody').html('<%= j render partial: 'task_form', locals: {task: @task, using_modal: true} %>');
+$('#newModal').modal('show');

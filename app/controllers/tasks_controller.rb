@@ -20,7 +20,10 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
   
     if @task.save
-      redirect_to feed_path
+      respond_to do |format|
+        format.html { redirect_to feed_path}
+        format.js 
+      end
     else
       render :new
     end
@@ -29,7 +32,11 @@ class TasksController < ApplicationController
   def edit
     @task = Task.find(params[:id])
     if current_user.id != @task.user_id
-      flash[:danger] = "You are not authorized to edit this post."
+      flash[:danger] = "You are not authorized to edit this task."
+      respond_to do |format|
+        format.html 
+        format.js 
+      end
     end
   end
 
@@ -37,11 +44,14 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if current_user.id == @task.user_id
       if @task.update(task_params)
+        respond_to do |format|
+          format.html { redirect_to feed_path }
+          format.js 
+        end
       else
         render :edit
       end
     end
-      redirect_to feed_path
   end
 
   def destroy

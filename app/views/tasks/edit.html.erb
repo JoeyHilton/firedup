@@ -1,32 +1,11 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-5 offset-2">
-
-
-
-<%= bootstrap_form_for [@user, @task], html: { multipart: true } do |f| %>
-
-    <%= f.text_field :title, class: 'form-control' %>
-
-    <%= f.date_field :due_date, label: "Due Date", prepend: "due"%>
-
-    <%= f.time_field :due_time, label: "Due Time"%>
-
-    <%= f.select :category, Task::CATEGORY, prompt: "Pick one", label: "Category:" , :selected => 'Everyone'%>
-
-    <%= f.check_box :private, label: "Private Task", value: "true", :checked => 'true' %>
-
-    <%= f.submit class: "btn btn-warning" %>
-  <% end %>
-
-    </div>
+<div class="col-md-5 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="center panel-heading">      
+        <h1> Edit Task</h1>
+      </div>
+      <div class="panel-body">
+        <%= render partial: 'tasks/task_form', locals: {task: @task, using_modal: false}  %>
+      </div>
   </div>
 </div>
 
-    <!-- # t.integer  "user_id"
-    # t.string   "title"
-    # t.date     "due_date"
-    # t.time     "due_time"
-    # t.string   "category"
-    # t.boolean  "private"
-    # t.text     "notes" -->
