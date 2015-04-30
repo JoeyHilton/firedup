@@ -21,7 +21,7 @@
 
 
 
-
+// --- Universal ---------------------//
 body { 
   padding-top: 100px; 
   font-family: 'Oxygen', sans-serif;
@@ -95,6 +95,14 @@ a:hover, a:focus {
   position: absolute;
   padding-left: 20px;
 }
+
+// --- Universal ---------------------//
+
+// --- Tasks ---------------------//
+.task-box {
+  background-color: #DCDCDC;
+}
+// --- Tasks ---------------------//
 
 // --- Nav Bar ---------------------//
 
@@ -198,9 +206,6 @@ a:hover, a:focus {
   padding-left: 1%;
 }
 
-// --- Nav Bar ---------------------//
-
-
 @media screen and (max-width: 767px) {
   .bottom-nav {
       width: inherit;
@@ -212,6 +217,9 @@ a:hover, a:focus {
 //       margin-right: 100px;
 //   }
 // }
+
+// --- Nav Bar ---------------------//
+
 
 // --- Less Bootstrappy ---------------------//
 .panel {
@@ -374,42 +382,46 @@ a:hover, a:focus {
 .nav.navbar-nav.navbar-right li:first-child  {
   color: red;
 }
+
+// --- Messages ---------------------//
 .new-message{
-  color: #4593BC !important;
+  color: #FFCC05 !important;
 }
 
 .new-message:hover {
-  color: #287AA9 !important;
+  color: #FF6605 !important;
 }
 
 .new-connection{
-  color: #4593BC !important;
+  color: #FFCC05 !important;
 }
 
 .new-connection:hover {
-  color: #287AA9 !important;
+  color: #FF6605 !important;
 }
 
 .viewed {
-  background-color: #A7A7A7; 
+  background-color: #FFEB9B; 
 }
 .viewed:hover {
-  background-color: #BABABA;
+  background-color: #FFE069;
 }
 
-.not_viewed {
-  background-color: #828282;
-}
+// .not_viewed {
+//   background-color: #828282;
+// }
 
 .not_viewed:hover {
-  background-color: #959595;
+  background-color: #f5f5f5;
 }
+
+// --- Messages ---------------------//
+
+// ---Members index ---------------------//
 
 .smallImage {
   padding: 0px 10px 0px 0px;
 }
-
-// ---Members index ---------------------//
 
 .memberPanelOverride {
   padding: 5px 5px 5px 15px;

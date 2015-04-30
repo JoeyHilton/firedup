@@ -60,6 +60,19 @@ ActiveRecord::Schema.define(version: 20150429211337) do
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "continuing_eds", force: :cascade do |t|
+    t.string   "topic"
+    t.date     "date"
+    t.integer  "hours"
+    t.string   "ClassType"
+    t.text     "Notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "continuing_eds", ["user_id"], name: "index_continuing_eds_on_user_id", using: :btree
+
   create_table "educations", force: :cascade do |t|
     t.string   "school"
     t.date     "start_date"
@@ -197,17 +210,6 @@ ActiveRecord::Schema.define(version: 20150429211337) do
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
-
   create_table "tasks", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -223,12 +225,12 @@ ActiveRecord::Schema.define(version: 20150429211337) do
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -254,6 +256,7 @@ ActiveRecord::Schema.define(version: 20150429211337) do
     t.datetime "image_updated_at"
     t.string   "provider"
     t.string   "uid"
+    t.boolean  "current_employer",       default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -263,6 +266,7 @@ ActiveRecord::Schema.define(version: 20150429211337) do
   add_foreign_key "ces", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "continuing_eds", "users"
   add_foreign_key "educations", "users"
   add_foreign_key "jboards", "users"
   add_foreign_key "jobs", "users"
