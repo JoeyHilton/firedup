@@ -374,42 +374,46 @@ a:hover, a:focus {
 .nav.navbar-nav.navbar-right li:first-child  {
   color: red;
 }
+
+// --- Messages ---------------------//
 .new-message{
-  color: #4593BC !important;
+  color: #FFCC05 !important;
 }
 
 .new-message:hover {
-  color: #287AA9 !important;
+  color: #FF6605 !important;
 }
 
 .new-connection{
-  color: #4593BC !important;
+  color: #FFCC05 !important;
 }
 
 .new-connection:hover {
-  color: #287AA9 !important;
+  color: #FF6605 !important;
 }
 
 .viewed {
-  background-color: #A7A7A7; 
+  background-color: #FFEB9B; 
 }
 .viewed:hover {
-  background-color: #BABABA;
+  background-color: #FFE069;
 }
 
-.not_viewed {
-  background-color: #828282;
-}
+// .not_viewed {
+//   background-color: #828282;
+// }
 
 .not_viewed:hover {
-  background-color: #959595;
+  background-color: #f5f5f5;
 }
+
+// --- Messages ---------------------//
+
+// ---Members index ---------------------//
 
 .smallImage {
   padding: 0px 10px 0px 0px;
 }
-
-// ---Members index ---------------------//
 
 .memberPanelOverride {
   padding: 5px 5px 5px 15px;

@@ -1,46 +1,57 @@
 <div id="wrapper"> <!-- Main Container --> <!-- First Row -->
-    <div  id="sidebar-wrapper" class="col-md-2">
-      <div id="sidebar">
-        <ul class="nav list-group">
-                    <li>
-                        <%= link_to 'Received Messages', received_messages_path(current_user), class: "list-group-item"%>
-                    </li>
-                    <li>
-                        <%= link_to "Sent Messages", sent_messages_path(current_user), class: "list-group-item" %>
-                    </li>
-                    <li>
-                        <%= link_to "Archived Messages", archived_messages_path(current_user), class: "list-group-item" %>
-                    </li>      
-                </ul>
-                <%= render 'layouts/footer'  %>
-      </div>
-    </div> <!-- End left column -->
+  <div  id="sidebar-wrapper" class="col-md-2">
+    <div id="sidebar">
+      <ul class="nav list-group">
+        <li>
+            <%= link_to 'Received Messages', received_messages_path(current_user), class: "list-group-item"%>
+        </li>
+        <li>
+            <%= link_to "Sent Messages", sent_messages_path(current_user), class: "list-group-item" %>
+        </li>
+        <li>
+            <%= link_to "Archived Messages", archived_messages_path(current_user), class: "list-group-item" %>
+        </li>      
+      </ul>
+      <%= render 'layouts/footer'  %>
+    </div>
+  </div> <!-- End left column -->
 
-    <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
-          <div id="center">
-            <% @sorted_history.each do |message| %>
-            <div class="panel panel-default">
-              <div class="center panel-heading panelOverride">
-                <%= link_to image_tag(message.user.image.url(:icon)), user_path(message.user_id), class: "pull-left iconImagePanel img-circle" %>      
-                  <strong> <%= link_to "#{message.user.first_name} #{message.user.last_name}", user_path(message.user_id) %> </strong>
+  <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
+    <div id="center">
+      <% @sorted_history.each do |message| %>
+      <div class="panel panel-default">
+        <div class="center panel-heading panelOverride">
+          <%= link_to image_tag(message.user.image.url(:icon)), user_path(message.user_id), class: "pull-left iconImagePanel img-circle" %>      
+            <strong> <%= link_to "#{message.user.first_name} #{message.user.last_name}", user_path(message.user_id) %> </strong>
 
-                  <small class="text-muted"><%= time_ago_in_words(message.created_at) %> ago </small>
-                  <% if message.user == current_user && user_signed_in? %>
-                        <%= link_to "Delete", message, method: :delete%>
-                  <% end %>
-                </div>
-              <h3 class="well-sm"><strong><%= message.subject %></strong></h3>
-              <h5 class="well"><%= message.content %></h5>
-            </div>
-              <hr>
+            <small class="text-muted"><%= time_ago_in_words(message.created_at) %> ago </small>
+            <% if message.user == current_user && user_signed_in? %>
+                  <%= link_to "Delete", message, method: :delete%>
             <% end %>
           </div>
-        </div>
+          <br>
+          <div class "well well-sm">
+          <strong>
+            <%= message.subject %>
+          </strong>
+          <blockquote>
+            <%= message.content %>
+          </blockquote>
+         </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
 
-    <div id="right-wrapper" class="col-md-4">
-      
-    </div> <!-- End Right Column -->
+  <div id="right-wrapper" class="col-md-4">
+    <div id="sidebar">
+     
+      <%= render "shared/top_right_banner" %>
+
+    </div>
+    
+  </div> <!-- End Right Column -->
 
 </div> <!-- End Main wrapper -->
 
