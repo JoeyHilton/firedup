@@ -1,0 +1,2 @@
+$('#newModal').modal('hide');
+$('#post-<%= @post.id %>').html('<%= j render partial: 'post_form', locals: { post: @post } %>');
