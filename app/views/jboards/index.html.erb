@@ -30,8 +30,11 @@
             <!--<%= link_to 'Post a Job', new_user_jboard_path(current_user)%>-->
             <% @jboards.order("created_at DESC").each do |jboard| %>
             <div class="panel panel-default">
-              <div class="center panel-heading">      
-                <h4 class="jboardTitleOverride"><%= jboard.title %></h4>
+              <div class="center panel-heading">
+
+                <h4 class="jboardTitleOverride"><%= link_to jboard.title, jboard_path(jboard) %></h4>
+
+
               </div>
               <div class="panel-body memberPanelOverride">
                   
