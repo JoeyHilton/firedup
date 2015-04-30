@@ -37,14 +37,8 @@
         <% if task.due_date == Date.today %>
 
           <kbd><%= task.category%></kbd>  <small><strong class="timeColor"><%= task.due_time.strftime("%I:%M %p") %></strong> <%= task.title %></small><br>
-          <p class="editFont"><small class="text-muted">  
-<<<<<<< HEAD
-            <%= link_to "Edit", edit_task_path(task), remote: true %> |
-            <%= link_to "Delete", task_path(task), method: :delete%><br>
-=======
-            <%= link_to "", edit_task_path(task), class: "fa fa-pencil" %> |
-              <%= link_to "", task_path(task), method: :delete, class: "fa fa-trash" %>
->>>>>>> 9c0937d48a91db5b94ad6fec7a75e948beddb0b5
+            <%= link_to "", edit_task_path(task), class: "fa fa-pencil", remote: true %> |
+            <%= link_to "", task_path(task), method: :delete, class: "fa fa-trash" %>
           </small></p>
 
         <% end %>
@@ -62,13 +56,8 @@
 
           <kbd><%= task.category%></kbd>  <small><strong class="timeColor"><%= task.due_time.strftime("%I:%M %p") %></strong> <%= task.title %></small><br>
           <p class="editFont"><small class="text-muted">  
-<<<<<<< HEAD
-            <%= link_to "Edit", edit_task_path(task), remote: true %> |
-            <%= link_to "Delete", task_path(task), method: :delete%><br>
-=======
-            <%= link_to "", edit_task_path(task), class: "fa fa-pencil" %> |
-              <%= link_to "", task_path(task), method: :delete, class: "fa fa-trash" %>
->>>>>>> 9c0937d48a91db5b94ad6fec7a75e948beddb0b5
+            <%= link_to "", edit_task_path(task), class: "fa fa-pencil", remote: true %> |
+            <%= link_to "", task_path(task), method: :delete, class: "fa fa-trash" %>
           </small></p>
 
         <% end %>
@@ -86,13 +75,8 @@
 
             <kbd><%= task.category%></kbd>  <small><strong class="timeColor"><%= task.due_time.strftime("%I:%M %p") %></strong> <%= task.title %></small><br>
           <p class="editFont"><small class="text-muted">  
-<<<<<<< HEAD
-            <%= link_to "Edit", edit_task_path(task), remote: true %> |
-            <%= link_to "Delete", task_path(task), method: :delete%><br>
-=======
-            <%= link_to "", edit_task_path(task), class: "fa fa-pencil" %> |
-              <%= link_to "", task_path(task), method: :delete, class: "fa fa-trash" %>
->>>>>>> 9c0937d48a91db5b94ad6fec7a75e948beddb0b5
+            <%= link_to "", edit_task_path(task), class: "fa fa-pencil", remote: true %> |
+            <%= link_to "", task_path(task), method: :delete, class: "fa fa-trash" %>
           </small></p>
 
           <% end %>
