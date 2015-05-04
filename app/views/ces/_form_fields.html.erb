@@ -6,7 +6,7 @@
   <%= f.text_field :topic %>
 
   <%#= f.label :job_start_date %>
-  <%= f.date_select :date %>
+  <%= f.date_select :date, :start_year=>1950 %>
 
   <%#= f.label :job_end_date %>
   <%= f.number_field :hours %>
