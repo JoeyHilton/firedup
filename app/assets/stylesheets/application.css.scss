@@ -474,7 +474,7 @@ a:hover, a:focus {
 }
 
 
-.dereklol{
+.connectionScroll{
   overflow-y: auto;
   max-height:10em;
 }
@@ -487,4 +487,15 @@ a:hover, a:focus {
 
 .timeColor {
   color: #980905;
+}
+
+.connectionsText {
+  color: #980905;
+  text-align: center;
+}
+
+.pendingConnectionsText {
+  color: #980905;
+  text-align: center;
+  padding-bottom: 4px;
 }

@@ -29,7 +29,7 @@ class JboardsController < ApplicationController
     @jboard.user_id = current_user.id
   
     if @jboard.save
-      redirect_to jboards_path
+      redirect_to jboard_path
     else
       render :new
     end

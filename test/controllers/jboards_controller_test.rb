@@ -24,14 +24,16 @@ class JboardsControllerTest < ActionController::TestCase
 
   test "should get create" do
     assert_difference('Jboard.count', 1) do
-      post :create, user_id: @user.id, jboard: {title: "something"}
-      assert_redirected_to jboards_path
-    end
+      post :create, user_id: @user.id, jboard: {title: "something", position: "MySatring", identifier: "MybString",description: "MyTecxt",requirements: "MyTdext",
+      how_to_apply: "MyTeext",salary: "MyStrifng",open_date: Date.today,close_date: Date.today,agency: "MygString",city: "MyShtring",state: "MyStriing",zip: "12345",website: "MyString",
+      first_name: "MyStkring",last_name: "MyStrinlg",phone: "123456789",email: "MyStnring",job_link: "MyStrinog",poster: "MyStpring",category: "Paramedic", user_id: @user.id}
+      end
+      assert_redirected_to jboard_path
   end
 
   test "should get update" do
     put :update, id: @jboard.id, jboard: @new_params
-    assert_response :success
+    assert_redirected_to jboard_path
   end
 
   test "should get destroy" do

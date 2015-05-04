@@ -11,6 +11,11 @@ class CesControllerTest < ActionController::TestCase
     sign_in @user
   end
 
+  test "should get index" do
+    get :index, user_id: @user.id
+    assert_response :success
+  end
+
   test "should get show" do
     get :show, id: @ce.id
     assert_response :success

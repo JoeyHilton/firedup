@@ -13,15 +13,16 @@ one:
   agency: MyString
   city: MyString
   state: MyString
-  zip: MyString
+  zip: 12345
   website: MyString
   first_name: MyString
   last_name: MyString
-  phone: MyString
+  phone: 123456789
   email: MyString
   job_link: MyString
   poster: MyString
   category: Paramedic
+  user_id:
 
 two:
   title: MyString
@@ -44,3 +45,4 @@ two:
   email: MyString
   job_link: MyString
   poster: MyString
+  user_id:
