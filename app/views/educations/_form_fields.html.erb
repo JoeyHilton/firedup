@@ -13,10 +13,10 @@
     <%= f.text_area :description %>
 
     
-    <%= f.date_select :start_date, required: true  %>
+    <%= f.date_select :start_date, :start_year=>1950, required: true  %>
 
    
-    <%= f.date_select :end_date, required: true  %>
+    <%= f.date_select :end_date, :start_year=>1950, required: true  %>
 
     <%= f.submit "Submit", class: "btn btn-warning"%>
   <% end %>

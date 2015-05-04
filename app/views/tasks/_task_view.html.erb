@@ -68,7 +68,8 @@
       <% tasks.order("due_date DESC").each do |task| %> 
           <% if task.due_date > DateTime.tomorrow  %>
 
-            <kbd><%= task.category%></kbd>  <small><strong class="timeColor"><%= task.due_time.strftime("%I:%M %p") %></strong> <%= task.title %></small><br>
+            <kbd><%= task.category%></kbd>  <small><strong class="timeColor"><%= task.due_time.strftime("%I:%M %p") %>
+                  <%= task.due_date.strftime("%m/%d/%y")%></strong> <%= task.title %></small><br>
           <p class="editFont"><small class="text-muted">  
             <%= link_to "", edit_task_path(task), class: "fa fa-pencil", remote: true %> |
             <%= link_to "", task_path(task), method: :delete, class: "fa fa-trash" %>

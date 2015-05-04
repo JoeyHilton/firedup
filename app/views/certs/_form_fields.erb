@@ -6,10 +6,10 @@
   <%= f.text_field :title %>
 
   <%#= f.label :job_start_date %>
-  <%= f.date_select :start_date %>
+  <%= f.date_select :start_date, :start_year=>1950 %>
 
   <%#= f.label :job_end_date %>
-  <%= f.date_select :expire_date %>
+  <%= f.date_select :expire_date, :start_year=>1950 %>
 
   <%#= f.label :job_description %>
   <%= f.text_area :description %>
