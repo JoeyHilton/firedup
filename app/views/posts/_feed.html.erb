@@ -16,14 +16,14 @@
         </div>
     <!-- Post Content -->
         <div class="panel-body panelBodyFeed ">
-          <p><%= post.content %></P>
+          <p class="post-pad"><%= post.content %></P>
           <div class="float-left"><%= image_tag post.image.url(:xlarge), class: "pull-left" if post.image_file_name %></div>
 
           <div class="float-left"> 
-           <br>
+          
 
       <!-- Add comments -->
-      <div id="comment_section_<%= post.id %>">
+      <div id="comment_section_<%= post.id %>" class="comment-indent">
         <%= render partial: 'posts/comments', locals: { post: post } %>
       </div>
 
