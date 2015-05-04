@@ -64,7 +64,7 @@
               Cell Phone: <%= @user.mobile_phone %><br>
               <%= @user.email %><br>
               <%= @user.twitter %><br>
-            <strong> Birthdate:</strong> <%= @user.birthdate.strftime("%B %d, %Y") %><br><br>
+            <strong> Birthdate:</strong> <%= @user.birthdate.strftime("%B %d, %Y") if @user.birthdate %><br><br>
 
             <strong> About Me:  </strong>
               <%= @user.bio %><br><br>

@@ -29,7 +29,7 @@ class JboardsController < ApplicationController
     @jboard.user_id = current_user.id
   
     if @jboard.save
-      redirect_to jboard_path
+      redirect_to jboards_path
     else
       render :new
     end
@@ -40,7 +40,7 @@ class JboardsController < ApplicationController
 
   def update
     if @jboard.update(jboard_params)
-    redirect_to jboard_path
+    redirect_to jboards_path
     else
       render :edit
     end
