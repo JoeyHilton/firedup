@@ -1,10 +1,10 @@
 
   <%= bootstrap_form_for [@user, @education], remote: using_modal do |f| %>
     <%= render 'devise/shared/error_messages', object: f.object %>
-    <%= f.text_field :school %>
+    <%= f.text_field :school, required: true %>
 
     
-    <%= f.text_field :subject %>
+    <%= f.text_field :subject, required: true %>
 
     
     <%= f.text_field :degree %>
@@ -13,10 +13,10 @@
     <%= f.text_area :description %>
 
     
-    <%= f.date_select :start_date  %>
+    <%= f.date_select :start_date, required: true  %>
 
    
-    <%= f.date_select :end_date  %>
+    <%= f.date_select :end_date, required: true  %>
 
     <%= f.submit "Submit", class: "btn btn-warning"%>
   <% end %>

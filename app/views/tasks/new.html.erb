@@ -1,10 +1,10 @@
-<div class="col-md-6 col-md-offset-2">
+<div class="col-md-5 col-md-offset-2">
     <div class="panel panel-default">
       <div class="center panel-heading">      
         <h1> New Task</h1>
       </div>
       <div class="panel-body">
-        <%= render partial: 'tasks/task_form' %>
+        <%= render partial: 'tasks/task_form', locals: {task: @task, using_modal: false}  %>
       </div>
   </div>
 </div>

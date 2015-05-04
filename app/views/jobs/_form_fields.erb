@@ -2,15 +2,15 @@
   <%= bootstrap_form_for [@user, @job], remote: using_modal do |f| %>
   <%= render 'devise/shared/error_messages', object: f.object %>
   <%#= f.label :job_position %>
-  <%= f.text_field :position %>
+  <%= f.text_field :position, required: true %>
   <%#= f.label :job_company %>
-  <%= f.text_field :company %>
+  <%= f.text_field :company, required: true %>
 
   <!-- <div id="employCheck-<%= job.id %>">
     <%#= job_box(job) %>
   </div> -->
 
-  <%= f.date_select :start_date, :start_year=>1950 %>
+  <%= f.date_select :start_date, :start_year=>1950, required: true %>
   <div id="end-date" class="">
     <%= f.date_select :end_date, :start_year=>1950 %>
   </div>

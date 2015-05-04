@@ -304,8 +304,14 @@ a:hover, a:focus {
     // margin-left: 69.5%;
     float: right;
     background-color: #f5f5f5;
-    // overflow: hidden;
-    overflow-y: auto;
+    overflow: hidden;
+    // overflow-y: auto;
+}
+
+.taskScroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 380px;
 }
 #sidebar {
     position: relative;
@@ -385,19 +391,19 @@ a:hover, a:focus {
 
 // --- Messages ---------------------//
 .new-message{
-  color: #FFCC05 !important;
+  color: #FFEB9B !important;
 }
 
 .new-message:hover {
-  color: #FF6605 !important;
+  color: #FFE069 !important;
 }
 
 .new-connection{
-  color: #FFCC05 !important;
+  color: #FFEB9B !important;
 }
 
 .new-connection:hover {
-  color: #FF6605 !important;
+  color: #FFE069 !important;
 }
 
 .viewed {

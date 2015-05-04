@@ -4,13 +4,13 @@
 <% posts.order("created_at DESC").each do |post| %>
     <% if post.user.followed_by?(current_user) || post.share_with == "Everyone" || post.user == current_user %>
       <div class="panel panel-default">
-        <div class="center panel-heading panelOverride">
+        <div class="center panel-heading panelOverride" id="post-<%= post.id %>">
         <%= link_to image_tag(post.user.image.url(:icon)), user_path(post.user_id), class: "pull-left iconImagePanel img-circle" %>      
           <strong> <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_path(post.user_id) %> </strong>
 
           <small class="text-muted"><%= time_ago_in_words(post.created_at) %> ago </small>
           <% if post.user == current_user && user_signed_in? %>
-                <small class="text-muted"><%= link_to "Edit", edit_post_path(post) %> |</small>
+                <small class="text-muted"><%= link_to "Edit", edit_post_path(post), remote: true %> |</small>
                 <small class="text-muted"><%= link_to "Delete", post_path(post), method: :delete %></small>
           <% end %>
         </div>

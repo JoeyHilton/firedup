@@ -1,17 +1,23 @@
 
+ 
+
   <%= bootstrap_form_for [@user, @task], html: { multipart: true } do |f| %>
 
-    <%= f.text_field :title, class: 'form-control' %>
+    <%= f.text_field :title, class: 'form-control', label: "Task", required: true %> 
 
-    <%= f.date_field :due_date, label: "Due Date"%>
+    <div class="due_date">   
+        <%= f.date_field :due_date, label: "Due Date", required: true%>
+    </div>
 
-    <%= f.time_field :due_time, label: "Due Time"%>
+    <div class="due_time">
+        <%= f.select :due_time, Task::TIMES, label: "Due Time" , :selected => '9:00 am', required: true %>
+    </div>
 
-    <%= f.select :category, Task::CATEGORY, prompt: "Pick one", label: "Category:" , :selected => 'Everyone'%>
+    <div class="task_cat">
+        <%= f.select :category, Task::CATEGORY, prompt: "Pick one", label: "Category:" , :selected => 'Everyone', required: true%>
+    </div>
 
-    <%= f.check_box :private, label: "Private Task", value: "true", :checked => 'true' %>
-
-    <%= f.text_area :notes, label: "Notes:"%>
+    <!-- <%= f.check_box :private, label: "Private Task", value: "true", :checked => 'true', :cols => "4" %> -->
 
     <%= f.submit class: "btn btn-warning" %>
   <% end %>

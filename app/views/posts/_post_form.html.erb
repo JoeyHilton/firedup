@@ -1,7 +1,9 @@
 
   <%= bootstrap_form_for [@user, @post], html: { multipart: true } do |f| %>
-
-    <%= f.text_area :content, class: 'form-control' %>
+    <%= render 'devise/shared/error_messages', object: f.object %>
+    <%= token_tag(nil) %>
+    
+    <%= f.text_area :content, class: 'form-control', required: true %>
 
     <%= f.file_field :image, label: "Add Image"%>
 

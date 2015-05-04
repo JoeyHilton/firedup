@@ -1,3 +1,26 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.due_date {
+  width: 25%;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.due_time {
+  width: 25%;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.task_cat {
+  width: 25%;
+  display: inline-block;
+}
+
+// #task_category {
+//   width: 25%;
+// }
+

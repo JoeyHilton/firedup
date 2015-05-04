@@ -1,0 +1,2 @@
+$('#newModal').modal('hide');
+$('#taskList').prepend('<%= j render partial: "tasks/task_form", locals: { task: @task} %>');

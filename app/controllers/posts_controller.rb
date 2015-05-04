@@ -21,7 +21,10 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
   
     if @post.save
-      redirect_to feed_path
+      respond_to do |format|
+        format.html { redirect_to feed_path }
+        format.js 
+      end
     else
       render :new
     end
@@ -31,16 +34,27 @@ class PostsController < ApplicationController
     if current_user.id != @post.user_id
       flash[:danger] = "You are not authorized to edit this post."
     end
+    if current_user.id == @post.user_id
+    
+      respond_to do |format|
+        format.html 
+        format.js 
+      end
+    end
   end
 
   def update
     if current_user.id == @post.user_id
       if @post.update(post_params)
+        respond_to do |format|
+          format.html { redirect_to feed_path }
+          format.js 
+        end
       else
         render :edit
       end
     end
-      redirect_to feed_path
+     
   end
 
   def destroy

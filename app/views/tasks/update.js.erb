@@ -1,0 +1,2 @@
+$('#newModal').modal('hide');
+$('#taskList').html('<%= j render partial: "tasks/task_view", locals: {tasks: current_user.tasks} %>);

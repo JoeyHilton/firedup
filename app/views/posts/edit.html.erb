@@ -23,8 +23,8 @@
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
             <h4>Change Your Mind?</h4>
-           <%= render "post_form" %>
-            
+          
+           <%= render partial: 'posts/post_form', locals: {post: @post, using_modal: false}  %>
           </div>
         </div> <!-- END CENTER COLUMN -->
 
