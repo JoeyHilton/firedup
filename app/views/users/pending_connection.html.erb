@@ -3,7 +3,10 @@
   
       <div id="sidebar-wrapper" class="col-md-2">
             <div id="sidebar">
-              <h4 class="centerText"><strong>Pending Connections</strong></h4>
+              <hr>
+              <h3 class="connectionsText"><strong>Connections<strong></h3>
+
+              <hr>
                 <ul class="nav list-group">
                     <li>
                         <!--<%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>-->
@@ -15,8 +18,11 @@
                         <!--<%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>-->
                     </li>
                 </ul>
-
+                <div class="connectionScroll">
               <%= render 'posts/pictured_connection' %>
+            </div>
+            <hr>
+
 
               <%= render 'layouts/footer'  %>
 
@@ -25,6 +31,12 @@
 
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
+            <div>
+              <hr>
+              <h2 class="pendingConnectionsText">Pending Connections</h2>
+             
+            </div>
+            
             <table class="table table-hover">
               <tbody>
                 <% @pending_connections.each do |user| %>

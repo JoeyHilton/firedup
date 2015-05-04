@@ -30,4 +30,8 @@ module ApplicationHelper
       User.find(f.follower_id)
     end
   end
+
+  # def site_user
+  #   @user = User.find(params[:id])
+  # end
 end

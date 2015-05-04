@@ -18,9 +18,14 @@
                 <%= link_to 'Post a Job', new_user_jboard_path(current_user), class: "list-group-item"%>
             </li>
         </ul>
-      <div class="dereklol">
+      
+        <h3 class="connectionsText"><strong>Connections<strong></h3>
+        <hr>
+        
+      <div class="connectionScroll">
       <%= render 'posts/pictured_connection' %>
       </div>
+      <hr>
       <%= render 'layouts/footer'  %>
     </div>
   </div>

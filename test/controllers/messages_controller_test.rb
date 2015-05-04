@@ -51,6 +51,12 @@ class MessagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should archive message" do
+    get :archive, id: @message.id
+    @message.update_attributes(archived: true)
+    assert_redirected_to user_messages_path(@user)
+  end
+
   # test "should test message is archived" do
   #   get :archived_messages, user_id: @user.id
   #   archived_messages = assigns(:archived_messages)

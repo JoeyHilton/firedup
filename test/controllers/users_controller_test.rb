@@ -38,6 +38,7 @@ class UsersControllerTest < ActionController::TestCase
     @follower = Follower.create(follower_id: @other_user.id, followable_id: @user.id)
     # Followee is current user
     @followee = Follower.create(follower_id: @user.id, followable_id: @other_user.id)    
+    @follow =
     # Make sure other user and current user ids are
     
     # in the Follow table. Pluck them out of the 

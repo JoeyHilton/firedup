@@ -55,7 +55,7 @@ class PostsController < ApplicationController
 
   def feed
   
-    # @user = User.find(params[:id])
+    @users = User.all
     @posts = Post.page(params[:page]).per(12)
     @comment = Comment.new
     @tasks = current_user.tasks
