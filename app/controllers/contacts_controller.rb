@@ -1,6 +1,5 @@
 class ContactsController < ApplicationController
   def new
-    binding.pry
     @contact = Contact.new
   end
 
