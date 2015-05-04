@@ -31,13 +31,13 @@ class User < ActiveRecord::Base
   validates :mobile_phone, format: { with: /\d{3}-\d{3}-\d{4}/, message: "bad format" }, :allow_blank => true
 
   # has_one :profile, dependent: :destroy
-  has_many :educations
-  has_many :jobs
-  has_many :certs
-  has_many :posts
-  has_many :jboards
-  has_many :ces
-  has_many :tasks
+  has_many :educations, dependent: :destroy
+  has_many :jobs, dependent: :destroy
+  has_many :certs, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :jboards, dependent: :destroy
+  has_many :ces, dependent: :destroy
+  has_many :tasks, dependent: :destroy
 
   has_attached_file :image, styles: { icon: "32x32!", small: "64x64", med: "100x100", large: "200x200" },
                     :default_url => "/images/:style/missing.png"
@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   acts_as_followable
 
   # for message model
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :sent_messages, class_name: "Message", foreign_key: "sender_id" 
   has_many :received_messages, class_name: "Message", foreign_key: "receiver_id"
  

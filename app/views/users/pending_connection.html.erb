@@ -3,7 +3,7 @@
   
       <div id="sidebar-wrapper" class="col-md-2">
             <div id="sidebar">
-              <h4 class="centerText"><strong>Pending Connections</strong></h4>
+              <h4 class="centerText"><strong>Connections</strong></h4>
                 <ul class="nav list-group">
                     <li>
                         <!--<%= link_to "Create A Post", new_user_post_path(current_user), class: "list-group-item" %>-->
@@ -25,6 +25,7 @@
 
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
+            <h4 class="centerText"><strong>Pending Connections</strong></h4>
             <table class="table table-hover">
               <tbody>
                 <% @pending_connections.each do |user| %>
