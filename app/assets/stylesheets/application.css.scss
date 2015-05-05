@@ -93,7 +93,7 @@ a:hover, a:focus {
 p.notice {
   color: #FF6605;
   padding-left: 200px;
-  top: 70px;
+  z-index: 2;
   position: absolute;
 }
 
