@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @message = Message.new
@@ -18,6 +19,9 @@ class MessagesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
+    if current_user.id != @user.id
+      redirect_to message_path(current_user.id)
+    end
     @received_messages = @user.received_messages.where(archived: false)
     @sorted_received_messages = @received_messages.sort_by{|e| e.created_at}.reverse!
     @sent_messages = @user.sent_messages
@@ -29,24 +33,35 @@ class MessagesController < ApplicationController
 
   def received_messages
     @user = User.find(params[:user_id])
+    if current_user.id != @user.id
+      redirect_to message_path(current_user.id)
+    end
     @received_messages = @user.received_messages.where(archived: false)
     @sorted_received_messages = @received_messages.sort_by{|e| e.created_at}.reverse!
   end
 
   def sent_messages
     @user = User.find(params[:user_id])
+    if current_user.id != @user.id
+      redirect_to message_path(current_user.id)
+    end
     @sent_messages = @user.sent_messages
     @sorted_sent_messages = @sent_messages.order(created_at: :desc)
   end
 
   def archived_messages
     @user = User.find(params[:user_id])
+    if current_user.id != @user.id
+      redirect_to message_path(current_user.id)
+    end
     @archived_messages = @user.received_messages.where(archived: true)
   end
 
   def show
     @user = current_user
-    
+    if current_user.id != @user.id
+      redirect_to message_path(current_user.id)
+    end
     @message = Message.find(params[:id])
      # @received_messages.each do |message|
     @message.update_attributes(viewed: true)
@@ -62,7 +77,9 @@ class MessagesController < ApplicationController
 
   def message_history
     @user = User.find(params[:user_id])
-
+    if current_user.id != @user.id
+      redirect_to message_path(current_user.id)
+    end
     @sent_messages = Message.where(receiver_id: @user, sender_id: current_user)
     @received_messages = Message.where(receiver_id: current_user, sender_id: @user)
     @history = @sent_messages + @received_messages
