@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    redirect_to feed_path
   end
 
   def new
@@ -18,6 +19,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @user = current_user
     @post.user_id = current_user.id
   
     if @post.save
