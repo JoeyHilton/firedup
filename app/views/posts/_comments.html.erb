@@ -1,9 +1,10 @@
 <% post.comments.each do |comment| %>
               <br>
-              <strong><%= link_to "#{comment.user.first_name} #{comment.user.last_name}", user_path(comment.user_id) %></strong>
+              <strong><%= link_to "#{comment.user.first_name} #{comment.user.last_name}", user_path(comment.user_id) %></strong> -
                   <% if comment.user == current_user && user_signed_in? %>
                     
-                    <small class="text-muted">| <%= link_to "Delete", comment_path(comment), method: :delete, remote: true %></small>
+                    <small class="text-muted"><%= link_to "",
+                              comment_path(comment), method: :delete, class: "fa fa-trash", remote:true %></small>
                   <% end %>
               <blockquote>
                 <%= comment.body %>

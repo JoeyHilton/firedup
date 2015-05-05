@@ -5,12 +5,14 @@
 
   <div class="row"><!-- Start Overdue row -->
     <div class="col-md-4">
-      <div class="task-box">
+     <!--  <div class="task-box">
         <h5><strong>Overdue</strong></h5>
-      </div>
+      </div> -->
       <% tasks.order("due_date DESC").each do |task| %>
           <% if task.due_date < Date.today %>
-
+            <div class="task-box">
+              <h5><strong>Overdue</strong></h5>
+            </div>
             <kbd><%= task.category%></kbd>  <small><%= task.title %></small><br>
             <p class="editFont"><small class="text-muted">  
               <%= link_to "", edit_task_path(task), class: "fa fa-pencil", remote: true %> |
@@ -24,11 +26,14 @@
 
   <div class="row"><!-- Start Due Today row -->
     <div class="col-md-4">
-      <div class="task-box">
+      <!-- <div class="task-box">
         <h5><strong>Due Today</strong></h5>
-      </div>
+      </div> -->
       <% tasks.order("due_date DESC").each do |task| %>
         <% if task.due_date == Date.today %>
+          <div class="task-box">
+            <h5><strong>Due Today</strong></h5>
+          </div>
 
           <kbd><%= task.category%></kbd>  <small><strong class="timeColor"><%= task.due_time.strftime("%I:%M %p") %></strong> <%= task.title %></small><br>
           <p class="editFont"><small class="text-muted">
@@ -43,11 +48,14 @@
 
   <div class="row"><!-- Start Due Tomorrow row -->
     <div class="col-md-4">
-      <div class="task-box">
+      <!-- <div class="task-box">
         <h5><strong>Due Tomorrow</strong></h5>
-      </div>
+      </div> -->
       <% tasks.order("due_date DESC").each do |task| %>
           <% if task.due_date == Date.current.tomorrow %>
+          <div class="task-box">
+            <h5><strong>Due Tomorrow</strong></h5>
+          </div>
 
           <kbd><%= task.category%></kbd>  <small><strong class="timeColor"><%= task.due_time.strftime("%I:%M %p") %></strong> <%= task.title %></small><br>
           <p class="editFont"><small class="text-muted">  
@@ -62,11 +70,14 @@
 
   <div class="row"><!-- Start Due Tomorrow row -->
     <div class="col-md-4">
-      <div class="task-box">
+      <!-- <div class="task-box">
         <h5><strong>Upcoming</strong></h5>
-      </div>
+      </div> -->
       <% tasks.order("due_date DESC").each do |task| %> 
           <% if task.due_date > DateTime.tomorrow  %>
+          <div class="task-box">
+            <h5><strong>Upcoming</strong></h5>
+          </div>
 
             <kbd><%= task.category%></kbd>  <small><strong class="timeColor"><%= task.due_time.strftime("%I:%M %p") %>
                   <%= task.due_date.strftime("%m/%d/%y")%></strong> <%= task.title %></small><br>

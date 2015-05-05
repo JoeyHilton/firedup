@@ -7,7 +7,7 @@
 
 &nbsp;&nbsp;&nbsp;Issued: <%= cert.start_date %><br>
 &nbsp;&nbsp;&nbsp;Expires: <%= cert.expire_date %><br>
-<strong> Description: </strong><br>
+&nbsp;&nbsp;<strong> Description: </strong><br>
 &nbsp;&nbsp;&nbsp;<%= cert.description %><br>
-    <%= link_to 'See Attachment', cert.attachment.url, target: '_blank' if cert.attachment_file_name %>
+&nbsp;&nbsp; <%= link_to 'See Attachment', cert.attachment.url, target: '_blank' if cert.attachment_file_name %>
 <hr>

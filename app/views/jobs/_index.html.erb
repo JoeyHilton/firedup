@@ -9,8 +9,8 @@
   <% if job.current_employer == false %>
     &nbsp;&nbsp;&nbsp;<%= "Employed from #{job.start_date} to #{job.end_date}" %><br>
   <% else %>
-    &nbsp;&nbsp;&nbsp;<%= "Employed from #{job.start_date} to Current" %><br>
+  &nbsp;&nbsp;&nbsp;<%= "Employed from #{job.start_date} to Current" %><br>
   <% end %>
-<strong> Job Description: </strong><br>
+  &nbsp;&nbsp;<strong> Description: </strong><br>
   &nbsp;&nbsp;&nbsp;<%= job.description %><br>
 <hr>

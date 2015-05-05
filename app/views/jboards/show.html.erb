@@ -24,28 +24,27 @@
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
             <h4>Job Details</h4>
-            <strong> Job: </strong><br>
-              <%= @jboard.title%><br>
-            <strong> Category: </strong><br>
-                <%= @jboard.category %><br>
+            <strong><%= @jboard.title%></strong><br>
+            Category - <%= @jboard.category %><br>
+            <%= "Open: #{@jboard.open_date} until: #{@jboard.close_date}" %><br><br>
+            <strong> Agency: </strong><br>
+              <%= @jboard.agency %><br>
+              <%= "#{@jboard.city}, #{@jboard.state}, #{@jboard.zip}" %><br>
+              <%= @jboard.website%><br><br>
+            <strong> Contact: </strong><br>
+              <%= "#{@jboard.first_name} #{@jboard.last_name}"%><br>
+              <%= @jboard.phone%><br>
+              <%= @jboard.email%><br>
+            <strong> Job Description: </strong><br>
+              <%= @jboard.description %><br><br>
+            <strong> Job Requirements: </strong><br>
+              <%= @jboard.requirements %><br><br>
+            <strong> How To Apply: </strong><br>
+              <%= @jboard.how_to_apply %><br><br>
+            <strong> Job Link: </strong><br>
+              <%= @jboard.job_link%><br>
             <strong> Job Id: </strong><br>
                 <%= @jboard.identifier%><br>
-            <strong> Job Availability: </strong><br>
-            <%= "Open: #{@jboard.open_date} until: #{@jboard.close_date}" %><br>
-            <strong> Agency: </strong><br>
-                <%= @jboard.agency %><br>
-            <strong> Address: </strong><br>
-              <%= "#{@jboard.city}, #{@jboard.state}, #{@jboard.zip}" %><br>
-            <strong> Company Website: </strong><br>
-              <%= @jboard.website%><br>
-            <strong> Posted By: </strong><br>
-              <%= "#{@jboard.first_name} #{@jboard.last_name}"%><br>
-            <strong> Phone: </strong><br>
-              <%= @jboard.phone%><br>
-            <strong> Email: </strong><br>
-              <%= @jboard.email%><br>
-            <strong> More Info: </strong><br>
-              <%= @jboard.job_link%><br>
             <% if @jboard.user == current_user && user_signed_in? %> 
               <%= link_to 'Edit', edit_jboard_path(@jboard) %> | 
               <%= link_to 'Delete', jboard_path(@jboard), method: :delete %>
