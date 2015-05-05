@@ -1,7 +1,7 @@
 <%= bootstrap_form_for [post, comment], remote: true do |f| %>
   <%= f.text_area :body, class: "comment_body_class_#{post.id}", label: '&nbsp'.html_safe, placeholder: "Enter your comment here" %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <span><%= f.submit class: "btn btn-warning btn-xs" %></span>
+  <span><%= f.submit "Add Comment", class: "btn btn-warning btn-xs" %></span>
   <input type="button" id="cancelComment" class="btn btn-warning btn-xs" value="Cancel"/>
 <% end %>
 
