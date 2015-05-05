@@ -8,6 +8,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    redirect_to feed_path
   end
 
   def new
