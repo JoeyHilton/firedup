@@ -11,6 +11,26 @@ class RegistrationsController < Devise::RegistrationsController
     user_path(@user)
   end
 
+  def update
+    @user = User.find(current_user.id)
+    email_changed = @user.email != params[:user][:email]
+    is_facebook_account = !@user.provider.blank?
+
+    successfully_updated = if !is_facebook_account
+      @user.update_with_password(params[:user])
+    else
+      @user.update_without_password(params[:user])
+    end
+
+    if successfully_updated
+      # Sign in the user bypassing validation in case his password changed
+      sign_in @user, :bypass => true
+      redirect_to feed_path
+    else
+      render "edit"
+    end
+  end
+
   private
     def sign_up_params
       params.require(:user).permit(:email, :password, :password_confirmation, :image)
