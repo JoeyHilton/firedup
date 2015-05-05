@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   validates :content, presence: true
   validates :share_with, presence: true
 
-  validates_attachment :image, :size => { :in => 0..1000.kilobytes }
+  validates_attachment :image, :size => { :in => 0..2000.kilobytes }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   SHARES = %w(Everyone Connections)
