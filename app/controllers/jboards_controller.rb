@@ -1,4 +1,5 @@
 class JboardsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_jboard, only: [ :show, :edit, :update, :destroy]
 
   def index
@@ -36,13 +37,21 @@ class JboardsController < ApplicationController
   end
 
   def edit
+    if current_user.id != @jboard.user_id
+      redirect_to jboards_path
+      flash[:danger] = "You are not authorized to edit this job posting."
+    end
   end
 
   def update
-    if @jboard.update(jboard_params)
-    redirect_to jboards_path
-    else
-      render :edit
+    @user = @jboard.user
+    
+    if current_user == @jboard.user
+      if @jboard.update(jboard_params)
+        redirect_to jboards_path
+      else
+        render :edit
+      end
     end
   end
 
