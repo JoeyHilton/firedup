@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    redirect_to feed_path
   end
 
   def new
