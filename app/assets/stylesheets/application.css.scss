@@ -90,11 +90,11 @@ a:hover, a:focus {
   color: #5B0503;
 }
 
-.notice {
+p.notice {
   color: #FF6605;
+  padding-left: 36px;
   z-index: 2;
   position: absolute;
-  padding-left: 20px;
 }
 
 .comment-indent {
@@ -514,3 +514,4 @@ a:hover, a:focus {
   text-align: center;
   padding-bottom: 4px;
 }
+
