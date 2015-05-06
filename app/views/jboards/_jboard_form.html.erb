@@ -5,13 +5,11 @@
 
     <%= f.select :category, Jboard::CATEGORY, prompt: "Pick one", label: "Category", :required => true %>
 
-    <!--<%= f.text_area :description %>
+    <%= f.text_area :description %>
 
     <%= f.text_area :requirements %>
 
     <%= f.text_area :how_to_apply %>
-
-    <%= f.text_field :salary %>-->
 
     <%= f.date_select :open_date, :start_year=>1950, :required => true  %>
 
