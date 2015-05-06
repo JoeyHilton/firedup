@@ -21,13 +21,17 @@
       <% @sorted_history.each do |message| %>
       <div class="panel panel-default">
         <div class="center panel-heading panelOverride">
-          <%= link_to image_tag(message.user.image.url(:icon)), user_path(message.user_id), class: "pull-left iconImagePanel img-circle" %>      
+          <%= link_to image_tag(message.user.image.url(:icon)), user_path(message.user_id), class: "pull-left iconImagePanel img-circle" %>   
             <strong> <%= link_to "#{message.user.first_name} #{message.user.last_name}", user_path(message.user_id) %> </strong>
 
             <small class="text-muted"><%= time_ago_in_words(message.created_at) %> ago </small>
+
             <% if message.user == current_user && user_signed_in? %>
-                  <%= link_to "Delete", message, method: :delete%>
+                <%= link_to "Delete", message, method: :delete%>
             <% end %>
+            <% if message.user != current_user %>
+              <%= link_to fa_icon("envelope", text: "Reply"), new_user_message_path(message.user_id) %>  
+            <% end %> 
           </div>
           <br>
           <div class="message-div">
