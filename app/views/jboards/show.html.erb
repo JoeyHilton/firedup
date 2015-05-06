@@ -24,9 +24,11 @@
         <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
           <div id="center">
             <h4>Job Details</h4>
+            <hr>
             <strong><%= @jboard.title%></strong><br>
             Category - <%= @jboard.category %><br>
-            <%= "Open: #{@jboard.open_date} until: #{@jboard.close_date}" %><br><br>
+            <%= "Open: #{@jboard.open_date} until: #{@jboard.close_date}" %>
+            <hr>
             <strong> Agency: </strong><br>
               <%= @jboard.agency %><br>
               <%= "#{@jboard.city}, #{@jboard.state}, #{@jboard.zip}" %><br>
@@ -34,21 +36,26 @@
             <strong> Contact: </strong><br>
               <%= "#{@jboard.first_name} #{@jboard.last_name}"%><br>
               <%= @jboard.phone%><br>
-              <%= @jboard.email%><br>
-            <strong> Job Description: </strong><br>
+              <%= @jboard.email%>
+              <hr>
+            <strong> Job Description: </strong>
               <%= @jboard.description %><br><br>
             <strong> Job Requirements: </strong><br>
               <%= @jboard.requirements %><br><br>
             <strong> How To Apply: </strong><br>
-              <%= @jboard.how_to_apply %><br><br>
-            <strong> Job Link: </strong><br>
+              <%= @jboard.how_to_apply %>
+              <hr>
+            <strong> Job Link: </strong>
               <%= @jboard.job_link%><br>
-            <strong> Job Id: </strong><br>
+            <strong> Job Id: </strong>
                 <%= @jboard.identifier%><br>
-            <% if @jboard.user == current_user && user_signed_in? %> 
+            <% if @jboard.user == current_user && user_signed_in? %><br>
               <%= link_to 'Edit', edit_jboard_path(@jboard) %> | 
               <%= link_to 'Delete', jboard_path(@jboard), method: :delete %>
             <% end %>
+            <br>
+            <br>
+            <br>
             
           </div>
         </div> <!-- END CENTER COLUMN -->
