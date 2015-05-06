@@ -19,7 +19,7 @@
   <div id="center-wrapper" class="col-md-6"><!-- START CENTER COLUMN -->
     <div id="center">
 
-      <%= link_to "See Your Message History with #{@message.user.first_name} #{@message.user.last_name}", message_history_path(@other_user), class: "btn btn-warning btn-xs paddingAddComment" %><br><br>
+      <%= link_to "See Message History", message_history_path(@other_user), class: "btn btn-warning btn-xs paddingAddComment" %><br><br>
       <div class="panel panel-default">
         <div class="center panel-heading panelOverride">
           <%= link_to image_tag(@message.user.image.url(:icon)), user_path(@message.user_id), class: "pull-left iconImagePanel img-circle" %>      
