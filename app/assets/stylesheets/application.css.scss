@@ -421,19 +421,19 @@ p.notice {
   color: #FFE069 !important;
 }
 
-.viewed {
-  background-color: #FFEB9B; 
-}
+// .viewed {
+//   background-color: #FFEB9B; 
+// }
 .viewed:hover {
-  background-color: #FFE069;
+  background-color: #F5F5F5;
 }
 
-// .not_viewed {
-//   background-color: #828282;
-// }
+.not_viewed {
+  background-color: #FFEB9B;
+}
 
 .not_viewed:hover {
-  background-color: #f5f5f5;
+  background-color: #FFE069;
 }
 
 // --- Messages ---------------------//
